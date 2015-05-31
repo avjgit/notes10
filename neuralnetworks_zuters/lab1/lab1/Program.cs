@@ -15,7 +15,6 @@ namespace lab1
         static void Main(string[] args)
         {
             List<Attribute> attributes = new List<Attribute>();
-
             try
             {
                 int attribute_count = 0;
@@ -60,11 +59,18 @@ namespace lab1
 
             Node trainedTree = ID3.Run(examples, attributes);
 
-            //examples.ForEach(e => Console.WriteLine(ID3.Classify(trainedTree, e)));
-
+            var counter = 0;
             foreach (var e in examples)
             {
-                    Console.WriteLine(ID3.Classify(trainedTree, e));                
+                var classified = ID3.Classify(trainedTree, e);
+
+                Console.WriteLine(
+                    "Testing example " 
+                    + ++counter 
+                    + ": "
+                    + classified
+                    + ". Passed: " 
+                    + (e.Class == classified));
             }
         }
     }

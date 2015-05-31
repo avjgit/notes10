@@ -25,9 +25,10 @@ namespace lab1
             AttributeValues = new Dictionary<string,string>();
             
             // assumption! order of attributes matches order of data in example
+            attributes = attributes.Skip(1).ToList();
             for (int i = 0; i < attributeValueCodes.Count; i++)
             {
-                var attribute = attributes[i + 1];
+                var attribute = attributes[i];
                 var valueIndex = attributeValueCodes[i] - 1;
                 AttributeValues[attribute.Name] = attribute.Values[valueIndex];
             }
