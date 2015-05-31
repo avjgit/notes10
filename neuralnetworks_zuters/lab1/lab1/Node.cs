@@ -12,6 +12,7 @@ namespace lab1
         public Attribute Attribute { get; set; }
         public string Class { get; set; }
         public List<Node> Nodes { get; set; }
+        public string DecisionLog { get; set; }
 
         public Node()
         {

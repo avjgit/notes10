@@ -24,7 +24,7 @@ namespace lab1
             }
         }
 
-        public static Node Run(List<Example> examples, List<Attribute> attributes, string previousAttributeValue = null)
+        public static Node Run(List<Example> examples, List<Attribute> attributes, string previousAttributeValue = null, string decisionHistory = "")
         {
             var decisionTree = new Node();
             decisionTree.PreviousAttributeValue = previousAttributeValue;
@@ -49,10 +49,13 @@ namespace lab1
 
 
                 decisionTree.Attribute = bestAttribute;
-                
+
                 foreach (var x in bestAttribute.Values)
                 {
-                    Console.WriteLine("Evaluating attribute " + bestAttribute.Name.ToUpper() + " value " + x);
+                    //Console.Write(bestAttribute.Name.ToUpper() + " " + x + " -> ");
+                    if (decisionHistory.ToUpper().Contains(bestAttribute.Name.ToUpper()))
+                        decisionHistory = decisionHistory.Substring(0, decisionHistory.ToUpper().IndexOf(bestAttribute.Name.ToUpper()));
+                    decisionHistory += bestAttribute.Name.ToUpper() + " " + x + " -> ";
                     var examplesWithBestAttributeValueX = examples.Where(e => e.AttributeValues[bestAttribute.Name] == x).ToList();
 
                     Node node = new Node();
@@ -64,10 +67,15 @@ namespace lab1
                     else
                     {
                         attributes.Remove(bestAttribute);
-                        node = Run(examplesWithBestAttributeValueX, new List<Attribute>(attributes), x);
+                        node = Run(examplesWithBestAttributeValueX, new List<Attribute>(attributes), x, decisionHistory);
                     }
                     decisionTree.Nodes.Add(node);
                 }                
+            }
+
+            if (!String.IsNullOrEmpty(decisionTree.Class))
+            {
+                Console.WriteLine(decisionHistory + decisionTree.Class);
             }
             return decisionTree;
         }

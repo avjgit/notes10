@@ -57,7 +57,11 @@ namespace lab1
                 Console.WriteLine("The example file could not be read:" + e.Message);
             }
 
+            Console.WriteLine();
+
             Node trainedTree = ID3.Run(examples, attributes.Skip(1).ToList());
+
+            Console.WriteLine();
 
             var counter = 0;
             foreach (var e in examples)
@@ -73,7 +77,7 @@ namespace lab1
                     + (e.Class == classified));
             }
 
-            Console.WriteLine(ID3.Entropy(examples));
+            Console.WriteLine("\nEntropy for original examples: " + ID3.Entropy(examples));
         }
     }
 }
