@@ -107,5 +107,18 @@ namespace lab1
                     .Select(t => t.Key)
                     .ToString();
         }
+
+        public static double Entropy(List<Example> examples)
+        {
+            var entropy = 0.0;
+            var examplesCount = examples.Count();
+            foreach (var c in examples.Select(e => e.Class).Distinct())
+	        {
+		        var classExamplesCount = examples.Where(e => e.Class == c).Count();
+                var classShare = (double) classExamplesCount / examplesCount;
+                entropy = entropy - classShare * Math.Log(classShare, 2);
+	        }
+            return entropy;
+        }
     }
 }

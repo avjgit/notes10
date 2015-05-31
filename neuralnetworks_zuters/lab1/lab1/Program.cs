@@ -72,6 +72,8 @@ namespace lab1
                     + ". Passed: " 
                     + (e.Class == classified));
             }
+
+            Console.WriteLine(ID3.Entropy(examples));
         }
     }
 }
