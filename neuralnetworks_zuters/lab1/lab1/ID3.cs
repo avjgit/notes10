@@ -75,16 +75,37 @@ namespace lab1
         private static Attribute BestAttribute(List<Example> examples, List<Attribute> attributes)
         {
             // test
-            List<string> testAttributeNames = new List<string>() { "income", "history", "debt" };
+            //List<string> testAttributeNames = new List<string>() { "income", "history", "debt" };
 
-            foreach (var name in testAttributeNames)
-            {
-                var attribute = attributes.Where(a => a.Name == name).FirstOrDefault();
-                if (attribute != null)
-                    return attribute;                
-            }
-            return null;
+            //foreach (var name in testAttributeNames)
+            //{
+            //    var attribute = attributes.Where(a => a.Name == name).FirstOrDefault();
+            //    if (attribute != null)
+            //        return attribute;                
+            //}
+            //return null;
             //todo: do real
+
+            Attribute best = new Attribute();
+            double bestEntropy = Double.MaxValue;
+            foreach (var attribute in attributes)
+	        {
+                double attributeEntropy = 0;
+
+                foreach (var attributeValue in attribute.Values)
+	            {
+                    var examplesWithValue = examples.Where(e => e.AttributeValues[attribute.Name] == attributeValue).ToList();
+                    attributeEntropy = attributeEntropy + examplesWithValue.Count() * Entropy(examplesWithValue);
+                }
+
+                //labākās (t.i., mazākās) entropijas un attiecīgi labākā a fiksēšana:
+                if (best == null || attributeEntropy < bestEntropy)
+                {
+                    best = attribute;
+                    bestEntropy = attributeEntropy;
+                }
+            }
+            return best;
         }
 
         private static bool AreEmpty(IEnumerable<object> examples)

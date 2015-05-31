@@ -57,7 +57,7 @@ namespace lab1
                 Console.WriteLine("The example file could not be read:" + e.Message);
             }
 
-            Node trainedTree = ID3.Run(examples, attributes);
+            Node trainedTree = ID3.Run(examples, attributes.Skip(1).ToList());
 
             var counter = 0;
             foreach (var e in examples)

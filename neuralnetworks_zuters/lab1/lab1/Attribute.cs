@@ -20,6 +20,11 @@ namespace lab1
             get { return NameAndValues.Skip(1).ToList(); }
         }
 
+        public Attribute()
+        {
+
+        }
+
         public Attribute(string attributeWithValues)
         {
             NameAndValues = attributeWithValues.Split('\t').ToList();
