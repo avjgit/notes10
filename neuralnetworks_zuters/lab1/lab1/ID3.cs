@@ -46,11 +46,13 @@ namespace lab1
 
                 if (bestAttribute == null)
                     return decisionTree;
-                
+
+
                 decisionTree.Attribute = bestAttribute;
                 
                 foreach (var x in bestAttribute.Values)
                 {
+                    Console.WriteLine("Evaluating attribute " + bestAttribute.Name.ToUpper() + " value " + x);
                     var examplesWithBestAttributeValueX = examples.Where(e => e.AttributeValues[bestAttribute.Name] == x).ToList();
 
                     Node node = new Node();
@@ -62,7 +64,7 @@ namespace lab1
                     else
                     {
                         attributes.Remove(bestAttribute);
-                        node = Run(examplesWithBestAttributeValueX, attributes, x);
+                        node = Run(examplesWithBestAttributeValueX, new List<Attribute>(attributes), x);
                     }
                     decisionTree.Nodes.Add(node);
                 }                
@@ -72,9 +74,17 @@ namespace lab1
 
         private static Attribute BestAttribute(List<Example> examples, List<Attribute> attributes)
         {
+            // test
+            List<string> testAttributeNames = new List<string>() { "income", "history", "debt" };
+
+            foreach (var name in testAttributeNames)
+            {
+                var attribute = attributes.Where(a => a.Name == name).FirstOrDefault();
+                if (attribute != null)
+                    return attribute;                
+            }
+            return null;
             //todo: do real
-            //return attributes.Where(a => a.Name == "income").FirstOrDefault();
-            return attributes.Skip(1).LastOrDefault();
         }
 
         private static bool AreEmpty(IEnumerable<object> examples)

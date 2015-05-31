@@ -64,10 +64,8 @@ namespace lab1
 
             foreach (var e in examples)
             {
-                Console.WriteLine(ID3.Classify(trainedTree, e));                
+                    Console.WriteLine(ID3.Classify(trainedTree, e));                
             }
-
-
         }
     }
 }
