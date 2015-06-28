@@ -86,6 +86,8 @@ namespace lab2
                 error = error / samples.Count * Neurons.Count;
             }
 
+            Console.WriteLine("Epochs used: " + epoch);
+
             var weights = Neurons.Select(x => x.Weights).ToList();
             var bonusWeights = Neurons.Select(x => x.BonusWeight).ToList();
             return Tuple.Create(weights, bonusWeights);

@@ -64,9 +64,13 @@ namespace lab2
             var perceptron = new Perceptron()
             {
                 Neurons = new List<Neuron>{neuron},
-                Gradient = 0.2,
                 LearningCoefficient = 0.1
             };
+
+            foreach (var gradient in new List<double> { 0.2, 0.1, 0.3 })
+            {
+                Console.WriteLine("================ Testing gradient " + gradient);
+                perceptron.Gradient = gradient;
 
             //Console.WriteLine("Check slp run single:");
             //foreach (var sample in samples)
@@ -91,6 +95,7 @@ namespace lab2
             foreach (var sample in samples)
             {
                 perceptron.SlpRunSingle(sample).ForEach(result => Console.WriteLine(result));
+            }
             }
         }
     }
