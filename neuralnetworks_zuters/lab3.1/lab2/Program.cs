@@ -9,19 +9,48 @@ namespace lab3
 {
     class Program
     {
-        const string samplesFile = "..\\..\\..\\data\\examples_boolean.txt";
-        const string expectedAnswers = "..\\..\\..\\data\\d_notand.txt";
-        
         private static List<double> Normalize(List<double> data, Dictionary<double, double> rules)
         {
-            data.ForEach(x => x = rules[x]);
+            if (rules != null)
+            {
+                data.ForEach(x => x = rules[x]);
+            }
             return data;
         }
 
         static void Main(string[] args)
         {
+            var r = new Random();
+
+            Run("examples_boolean.txt", "d_notand.txt", null, r);
+
+            Run("examples_boolean.txt", "d_xor.txt", null, r);
+
+            Dictionary<double, double> normalizationRules1 = new Dictionary<double, double>();
+            normalizationRules1.Add(1, 0);
+            normalizationRules1.Add(2, 0.5);
+            normalizationRules1.Add(3, 1);
+            Run("examples.txt", "d.txt", normalizationRules1, r);
+
+            Dictionary<double, double> normalizationRules2 = new Dictionary<double, double>();
+            normalizationRules2.Add(1, 0.1);
+            normalizationRules2.Add(2, 0.5);
+            normalizationRules2.Add(3, 0.9);
+            Run("examples.txt", "d.txt", normalizationRules2, r);
+
+            //Run("examples.txt", "d2.txt", null);
+            //Run("examples.txt", "d2.txt", null);
+        }
+
+        static void Run(string samplesFile, string answersFile, Dictionary<double, double> normalizationRules, Random r)
+        {
+            Console.WriteLine("================ Running for " + answersFile);
+
             var samples = new List<Sample>();
             var answers = new List<double>();
+
+            samplesFile = "..\\..\\..\\data\\" + samplesFile;
+            answersFile = "..\\..\\..\\data\\" + answersFile;
 
             try
             {
@@ -37,7 +66,7 @@ namespace lab3
                 }
 
                 Console.WriteLine("Answers: ");
-                using (StreamReader sr = new StreamReader(expectedAnswers))
+                using (StreamReader sr = new StreamReader(answersFile))
                 {
                     string line;
                     while ((line = sr.ReadLine()) != null)
@@ -53,22 +82,12 @@ namespace lab3
                 throw;
             }
 
-            Dictionary<double, double> normalizationRules1 = new Dictionary<double, double>();
-            normalizationRules1.Add(1, 0);
-            normalizationRules1.Add(2, 0.5);
-            normalizationRules1.Add(3, 1);
+            foreach (var s in samples)
+            {
+                s.Inputs = Normalize(s.Inputs, normalizationRules);
+            }
 
-            Dictionary<double, double> normalizationRules2 = new Dictionary<double, double>();
-            normalizationRules2.Add(1, 0.1);
-            normalizationRules2.Add(2, 0.5);
-            normalizationRules2.Add(3, 0.2);
-
-            //foreach (var s in samples)
-            //{
-            //    s.Inputs = Normalize(s.Inputs, normalizationRules1);
-            //}
-
-            //answers = Normalize(answers, normalizationRules1);
+            answers = Normalize(answers, normalizationRules);
             
             var mlPerceptron = new MultiLayerPerceptron();
             
@@ -76,10 +95,10 @@ namespace lab3
             {
                 Neurons = new List<Neuron>
                 {
-                    new Neuron(samples.First().Inputs.Count),
-                    new Neuron(samples.First().Inputs.Count),
-                    new Neuron(samples.First().Inputs.Count),
-                    new Neuron(samples.First().Inputs.Count)
+                    new Neuron(r, samples.First().Inputs.Count),
+                    new Neuron(r, samples.First().Inputs.Count),
+                    new Neuron(r, samples.First().Inputs.Count),
+                    new Neuron(r, samples.First().Inputs.Count)
                 },
                 LearningCoefficient = 0.1,
                 Gradient = 0.2
@@ -87,7 +106,10 @@ namespace lab3
 
             mlPerceptron.Last = new Perceptron()
             {
-                Neurons = new List<Neuron> { new Neuron(mlPerceptron.Hidden.Neurons.Count) },
+                Neurons = new List<Neuron> 
+                { 
+                    new Neuron(r, mlPerceptron.Hidden.Neurons.Count) 
+                },
                 LearningCoefficient = 0.1,
                 Gradient = 0.2
             };

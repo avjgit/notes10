@@ -11,13 +11,13 @@ namespace lab3
         public List<double> Weights { get; set; }
         public double BonusWeight { get; set; }
         public double YValue { get; set; }
-
-        private double RandomBetween(double lowerBound, double upperBound)
+        
+        private double RandomBetween(Random r, int lowerBound, int upperBound, int step = 1)
         {
             var range = Math.Abs(upperBound - lowerBound);
-            var randomPercentage = new Random().Next(101) / 100.0;
-            var addition = range * randomPercentage;
-            return Math.Round(lowerBound + addition, 1);
+            var stepsInRange = (int) (range / step);
+            var randomSteps = r.Next(0, stepsInRange + 1);
+            return (lowerBound + step * randomSteps)/10.0;
         }
         
         public Neuron()
@@ -25,16 +25,16 @@ namespace lab3
 
         }
 
-        public Neuron(int inputSize)
+        public Neuron(Random r, int inputSize)
         {
 
             Weights = new List<double>();
             for (int i = 0; i < inputSize; i++)
 			{
-			    Weights.Add(RandomBetween(-0.3, 0.3));
+			    Weights.Add(RandomBetween(r, -3, 3));
 			};
 
-            BonusWeight = RandomBetween(-0.3, 0.3);
+            BonusWeight = RandomBetween(r, -3, 3);
         }
     }
 }
