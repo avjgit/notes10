@@ -31,6 +31,12 @@ namespace lab4
             Y = r.Next(2, 12);
         }
 
+        public Point(Random r, int from, int to)
+        {
+            X = r.Next(from, to + 1);
+            Y = r.Next(from, to + 1);
+        }
+
         public Point(string line)
         {
             var coordinates = line.Split('\t').Select(int.Parse).ToList();
@@ -71,17 +77,48 @@ namespace lab4
                 Math.Pow(from.X - to.X, 2) +
                 Math.Pow(from.Y - to.Y, 2));
         }
-        
+
+        public double Distance(Point to)
+        {
+            return Math.Sqrt(
+                Math.Pow(X - to.X, 2) +
+                Math.Pow(Y - to.Y, 2));
+        }
+
         internal void Plus(Point x)
         {
             X += x.X;
             Y += x.Y;
         }
 
+        internal void Minus(Point x)
+        {
+            X -= x.X;
+            Y -= x.Y;
+        }
+
+        internal void Resize(double coef)
+        {
+            X = (int)(X * coef);
+            Y = (int)(Y * coef);
+        }
+        
         public override string ToString()
         {
             return "X: " + X + " Y: " + Y;
             //return String.Concat(_name, _number, _date, _salary);
+        }
+
+        internal void Normalize(int minX, int maxX, int minY, int maxY, int from, int to)
+        {
+            var xRange = maxX - minX;
+            var xPlace = X - minX;
+            double xPercent = xPlace / xRange;
+            
+            var yRange = maxY - minY;
+
+            X = X < medianX ? from : to;
+            Y = Y < medianY ? from : to;
         }
     }
 }
