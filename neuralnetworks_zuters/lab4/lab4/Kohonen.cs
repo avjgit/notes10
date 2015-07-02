@@ -11,11 +11,11 @@ namespace lab4
         public List<Point> Clusterize(
             List<Point> points,
             int clustersCount,
-            double neighborCoef1,
-            double neighborCoef2,
-            double learningCoef1,
-            double learningCoef2,
-            double changeCoef,
+            double neighborCoef1 = 1,
+            double neighborCoef2 = 0.2,
+            double learningCoef1 = 0.1,
+            double learningCoef2 = 0.01,
+            double changeCoef = 0.01,
             int maxEpochs = 1000)
         {
             var r = new Random();
@@ -29,11 +29,11 @@ namespace lab4
             Console.WriteLine("Random cluster points:");
             clusterPoints.ForEach(x => Console.WriteLine(x));
 
-            var minX = points.Select(x => x.X).Min();
-            var maxX = points.Select(x => x.X).Max();
+            double minX = points.Select(x => x.X).Min();
+            double maxX = points.Select(x => x.X).Max();
 
-            var minY = points.Select(x => x.Y).Min();
-            var maxY = points.Select(x => x.Y).Max();
+            double minY = points.Select(x => x.Y).Min();
+            double maxY = points.Select(x => x.Y).Max();
             
             points.ForEach(x => x.Normalize(minX, maxX, minY, maxY, 0, 1));
 
@@ -64,11 +64,13 @@ namespace lab4
                 neighborCoef += (neighborCoef2 - neighborCoef) * changeCoef;
                 learningCoef += (learningCoef2 - learningCoef) * changeCoef;
             }
-            //denormalize
+
+            clusterPoints.ForEach(x => x.Denormalize(minX, maxX, minY, maxY, 0, 1));
+
             return clusterPoints;
         }
 
-        private int TopologicDistance(Point p1, Point p2)
+        private double TopologicDistance(Point p1, Point p2)
         {
             return
             Math.Abs(p1.X - p2.X) +

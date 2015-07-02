@@ -36,10 +36,18 @@ namespace lab4
                 throw;
             }
 
-            Console.WriteLine("Kmeans: ");
+            Console.WriteLine("================ Kmeans: ");
             var clusterKmeans = new Kmeans().Clusterize(points, 4);
-            Console.WriteLine("Cluter points after clusterization:");
+            Console.WriteLine("Cluster points after clusterization:");
             clusterKmeans.ForEach(x => Console.WriteLine(x));
+            Console.WriteLine("Total distance to clusterpoints:");
+            Console.WriteLine(points.Sum(x => x.DistanceToCluster));
+
+
+            Console.WriteLine("================ Kohonen: ");
+            var kohonens = new Kohonen().Clusterize(points, 4);
+            Console.WriteLine("Cluster points after clusterization:");
+            kohonens.ForEach(x => Console.WriteLine(x));
             Console.WriteLine("Total distance to clusterpoints:");
             Console.WriteLine(points.Sum(x => x.DistanceToCluster));
 

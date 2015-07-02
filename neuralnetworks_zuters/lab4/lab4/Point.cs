@@ -7,8 +7,8 @@ namespace lab4
 {
     class Point
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
         public Point BelongsToCluster { get; set; }
         public int ClusteredCounted { get; set; }
 
@@ -109,16 +109,37 @@ namespace lab4
             //return String.Concat(_name, _number, _date, _salary);
         }
 
-        internal void Normalize(int minX, int maxX, int minY, int maxY, int from, int to)
+        internal void Normalize(double minX, double maxX, double minY, double maxY, int from, int to)
+        {
+            X = Normalize(minX, maxX, X, from, to);
+            Y = Normalize(minY, maxY, Y, from, to);
+        }
+
+        internal void Denormalize(double minX, double maxX, double minY, double maxY, int from, int to)
+        {
+            X = Denormalize(minX, maxX, X, from, to);
+            Y = Denormalize(minY, maxY, Y, from, to);
+        }
+
+        private double Normalize(double minX, double maxX, double X, int from, int to)
         {
             var xRange = maxX - minX;
             var xPlace = X - minX;
-            double xPercent = xPlace / xRange;
-            
-            var yRange = maxY - minY;
+            var xPercentage = xPlace / xRange;
 
-            X = X < medianX ? from : to;
-            Y = Y < medianY ? from : to;
+            var normalRange = from - to;
+            var normalPlace = xPercentage * normalRange;
+            return to + normalPlace;
+        }
+
+        private double Denormalize(double minX, double maxX, double X, int from, int to)
+        {
+            var normalizedRange = from - to;
+            var normalizedPlace = X / normalizedRange;
+
+            var xRange = maxX - minX;
+            var xPlace = xRange * normalizedPlace;
+            return minX + xPlace;
         }
     }
 }
