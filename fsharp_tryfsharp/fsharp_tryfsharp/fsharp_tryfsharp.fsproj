@@ -48,12 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Basics.Records.fs" />
-    <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Compile Include="Basics.Assignment.fs" />
     <Compile Include="Basics.Functions.fs" />
     <Compile Include="Basics.Lists.fs" />
+    <Compile Include="Basics.Records.fs" />
+    <Compile Include="Advanced.Currying.fs" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
