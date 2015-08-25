@@ -1,7 +1,12 @@
 .description{
 	color: red;
-	max-width: 750px;
+	max-width: 705px;
 	
+}
+
+.app{
+    display: -webkit-flex;
+    display: flex;
 }
 
 .screenshot{
