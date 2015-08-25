@@ -54,6 +54,7 @@
     <Compile Include="Basics.Lists.fs" />
     <Compile Include="Basics.Records.fs" />
     <Compile Include="Advanced.Currying.fs" />
+    <Compile Include="Advanced.Matching.fs" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
