@@ -58,7 +58,37 @@ display: flex;<br><br>
 
 
 <li>Stage 2: Work Session 2 </li>
+'''multi-lines 
+strings'''
 
+# Assume text is a variable that
+# holds a string. Write Python code
+# that prints out the position
+# of the second occurrence of 'zip'
+# in text, or -1 if it does not occur
+# at least twice.
+
+# The Python code should be general enough
+# to pass every possible case where 'zip' 
+# can occur in a string
+
+# Here are two example test cases:
+#text = 'all zip files are zipped' 
+# >>> 18
+# text = 'all zip files are compressed'
+# >>> -1
+
+text = "all zip files are zipped" 
+
+search = "zip"
+first = text.find(search)
+next_idx = first + len(search)
+second = text[next_idx:].find(search)
+print next_idx + second if second >=0 else -1
+
+official:
+first_zip = text.find('zip')
+print text.find('zip', first_zip + 1)
 
 <li>2.3 Input &#10163; Function &#10163;  Output </li>
 
@@ -70,6 +100,26 @@ display: flex;<br><br>
 
 
 <li>2.5 Debugging </li>
+# Try adding print statements to look at the values of variables inside
+# the remove function.  See if you can find out what's making it give
+# silly answers such as remove('ding', 'do') -> 'dining'.
+
+def remove(somestring, sub):
+    """Return somestring with sub removed."""
+    location = somestring.find(sub)
+    if (location >-1):
+        length = len(sub)
+        part_before = somestring[:location]
+        part_after = somestring[location + length:]
+    return part_before + part_after
+
+# 
+# Don't change these test cases!
+print remove('audacity', 'a')
+print remove('pythonic', 'ic')
+print remove('substring institution', 'string in')
+print remove('ding', 'do')  # "do" isn't in "ding"; should print "ding"
+print remove('doomy', 'dooming')  # and this should print "doomy"
 
 
 <li>Stage 2: Work Session 4 </li>
