@@ -102,15 +102,29 @@ print text.find('zip', first_zip + 1)
 <li>2.5 Debugging </li>
 # Try adding print statements to look at the values of variables inside
 # the remove function.  See if you can find out what's making it give
-# silly answers such as remove('ding', 'do') -> 'dining'.
+# silly answers such as remove('ding', 'do') -> 'dining'
 
+#first:
 def remove(somestring, sub):
     """Return somestring with sub removed."""
     location = somestring.find(sub)
-    if (location >-1):
+    part_before = somestring
+    part_after = ''
+    if (location >= 0):
         length = len(sub)
         part_before = somestring[:location]
         part_after = somestring[location + length:]
+    return part_before + part_after
+
+#nice:
+def remove(somestring, sub):
+    """Return somestring with sub removed."""
+    location = somestring.find(sub)
+	if (location == -1)
+		return somestring
+	length = len(sub)
+	part_before = somestring[:location]
+	part_after = somestring[location + length:]
     return part_before + part_after
 
 # 
@@ -121,9 +135,38 @@ print remove('substring institution', 'string in')
 print remove('ding', 'do')  # "do" isn't in "ding"; should print "ding"
 print remove('doomy', 'dooming')  # and this should print "doomy"
 
-
 <li>Stage 2: Work Session 4 </li>
+# Define a procedure, median, that takes three
+# numbers as its inputs, and returns the median
+# of the three numbers.
 
+# Make sure your procedure has a return statement.
+
+def bigger(a,b):
+    if a > b:
+        return a
+    else:
+        return b
+
+def biggest(a,b,c):
+    return bigger(a,bigger(b,c))
+
+def median():
+
+
+
+
+
+
+
+#print(median(1,2,3))
+#>>> 2
+
+#print(median(9,3,6))
+#>>> 6
+
+#print(median(7,8,7))
+#>>> 7
 
 <li>2.6 Structured Data: Lists & For Loops </li>
 
