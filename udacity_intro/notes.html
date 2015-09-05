@@ -210,6 +210,48 @@ def get_concept_by_number(text, concept_number):
 print get_concept_by_number(EXAMPLE_TEXT, 2)
 
 <li>2.6 Structured Data: Lists & For Loops </li>
+Mutation
+Aliasing
+passing by value/ by reference
+list.append('element')
+list + list
+
+p=[1,2]
+q=[3,4]
+p.append(q)
+len(p) == ? 
+# not 4! but 3!
+
+for thing in list:
+	do stuff
+	
+p = [1,2,3]
+print 4 in p
+>> False  
+
+# Define a procedure, find_element,
+# using index that takes as its
+# inputs a list and a value of any
+# type, and returns the index of
+# the first element in the input
+# list that matches the value.
+
+# If there is no matching element,
+# return -1.
+def find_element(list_, val):
+    if (val in list_):
+        return list_.index(val)
+    return -1
+
+
+
+
+
+print find_element([1,2,3],3)
+#>>> 2
+
+print find_element(['alpha','beta'],'gamma')
+#>>> -1
 
 
 <li>2.7 How to Solve Problems </li>
