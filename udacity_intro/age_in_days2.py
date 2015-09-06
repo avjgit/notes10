@@ -20,14 +20,11 @@ def nextDay2(year, month, day):
             return (year, month + 1, 1)
         else:
             return (year + 1, 1, 1)
-
-# Define a daysBetweenDates procedure that would produce the
-# correct output if there was a correct nextDay procedure.
+# Credit goes to Websten from forums
 #
-# Note that this will NOT produce correct outputs yet, since
-# our nextDay procedure assumes all months have 30 days
-# (hence a year is 360 days, instead of 365).
-# 
+# Use Dave's suggestions to finish your daysBetweenDates
+# procedure. It will need to take into account leap years
+# in addition to the correct number of days in each month.
 
 def nextDay(year, month, day):
     """Simple version: assume every month has 30 days"""
@@ -40,9 +37,7 @@ def nextDay(year, month, day):
             return year, month + 1, 1
         
 def dateIsBefore(year1, month1, day1, year2, month2, day2):
-    
-    """Returns True if year1-month1-day1 is before
-       year2-month2-day2. Otherwise, returns False."""
+    """Returns True if year1-month1-day1 is before year2-month2-day2. Otherwise, returns False."""
     if year1 < year2:
         return True
     if year1 == year2:
@@ -53,29 +48,29 @@ def dateIsBefore(year1, month1, day1, year2, month2, day2):
     return False        
 
 def daysBetweenDates(year1, month1, day1, year2, month2, day2):
-    assert(dateIsBefore(year1, month1, day1, year2, month2, day2))
-        
-    # YOUR CODE HERE!
-    y, m, d = year1, month1, day1
+    """Returns the number of days between year1/month1/day1
+       and year2/month2/day2. Assumes inputs are valid dates
+       in Gregorian calendar."""
+    # program defensively! Add an assertion if the input is not valid!
+    assert not dateIsBefore(year2, month2, day2, year1, month1, day1)
     days = 0
-    while not (y == year2 and m == month2 and d == day2):
-        y, m, d = nextDay(y, m, d)
+    while dateIsBefore(year1, month1, day1, year2, month2, day2):
+        year1, month1, day1 = nextDay(year1, month1, day1)
         days += 1
-    
     return days
 
 def test():
-    test_cases = [((2012,9,30,2012,10,30),30), 
-                  ((2012,1,1,2013,1,1),360),
-                  ((2012,9,1,2012,9,4),3)]
+    test_cases = [((2012,1,1,2012,2,28), 58), 
+                  ((2012,1,1,2012,3,1), 60),
+                  ((2011,6,30,2012,6,30), 366),
+                  ((2011,1,1,2012,8,8), 585 ),
+                  ((1900,1,1,1999,12,31), 36523)]
     
     for (args, answer) in test_cases:
         result = daysBetweenDates(*args)
-        print result
         if result != answer:
             print "Test with data:", args, "failed"
         else:
             print "Test case passed!"
 
 test()
-    
