@@ -39,11 +39,21 @@ def nextDay(year, month, day):
         else:
             return year, month + 1, 1
         
+def dateIsBefore(year1, month1, day1, year2, month2, day2):
+    
+    """Returns True if year1-month1-day1 is before
+       year2-month2-day2. Otherwise, returns False."""
+    if year1 < year2:
+        return True
+    if year1 == year2:
+        if month1 < month2:
+            return True
+        if month1 == month2:
+            return day1 < day2
+    return False        
+
 def daysBetweenDates(year1, month1, day1, year2, month2, day2):
-    """Returns the number of days between year1/month1/day1
-       and year2/month2/day2. Assumes inputs are valid dates
-       in Gregorian calendar, and the first date is not after
-       the second."""
+    assert(dateIsBefore(year1, month1, day1, year2, month2, day2))
         
     # YOUR CODE HERE!
     y, m, d = year1, month1, day1
