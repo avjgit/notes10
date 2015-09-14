@@ -13,4 +13,12 @@ def check_profanity(text_to_check):
 	print(output)
 	connection.close()
 
+	if "true" in output:
+		print("There are curse words there!")
+	elif "false" in output:
+		print("File content is safe")
+	else:
+		print("Could not process document")
+
+		
 read_text()
