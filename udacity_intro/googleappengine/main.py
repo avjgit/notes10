@@ -18,8 +18,8 @@ import webapp2
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world from Google app engine')
-
+    	self.response.headers['Content-Type'] = 'text/plain'
+    	self.response.out.write("hi hi ")
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
 ], debug=True)
