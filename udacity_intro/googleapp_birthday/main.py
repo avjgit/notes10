@@ -1,3 +1,4 @@
+
 # Lession 4.6: What is Your Birthday
 
 # This lesson will involve us validating a user's birthday. Input validation is crucial
@@ -25,5 +26,7 @@ form = """
 class MainPage(webapp2.RequestHandler):
     def get(self):
         self.response.out.write(form)
+    def post(self):
+        self.response.out.write("ok, post received!")
 
 app = webapp2.WSGIApplication([("/", MainPage)], debug = True)
