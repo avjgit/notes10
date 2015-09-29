@@ -57,23 +57,35 @@ class Handler(webapp2.RequestHandler):
     def write(self, *a, **kw):
         self.response.out.write(*a, **kw)
 
+    def render_str(self, template, **params):
+        t = jinja_env.get_template(template)
+        return t.render(params)
+
+    def render(self, template, **kw):
+        self.write(self.render_str(template, **kw))
+        
 class MainPage(Handler):
     def get(self):
-        output = form_html
-        output_hidden = ""
+        # template_args = {}
+        # self.render_template('form.html', **template_args)
+        n = self.request.get("n")
+        if n:
+            n = int(n)
+        else:
+            n = 1
 
-        items = self.request.get_all("food")
-        if items:
-            output_items = ""
-            for item in items:
-                output_hidden += hidden_html % item
-                output_items += item_html % item
-
-            output_shopping = shopping_list_html % output_items
-            output += output_shopping
-
-        output = output % output_hidden
-
-        self.write(output)
+        self.render("form.html", name="amigo", n=n)
+        #output = form_html
+        # output_hidden = ""
+        # items = self.request.get_all("food")
+        # if items:
+        #     output_items = ""
+        #     for item in items:
+        #         output_hidden += hidden_html % item
+        #         output_items += item_html % item
+        #     output_shopping = shopping_list_html % output_items
+        #     output += output_shopping
+        # output = output % output_hidden
+        #self.write(output)
 
 app = webapp2.WSGIApplication([("/", MainPage)])
