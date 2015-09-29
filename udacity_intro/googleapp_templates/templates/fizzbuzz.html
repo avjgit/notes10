@@ -1,0 +1,30 @@
+
+    <h2>hi there, {{name}}</h2>
+    
+    {% if n == 1 %}
+        n is 1
+    {% else %}
+        n is not 1
+    {% endif %}
+
+    <ol>
+    {% for x in range(1,n+1) %}
+    
+        <!-- <li>{{x ** 2}}</li> -->
+        <li>
+        {% if x % 5 == 0 and x % 3 == 0%}
+        FizzBuzz
+        {% elif x % 3 == 0%}
+        Fizz
+        {% elif x % 5 == 0%}
+        Buzz
+        {% else %}
+        {{x}}
+        {% endif%}
+        </li>
+    {% endfor %}
+    </ol>
+
+    <h2>FizzBuxx</h2>
+
+

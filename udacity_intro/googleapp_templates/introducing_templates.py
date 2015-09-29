@@ -68,13 +68,16 @@ class MainPage(Handler):
     def get(self):
         # template_args = {}
         # self.render_template('form.html', **template_args)
-        n = self.request.get("n")
-        if n:
-            n = int(n)
-        else:
-            n = 1
+        # n = self.request.get("n")
+        # if n:
+        #     n = int(n)
+        # else:
+        #     n = 1
+        items = self.request.get_all("food")
 
-        self.render("form.html", name="amigo", n=n)
+        # self.render("form.html", name="amigo", n=n)
+        self.render("form.html", items = items)
+
         #output = form_html
         # output_hidden = ""
         # items = self.request.get_all("food")
