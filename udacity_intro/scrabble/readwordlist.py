@@ -22,6 +22,13 @@ def readwordlist(filename):
     
 WORDS, PREFIXES = readwordlist('words4k.txt')
 
+
+def longest_words(hand, board_letters):
+    "Return all word plays, longest first."
+    ###Your code here.
+    #return max(word_plays(hand, board_letters), key=len)
+    return sorted(word_plays(hand, board_letters), reverse=True, key=len)
+    
 def test():
     assert len(WORDS)    == 3892
     print len(PREFIXES)
