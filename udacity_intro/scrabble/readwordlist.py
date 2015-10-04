@@ -47,6 +47,15 @@ def word_score(word):
     for l in word:
         score += POINTS[l]
     return score
+
+    return sum(POINTS[L] for l in word)
+
+def topn(hand, board_letters, n=10):
+    "Return a list of the top n words that hand can play, sorted by word score."
+    ###Your code here.
+    words = word_plays(hand, board_letters)
+    return sorted(words, reverse = True, key = word_score)[:n]
+
 def test():
     assert len(WORDS)    == 3892
     print len(PREFIXES)
