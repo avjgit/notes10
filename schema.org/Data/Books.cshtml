@@ -5,36 +5,136 @@
 
 <hgroup class="title">
     <h1>@Page.Title.</h1>
-    <h2>Here you can find information on books you always wanted to reed!</h2>
+    <h2>Here you can find information on books you always wanted to read!</h2>
+    According to <a href="http://siliconangle.com/blog/2011/12/06/top-10-books-on-programming-according-to-stackoverflow-users/">pool on Stackoverflow,</a> here they are:
 </hgroup>
 
-<article>
-    <p>
-        <!-- Uses both the "Book" and "Product" item types to support Offer relationships -->
-        <div itemscope itemtype="http://schema.org/Book" itemid="#record">
-            <link itemprop="additionalType" href="http://schema.org/Product" />
-            <h3 itemprop="name">Le concerto</h3>
-            <table summary="Bibliographic Details">
-                <tr>
-                    <th>Main Author: </th>
-                    <td itemprop="author">Ferchault, Guy</td>
-                </tr>
-            </table>
-        </div>
-        <table summary="Holdings details from Anytown City Library">
-            <!-- Example of a copy available for loan -->
-            <tr itemscope itemtype="http://schema.org/Offer">
-                <th>Copy </th>
-                <td>
-                    Available
-                    <link itemprop="availability" href="http://schema.org/InStock">
-                    <div>Barcode: <span itemprop="serialNumber">CONC91000937</span></div>
-                    <div>Call number: <span itemprop="sku">780 R2</span></div>
-                    <div>Library: <span itemprop="offeredBy" itemtype="http://schema.org/Library" itemid="http://library.anytown.gov.uk">Anytown City Library</span></div>
-                    <link itemprop="businessFunction" href="http://purl.org/goodrelations/v1#LeaseOut">
-                    <link itemprop="itemOffered" href="#record">
-                </td>
-            </tr>
-            <table>
-    </p>
-</article>
+<table>
+    <tr>
+        <td><img src="http://ecx.images-amazon.com/images/I/515iO%2B-PRUL._SX408_BO1,204,203,200_.jpg" height="320" width="240" /></td>
+        <td>
+            <div itemscope itemtype="http://schema.org/Book" itemid="#record">
+                <link itemprop="additionalType" href="http://schema.org/Product" />
+                <h3 itemprop="name">Code Complete (2nd Ed)</h3>
+                by <span itemprop="author">Steve McConnell</span><br />
+                at <span itemprop="publisher">Microsoft Press</span> in <span itemprop="datePublished">2004</span>,
+                <span itemprop="numberOfPages">960</span> pages. ISBN <span itemprop="isbn">735619670</span>.<br />
+                <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                    Reviewed with <span itemprop="ratingValue">4.5</span> stars
+                    by <span itemprop="reviewCount">262</span> reviewers.
+                </div>
+                <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    Available now from
+                    <span itemprop="seller" itemscope itemtype="http://schema.org/Organization">
+                        <a itemprop="name" href="http://www.amazon.com/Code-Complete-Practical-Handbook-Construction/dp/0735619670">
+                            Amazon
+                        </a>
+                    </span>
+                    for <meta itemprop="priceCurrency" content="USD" />$<span itemprop="price">28.99</span>
+                </span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><img src="http://ecx.images-amazon.com/images/I/41BKx1AxQWL._SX396_BO1,204,203,200_.jpg" height="320" width="240" /></td>
+        <td>
+            <div itemscope itemtype="http://schema.org/Book" itemid="#record">
+                <link itemprop="additionalType" href="http://schema.org/Product" />
+                <h3 itemprop="name">The Pragmatic Programmer: From Journeyman to Master</h3>
+                by <span itemprop="author">Andrew Hunt</span>, <span itemprop="author">David Thomas</span><br />
+                at <span itemprop="publisher">Addison-Wesley Professional</span> in <span itemprop="datePublished">1999</span>,
+                <span itemprop="numberOfPages">350</span> pages. ISBN <span itemprop="isbn">020161622X</span>.<br />
+                <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                    Reviewed with <span itemprop="ratingValue">4.5</span> stars
+                    by <span itemprop="reviewCount">300</span> reviewers.
+                </div>
+                <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    Available now from
+                    <span itemprop="seller" itemscope itemtype="http://schema.org/Organization">
+                        <a itemprop="name" href="http://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X/">
+                            Amazon
+                        </a>
+                    </span>
+                    for <meta itemprop="priceCurrency" content="USD" />$<span itemprop="price">33.32</span>
+                </span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><img src="http://ecx.images-amazon.com/images/I/51H17R%2BbW8L._SX331_BO1,204,203,200_.jpg" height="320" width="240" /></td>
+        <td>
+            <div itemscope itemtype="http://schema.org/Book" itemid="#record">
+                <link itemprop="additionalType" href="http://schema.org/Product" />
+                <h3 itemprop="name">Structure and Interpretation of Computer Programs - 2nd Edition</h3>
+                by <span itemprop="author">Harold Abelson</span>, <span itemprop="author">Gerald Jay Sussman</span> and <span itemprop="author">Julie Sussman</span><br />
+                at <span itemprop="publisher">The MIT Press</span> in <span itemprop="datePublished">1996</span>,
+                <span itemprop="numberOfPages">680</span> pages. ISBN <span itemprop="isbn">262510871</span>.<br />
+                <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                    Reviewed with <span itemprop="ratingValue">4</span> stars
+                    by <span itemprop="reviewCount">211</span> reviewers.
+                </div>
+                <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    Available now from
+                    <span itemprop="seller" itemscope itemtype="http://schema.org/Organization">
+                        <a itemprop="name" href="http://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871">
+                            Amazon
+                        </a>
+                    </span>
+                    for <meta itemprop="priceCurrency" content="USD" />$<span itemprop="price">44.44</span>
+                </span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><img src="http://ecx.images-amazon.com/images/I/41qX6YdIJ7L._SX379_BO1,204,203,200_.jpg" height="320" width="240" /></td>
+        <td>
+            <div itemscope itemtype="http://schema.org/Book" itemid="#record">
+                <link itemprop="additionalType" href="http://schema.org/Product" />
+                <h3 itemprop="name">The C Programming Language</h3>
+                by <span itemprop="author">Brian W. Kernighan</span> and <span itemprop="author">Dennis M. Ritchie</span><br />
+                at <span itemprop="publisher">Prentice Hall</span> in <span itemprop="datePublished">1988</span>,
+                <span itemprop="numberOfPages">272</span> pages. ISBN <span itemprop="isbn">131103628</span>.<br />
+                <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                    Reviewed with <span itemprop="ratingValue">4.5</span> stars
+                    by <span itemprop="reviewCount">545</span> reviewers.
+                </div>
+                <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    Available now from
+                    <span itemprop="seller" itemscope itemtype="http://schema.org/Organization">
+                        <a itemprop="name" href="http://www.amazon.com/Programming-Language-Brian-W-Kernighan/dp/0131103628/">
+                            Amazon
+                        </a>
+                    </span>
+                    for <meta itemprop="priceCurrency" content="USD" />$<span itemprop="price">54.19</span>
+                </span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><img src="http://ecx.images-amazon.com/images/I/51eDwv7tCtL._SX442_BO1,204,203,200_.jpg" height="320" width="240" /></td>
+        <td>
+            <div itemscope itemtype="http://schema.org/Book" itemid="#record">
+                <link itemprop="additionalType" href="http://schema.org/Product" />
+                <h3 itemprop="name">Introduction to Algorithms, 3rd Edition</h3>
+                by <span itemprop="author">Thomas H. Cormen</span>, <span itemprop="author">Charles E. Leiserson</span>, 
+                <span itemprop="author">Ronald L. Rivest</span> and <span itemprop="author">Clifford Stein</span><br />
+                at <span itemprop="publisher">The MIT Press</span> in <span itemprop="datePublished">2009</span>,
+                <span itemprop="numberOfPages">1300</span> pages. ISBN <span itemprop="isbn">262033844</span>.<br />
+                <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                    Reviewed with <span itemprop="ratingValue">4.5</span> stars
+                    by <span itemprop="reviewCount">270</span> reviewers.
+                </div>
+                <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    Available now from
+                    <span itemprop="seller" itemscope itemtype="http://schema.org/Organization">
+                        <a itemprop="name" href="http://www.amazon.com/Introduction-Algorithms-3rd-Thomas-Cormen/dp/0262033844">
+                            Amazon
+                        </a>
+                    </span>
+                    for <meta itemprop="priceCurrency" content="USD" />$<span itemprop="price">65.33</span>
+                </span>
+            </div>
+        </td>
+    </tr>
+</table>
+
