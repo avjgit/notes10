@@ -92,5 +92,15 @@ namespace wpf_bibtex
         {
 
         }
+
+        private void CreatePhd(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeletePhd(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
