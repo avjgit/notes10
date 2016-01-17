@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Configuration;
 
 namespace wpf_crud
 {
@@ -15,6 +16,7 @@ namespace wpf_crud
         public MainWindow()
         {
             InitializeComponent();
+            Title = "AJ05044 Homework2: connected to " + ConfigurationManager.ConnectionStrings["hw2db"].ConnectionString;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
