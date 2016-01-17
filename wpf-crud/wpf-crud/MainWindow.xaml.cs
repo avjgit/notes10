@@ -147,5 +147,25 @@ namespace wpf_crud
         {
 
         }
+
+        private void SynchronizeBookDetails(object sender, SelectionChangedEventArgs e)
+        {
+            var book = titleDataGrid.SelectedItem as title;
+
+            // sync publisher dropdown
+            publisherComboBox.SelectedValue = book.pub_id;
+
+            // sync authors dropdown
+            if (authorListBox.SelectedItems.Count > 0)
+                authorListBox.SelectedItems.Clear();
+
+            foreach (var authorId in book.titleauthors.Select(x => x.au_id))
+            {
+                var author = context.authors.Single(a => a.au_id == authorId);
+                var authorItemIndex = authorListBox.Items.IndexOf(author);
+                var authorItem = authorListBox.Items.GetItemAt(authorItemIndex);
+                authorListBox.SelectedItems.Add(authorItem);
+            }
+        }
     }
 }

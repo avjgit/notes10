@@ -58,7 +58,8 @@
                     <Button x:Name="updateBookBtn" Click="UpdateBook" Content="Update selected" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="deleteBookBtn" Click="DeleteBook" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <DataGrid x:Name="titleDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
-                              Margin="10, 45, 300, 10" VerticalScrollBarVisibility="Visible" RowDetailsVisibilityMode="VisibleWhenSelected">
+                              Margin="10, 45, 300, 10" VerticalScrollBarVisibility="Visible" RowDetailsVisibilityMode="VisibleWhenSelected"
+                              SelectionChanged="SynchronizeBookDetails">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="title1Column" Binding="{Binding title1}" Header="Book title" Width=".75*"/>
 
@@ -71,8 +72,24 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <Label x:Name="publisherLabel" Content="Publisher of selected book:" HorizontalAlignment="Right" 
+                           Margin="0,50,80,10" VerticalAlignment="Top" Width="200"/>
 
+                    <ComboBox x:Name="publisherComboBox" DisplayMemberPath="pub_name" ItemsSource="{Binding Source={StaticResource publisherViewSource}}" 
+                              HorizontalAlignment="Right" Margin="0,76,10,420" SelectedValuePath="pub_id" Width="270">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel/>
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
 
+                    <Label x:Name="authorsLabel" Content="Authors of selected book:" HorizontalAlignment="Right" 
+                           Margin="0,106,80,0" VerticalAlignment="Top" Width="200"/>
+                    
+                    <ListBox x:Name="authorListBox" DisplayMemberPath="FullName" HorizontalAlignment="Right" ItemsSource="{Binding Source={StaticResource authorViewSource}}" 
+                             Margin="0,137,10,10" SelectedValuePath="au_id" Width="270"
+                             SelectionMode="Multiple"/>
                 </Grid>
             </TabItem>
         </TabControl>

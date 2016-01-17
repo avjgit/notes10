@@ -46,5 +46,9 @@ namespace wpf_crud
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<titleauthor> titleauthors { get; set; }
+
+        public string FullName => au_fname + ' ' + au_lname;
+
+        public override string ToString() => au_id;
     }
 }
