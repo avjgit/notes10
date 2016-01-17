@@ -276,33 +276,20 @@ exception: {ex.InnerException}
 
             var book = context.titles.Single(t => t.title_id == selectedBook.title_id);
             context.Entry(book).State = EntityState.Modified;
+            
+            // update publisher
+            book.pub_id = publisherComboBox.SelectedValue?.ToString();
 
-            // check for changes in 
-            if (publisherComboBox.SelectedValue != null)
-            {
-                var selectedPublisherId = publisherComboBox.SelectedValue.ToString();
-                if (book.pub_id != selectedPublisherId)
-                    book.pub_id = selectedPublisherId;
-            }
-
-            // check for changes in authors
-            var oldAuthors = book.titleauthors.Select(t => t.au_id).ToList();
-            var selectedAuthors = new List<string>();
+            // update authors
+            book.titleauthors.Clear();
             foreach (author author in authorListBox.SelectedItems)
-                selectedAuthors.Add(author.au_id);
-
-            var removedAuthors = oldAuthors.Except(selectedAuthors);
-            var newAuthors = selectedAuthors.Except(oldAuthors);
-
-            foreach (var id in removedAuthors)
             {
-                var entry = book.titleauthors.Single(t => t.au_id == id);
-                book.titleauthors.Remove(entry);
-            }
+                var entry = new titleauthor
+                {
+                    title_id = book.title_id,
+                    au_id = author.au_id
+                };
 
-            foreach (var id in newAuthors)
-            {
-                var entry = new titleauthor { title_id = book.title_id, au_id = id };
                 book.titleauthors.Add(entry);
             }
 
