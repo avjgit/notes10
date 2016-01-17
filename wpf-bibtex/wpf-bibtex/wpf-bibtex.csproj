@@ -90,6 +90,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\ARTICLE.datasource" />
+    <None Include="Properties\DataSources\Author.datasource" />
+    <None Include="Properties\DataSources\BiblioItem.datasource" />
+    <None Include="Properties\DataSources\BOOK.datasource" />
+    <None Include="Properties\DataSources\Thesis.datasource" />
+    <None Include="Properties\DataSources\Thesis.ThesisType.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

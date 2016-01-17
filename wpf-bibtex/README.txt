@@ -3,6 +3,7 @@ ar katru ierakstu git sistēmā tiek arī izdzēsti nosacījumi,
 kas ar šo ierakstu ir izpildīti - ērti var redzēt git ierakstu vēsturē
 - Autoram izveidota atsevišķa klase; tiek iestatīs caur publisko īpašību
 - NB: wikipēdijā rakstīts, ka autori tiek atdalīti ar "and", nevis ar komatu
+- jālieto vismaz 4 dažādi vadīklu(kontroļu) veidi: tab, textbox, button, datepicker 
 
 ======================================= TODO:
 - CRUD book
@@ -10,9 +11,8 @@ kas ar šo ierakstu ir izpildīti - ērti var redzēt git ierakstu vēsturē
 - CRUD phdthesiS
 - CRUD article
 
-- jālieto vismaz 4 dažādi vadīklu(kontroļu) veidi.
 - kodā nodemonstrēt visu klašu metožu izsaukumus un īpašību uzstādīšanu.
-- year as datepicker?
+- year as datepicker
 - eksport to file („C:\Temp\” or request path)
 - import from previously exported file
 - import from example file

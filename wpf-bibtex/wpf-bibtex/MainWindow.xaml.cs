@@ -22,12 +22,17 @@ namespace wpf_bibtex
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<BiblioItem> BibliotItems { get; set; }
+        public List<BiblioItem> BiblioItems { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
-            BibliotItems = new List<BiblioItem>();
+            BiblioItems = new List<BiblioItem>();
+
+            // debug
+            var testbook = new BOOK("John Tolkien", "The Hobbit", "George Allen & Unwin", 1937, "UK");
+
+            BiblioItems.Add(testbook);
         }
 
         private void buttonOpen_Click(object sender, RoutedEventArgs e)
@@ -46,6 +51,27 @@ namespace wpf_bibtex
                 pathBox.Text = openFileDialog.FileName;
                 //AnalyzeDll(pathBox.Text);
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var bOOKViewSource = ((CollectionViewSource)(this.FindResource("bOOKViewSource")));
+            bOOKViewSource.Source = BiblioItems.Where(x => x.GetType() == typeof(BOOK)).ToList();
+        }
+
+        private void CreateBook(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SaveChanges(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteBook(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

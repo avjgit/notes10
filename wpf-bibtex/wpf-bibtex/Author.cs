@@ -23,5 +23,6 @@ namespace wpf_bibtex
             FirstName = firstname;
             LastName = lastname;
         }
+        public override string ToString() => FullName;
     }
 }

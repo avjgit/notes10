@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_bibtex"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow" Height="600" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="bOOKViewSource" d:DesignSource="{d:DesignInstance {x:Type local:BOOK}, CreateList=True}"/>
+    </Window.Resources>
     <Grid>
         <TabControl x:Name="tabControl" 
                     HorizontalAlignment="Stretch"
@@ -30,10 +33,24 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Books" Width="100">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource bOOKViewSource}">
+
                     <Button x:Name="createBookBtn" Click="CreateBook" Content="Create selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="updateBookBtn" Click="SaveChanges" Content="Update" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="deleteBookBtn" Click="DeleteBook" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    
+                    <DataGrid x:Name="bOOKDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
+                              Margin="10,45,300,10" RowDetailsVisibilityMode="VisibleWhenSelected"
+                              VerticalScrollBarVisibility="Visible"
+                              >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="titleColumn" Binding="{Binding Title}" Header="Title" Width=".3*"/>
+                            <DataGridTextColumn x:Name="authorsStringColumn" Binding="{Binding AuthorsString}" Header="Authors" IsReadOnly="True" Width=".3*"/>
+                            <DataGridTextColumn x:Name="publisherColumn" Binding="{Binding Publisher}" Header="Publisher" Width=".2*"/>
+                            <DataGridTextColumn x:Name="publishersAddressColumn" Binding="{Binding PublishersAddress}" Header="Address" Width=".2*"/>
+                            <DataGridTextColumn x:Name="yearColumn" Binding="{Binding Year}" Header="Year" Width=".1*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
         </TabControl>
