@@ -1,0 +1,1 @@
+- abstraktā klase BibUnit ar privātiem atribūtiem un publiskām īpašībām „nosaukums”  un „gads”;
