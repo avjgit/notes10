@@ -1,14 +1,26 @@
-TODO:
+- Solūcijas mapē iekopēju teksta failu ar uzdevuma nosacījumiem; ar katru ierakstu git sistēmā tiek arī izdzēsti nosacījumi, kas ar šo ierakstu ir izpildīti - ērti var redzēt git ierakstu vēsturē
 
-Izveidot programmu bibliogrāfisko vienumu pārvaldībai. Programmā jāvar pievienot jaunus bibliogrāfiskos vienumus, rediģēt esošus, ielasīt bibliogrāfiskos vienumus no BibTex faila, eksportēt vienumus BibTeX failā. Sīkāk par BibTeX formātu var uzzināt šeit: https://en.wikipedia.org/wiki/BibTeX. BibTeX formātā ir daudz bibliogrāfisko vienumu tipu. Mājas darbā izstrādātajai lietotnei jāatbalsta vienumu tipi: book, masterthesis, phdthesis un viens jūsu izvēlēts vienuma tips. Mājas darbā jāatbalsta tie BibTex vienumu lauki, kas atbilst zemāk minētajiem klašu laukiem, pārejos drīkst ignorēt (bet programma nedrīkst nosprāgt ar tādiem saskaroties.).
+======================================= TODO:
+- pievienot jaunus bibliogrāfiskos vienumus
+- rediģēt esošus
+- ielasīt bibliogrāfiskos vienumus no BibTex faila
+- eksportēt vienumus BibTeX failā
 
-Lietotnē jāvar darboties ar bibliogrāfiskajiem vienumiem lietotājam draudzīgā veidā. Jābūt intuitīvi skaidram kā veikt augstāk minētās darbības. Lietotāja saskarnei (interfeisam) jābūt sakārtotai t.i. vadīklām (kontroļiem) jābūt izlīdzinātam, viena veida vadīklām jābūt vienāda izmēra utt. Jālieto datiem atbilstošas vadīklas (kontroļi).
+no https://en.wikipedia.org/wiki/BibTeX jāatbalsta: 
+book, 
+masterthesis, 
+phdthesis,
+article
+
+Mājas darbā jāatbalsta tie BibTex vienumu lauki, kas atbilst zemāk minētajiem klašu laukiem.
+Pārejos drīkst ignorēt (bet programma nedrīkst nosprāgt ar tādiem saskaroties.)
 
 
 Izveidot iespēju norādīt bibliogrāfiskā vienuma Autoru/Autorus. Šeit Jūs paši varat izvēlēties: kā norādīt Autoru un/vai Autorus, kādus datu tipus izvēlēties, kur norādīt autorus virsklasē vai apakšklasēs utt.
 Izveidot virtuālu (virtual) metodi: “Izdrukat()”, kas atgriež visu īpašību vērtības kā BibTeX tekstu.
-2. Izveidot klasei „ Bibliogrāfiskais vienums” apakšklasi „Grāmata”
 
+
+2. Izveidot klasei „ Bibliogrāfiskais vienums” apakšklasi „Grāmata”
 Grāmatai papildus jāvar norādīt “izdevēju”, “izdevēja adresi”;
 Grāmatai var būt viens vai vairāki Autori;
 Izveidot konstruktoru, kas saņem sekojošus parametrus:
@@ -18,11 +30,12 @@ string “izdevnieciba”;
 int “gads”;
 string “iIzdevniecības adrese”; (var arī nenorādīt)
 Pārdefinēt metodi: “Izdrukat()”, kas atgriež visu īpašību vērtības kā BibTeX tekstu.
+
 3. Izveidot pārskaitāmo tipu (Enum) “Noslēguma darba veids” ar vērtībām: “Maģistra darbs”, “Doktora disertācija”. Ja vēlaties varat pievienot arī citas pārskaitāmā tipa vērtības, piemēram, “Kvalifikācijas darbs”.
 
 4. Izveidot klasei „Bibliogrāfiskais vienums” apakšklasi „Noslēguma darbs”
-
-Noslēguma darbam papildus jāvar norādīt “Noslēguma darba veidu” (Jūsu definētais pārskaitāmais tips (Enum)), “izglītības iestādi”;
+Noslēguma darbam papildus jāvar norādīt “Noslēguma darba veidu” 
+(Jūsu definētais pārskaitāmais tips (Enum)), “izglītības iestādi”;
 Noslēguma darbam var būt tikai viens autors;
 Izveidot konstruktoru, kas saņem sekojošus parametrus:
 string “autora vārds”;
@@ -32,28 +45,30 @@ EnumXXX “noslēguma darba veids”; (Tips ir Jūsu definētais pārskaitāmais
 string “izglītības iestādes nosaukums”;
 int “gads”;
 Pārdefinēt metodi: “Izdrukat()”, kas atgriež visu īpašību vērtības kā BibTeX tekstu. Ņemiet vērā, ka atkarībā no noslēguma darba veida mainās arī BibTeX vienuma veids, attiecīgi masterthesis vai phdthesis.
-5.  Papildus:
 
+
+5.  Papildus:
  Izveidot Jūsu izvēlētajam (vēl vienam) bibliogrāfiskā vienuma veidam un autoru apstrādei atbilstošas klases ar atbilstošiem atribūtiem, īpašībām un metodēm.
  Ja nepieciešams, pēc saviem ieskatiem varat veidot vēl citas klases un iepriekš minētās (1.,2.,4. punktā minētās) papildināt ar jauniem laukiem, īpašībām un metodēm.
  Izveidot vienu statisku (static) lauku (field) un statisku (static) metodi (method);
+
 6. Izveidot globālu(as) kolekciju(as) vai masīvu(s) (collection vai array), kas saturētu “Bibliogrāfiskos vienumus”.
-
 Nodrošināt izveidoto “Bibliogrāfisko vienumu” pievienošanu kolekcijai(ām)/masīvam(iem).
-7.Izveidot lietotni (application) ar lietotāja interfeisu (user interface) un funkcionalitāti:
 
+7.Izveidot lietotni (application) ar lietotāja interfeisu (user interface) un funkcionalitāti:
 Jauna bibliogrāfiskā vienuma izveidei;
 Izvēlēta bibliogrāfiskā vienuma datu apskatei un arī rediģēšanai; (Izvēle var notikt, piemēram, norādot ieraksta kārtas numuru kolekcijā.)
 Kolekcijās (masīvos) (skat. 6. punktu) esošo datu saglabāšanai BibTeX  failā. (Ja fails atrodas mapē „C:\Temp\”, tad faila vārdu var „iešūt” kodā. Protams, var arī lietotājam prasīt norādīt faila vārdu.) ;
 Kolekcijas datu ielasīšanu no BibTeX teksta faila. (Faila vārdu var “iešūt” kodā, skat. iepriekšējo punktu.) Jāvar ielasīt piemērā doto BibTeX failu (vai līdzīgs) un Jūsu programmas veidotos BibTeX failus (skat. iepriekšējo punktu);
-8. Lietotnē: 
 
+8. Lietotnē: 
 Jāveido darba virsmas lietotne (desktop application) (var izmantot WPF vai Windows Forms)
 Jālieto vismaz 4 dažādi vadīklu(kontroļu) veidi.
 Jālieto ievadāmajiem datiem atbilstošas vadīklas (kontroļi).
 Lietotāja saskarnei jābūt sakārtotai: vadīklām(kontroļiem) jābūt izlīdzinātiem, ar vienādām atstarpēm. Līdzīgā vadiklās (kontroļiem) jābūt ar vienādiem izmēriem.
 Jālieto gan modālā (modal), gan nemodālā formu atvēršana.
 Kodā nodemonstrēt visu klašu metožu izsaukumus un īpašību uzstādīšanu.
+
 P.S.  Pēdiņās norādītajiem lauku, klašu utt. nosaukumiem ir tikai informatīvs raksturs, drīkst dot citus nosaukumus, bet tiem jābūt saprotamiem bez papildus komentāriem. Tāpēc ieteicams atstāt esošos nosaukumus aizstājot atstarpes ar pasvītrojumu, bet mīkstos un garos  burtus ar tādiem pašiem latīņu alfabēta burtiem.
 
 P.S2. Var pieņemt, ka BibTeX lauki nesatur speciālos simbolus (vienīgais izņēmumi: komats autoru laukā, kas atdala vairākus autorus vienu no otra un punkti datuma laukā) t.i. pārējo (izņēmums autori un datums) lauku vērtības satur tikai burtus, ciparus un atstarpes.
