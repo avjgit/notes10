@@ -79,7 +79,6 @@ namespace wpf_crud
             var removable = context.authors.Single(a => a.au_id == author.au_id);
             context.authors.Remove(removable);
             context.SaveChanges();
-            authorDataGrid.ItemsSource = null;
             authorDataGrid.ItemsSource = context.authors.ToList();
         }
 
@@ -109,7 +108,6 @@ namespace wpf_crud
             var removable = context.publishers.Single(x => x.pub_id == publisher.pub_id);
             context.publishers.Remove(publisher);
             context.SaveChanges();
-            publisherDataGrid.ItemsSource = null;
             publisherDataGrid.ItemsSource = context.publishers.ToList();
         }
 
@@ -139,7 +137,6 @@ namespace wpf_crud
             var removable = context.titles.Single(x => x.title_id == book.title_id);
             context.titles.Remove(book);
             context.SaveChanges();
-            titleDataGrid.ItemsSource = null;
             titleDataGrid.ItemsSource = context.titles.ToList();
         }
 
