@@ -61,17 +61,21 @@ namespace wpf_crud
         private string GetAuthorId()
         {
             string id = string.Empty;
-            for (int i = 1111; i <= 9999; i++)
+            for (int i = 111111111; i <= 999999999; i++)
             {
-                id = "111-11-" + i.ToString();
+                var idString = i.ToString();
+
+                var idPrefix = idString.Substring(0,3);
+                var idMiddle = idString.Substring(3,2);
+                var idSuffix = idString.Substring(5,4);
+
+                id = $"{idPrefix}-{idMiddle}-{idSuffix}";
 
                 if (!context.authors.Where(a => a.au_id == id).Any())
                     break;
             }
             return id;
         }
-
-        
 
         private void DeleteAuthor(object sender, RoutedEventArgs e)
         {
