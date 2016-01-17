@@ -3,41 +3,29 @@
 - NB: wikipēdijā rakstīts, ka autori tiek atdalīti ar "and", nevis ar komatu
 
 ======================================= TODO:
-7.Izveidot lietotni (application) ar lietotāja interfeisu (user interface) un funkcionalitāti:
+Create WPF:
+- CRUD book
+- CRUD masterthesis
+- CRUD phdthesiS
+- CRUD article
 
-Jauna bibliogrāfiskā vienuma izveidei;
-
-Izvēlēta bibliogrāfiskā vienuma datu apskatei un arī rediģēšanai; (Izvēle var notikt, piemēram, norādot ieraksta kārtas numuru kolekcijā.)
-
-Kolekcijās (masīvos) (skat. 6. punktu) esošo datu saglabāšanai BibTeX  failā. (Ja fails atrodas mapē „C:\Temp\”, tad faila vārdu var „iešūt” kodā. Protams, var arī lietotājam prasīt norādīt faila vārdu.) ;
-
-Kolekcijas datu ielasīšanu no BibTeX teksta faila. (Faila vārdu var “iešūt” kodā, skat. iepriekšējo punktu.) 
-Jāvar ielasīt piemērā doto BibTeX failu (vai līdzīgs) un Jūsu programmas veidotos BibTeX failus (skat. iepriekšējo punktu);
+- eksport to file („C:\Temp\” or request path)
+- import from file: example and previously exported
 
 8. Lietotnē: 
-Jāveido darba virsmas lietotne (desktop application) (var izmantot WPF vai Windows Forms)
 Jālieto vismaz 4 dažādi vadīklu(kontroļu) veidi.
 Jālieto ievadāmajiem datiem atbilstošas vadīklas (kontroļi).
-Lietotāja saskarnei jābūt sakārtotai: vadīklām(kontroļiem) jābūt izlīdzinātiem, ar vienādām atstarpēm. Līdzīgā vadiklās (kontroļiem) jābūt ar vienādiem izmēriem.
+Lietotāja saskarnei jābūt sakārtotai: vadīklām(kontroļiem) jābūt izlīdzinātiem, ar vienādām atstarpēm. 
+Līdzīgā vadiklās (kontroļiem) jābūt ar vienādiem izmēriem.
 Jālieto gan modālā (modal), gan nemodālā formu atvēršana.
 Kodā nodemonstrēt visu klašu metožu izsaukumus un īpašību uzstādīšanu.
 
-P.S2. Var pieņemt, ka BibTeX lauki nesatur speciālos simbolus (vienīgais izņēmumi: komats autoru laukā, kas atdala vairākus autorus vienu no otra un punkti datuma laukā) t.i. pārējo (izņēmums autori un datums) lauku vērtības satur tikai burtus, ciparus un atstarpes.
-
-- pievienot jaunus bibliogrāfiskos vienumus
-- rediģēt esošus
-- ielasīt bibliogrāfiskos vienumus no BibTex faila
-- eksportēt vienumus BibTeX failā
-
-no https://en.wikipedia.org/wiki/BibTeX jāatbalsta: 
-book, 
-masterthesis, 
-phdthesis,
-article
+P.S2. Var pieņemt, ka BibTeX lauki nesatur speciālos simbolus 
+(vienīgais izņēmumi: komats autoru laukā, kas atdala vairākus autorus vienu no otra un punkti datuma laukā) 
+t.i. pārējo (izņēmums autori un datums) lauku vērtības satur tikai burtus, ciparus un atstarpes.
 
 Mājas darbā jāatbalsta tie BibTex vienumu lauki, kas atbilst zemāk minētajiem klašu laukiem.
 Pārejos drīkst ignorēt (bet programma nedrīkst nosprāgt ar tādiem saskaroties.)
-
 
 BibTex faila piemērs:
 
