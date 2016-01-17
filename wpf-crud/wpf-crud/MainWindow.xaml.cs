@@ -50,10 +50,17 @@ namespace wpf_crud
             }
         }
 
+        private void UpdateButtonState(Button create, Button update, Button delete)
+        {
+            create.IsEnabled = false;
+            update.IsEnabled = true;
+            delete.IsEnabled = true;
+        }
+
         private void CreateAuthor(object sender, RoutedEventArgs e)
         {
             var newAuthor = authorDataGrid.SelectedItem as author;
-            if (newAuthor.au_id != null) return;
+            if (newAuthor == null || newAuthor.au_id != null) return;
             newAuthor.au_id = GetAuthorId();
             newAuthor.phone = "1188"; //hardcoding required field, as allowed per requirements
             context.authors.Add(newAuthor);
@@ -61,6 +68,8 @@ namespace wpf_crud
             try
             {
                 context.SaveChanges();
+                UpdateButtonState(createAuthorBtn, updateAuthorBtn, deleteAuthorBtn);
+
                 MessageBox.Show(
                     $"Author {newAuthor.FullName} successfully created", 
                     "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -101,7 +110,9 @@ exception: {ex.InnerException}
         {
             var author = authorDataGrid.SelectedItem as author;
 
-            if (author != null && author.au_id != null)
+            if (author == null) return;
+
+            if (author.au_id != null)
             {
                 var removable = context.authors.Single(a => a.au_id == author.au_id);
                 context.authors.Remove(removable);
@@ -111,7 +122,7 @@ exception: {ex.InnerException}
             {
                 context.SaveChanges();
                 authorDataGrid.ItemsSource = context.authors.ToList();
-
+                UpdateButtonState(createAuthorBtn, updateAuthorBtn, deleteAuthorBtn);
                 MessageBox.Show(
                     $"Author {author.FullName} successfully removed",
                     "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -127,13 +138,15 @@ exception: {ex.InnerException}
         private void CreatePublisher(object sender, RoutedEventArgs e)
         {
             var newPublisher = publisherDataGrid.SelectedItem as publisher;
-            if (newPublisher.pub_id != null) return;
+            if (newPublisher == null || newPublisher.pub_id != null) return;
             newPublisher.pub_id = GetPublsherId();
 
             try
             {
                 context.publishers.Add(newPublisher);
                 context.SaveChanges();
+                UpdateButtonState(createPublisherBtn, updatePublisherBtn, deletePublisherBtn);
+
                 MessageBox.Show(
                     $"Publisher {newPublisher.pub_name} successfully created",
                     "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -167,7 +180,9 @@ exception: {ex.InnerException}
         {
             var publisher = publisherDataGrid.SelectedItem as publisher;
 
-            if (publisher != null && publisher.pub_id != null)
+            if (publisher == null) return;
+
+            if (publisher.pub_id != null)
             {
                 var removable = context.publishers.Single(x => x.pub_id == publisher.pub_id);
                 context.publishers.Remove(publisher);
@@ -177,6 +192,7 @@ exception: {ex.InnerException}
             {
                 context.SaveChanges();
                 publisherDataGrid.ItemsSource = context.publishers.ToList();
+                UpdateButtonState(createPublisherBtn, updatePublisherBtn, deletePublisherBtn);
 
                 MessageBox.Show(
                     $"Publisher {publisher.pub_name} successfully removed",
@@ -193,7 +209,7 @@ exception: {ex.InnerException}
         private void CreateBook(object sender, RoutedEventArgs e)
         {
             var newTitle = titleDataGrid.SelectedItem as title;
-            if (newTitle.title_id != null) return;
+            if (newTitle == null || newTitle.title_id != null) return;
             newTitle.type = "fiction";
             newTitle.title_id = GetBooksId();
 
@@ -203,6 +219,7 @@ exception: {ex.InnerException}
             {
                 context.titles.Add(newTitle);
                 context.SaveChanges();
+                UpdateButtonState(createBookBtn, updateBookBtn, deleteBookBtn);
 
                 foreach (author author in authorListBox.SelectedItems)
                 {
@@ -247,7 +264,9 @@ exception: {ex.InnerException}
         {
             var book = titleDataGrid.SelectedItem as title;
 
-            if (book != null && book.title_id != null)
+            if (book == null) return;
+
+            if (book.title_id != null)
             {
                 var removable = context.titles.Single(x => x.title_id == book.title_id);
                 context.titles.Remove(book);
@@ -257,6 +276,7 @@ exception: {ex.InnerException}
             {
                 context.SaveChanges();
                 titleDataGrid.ItemsSource = context.titles.ToList();
+                UpdateButtonState(createPublisherBtn, updatePublisherBtn, deletePublisherBtn);
 
                 MessageBox.Show(
                     $"Publisher {book.title1} successfully removed",
@@ -321,6 +341,7 @@ exception: {ex.InnerException}
 
             // disable creation button if entry is not new
             createBookBtn.IsEnabled = (book == null || book.title_id == null);
+            updateBookBtn.IsEnabled = (book != null && book.title_id != null);
             deleteBookBtn.IsEnabled = (book != null);
 
             if (book == null)
@@ -350,12 +371,14 @@ exception: {ex.InnerException}
         {
             var author = authorDataGrid.SelectedItem as author;
             createAuthorBtn.IsEnabled = (author == null || author.au_id == null);
+            updateAuthorBtn.IsEnabled = (author != null && author.au_id != null);
             deleteAuthorBtn.IsEnabled = (author != null);
         }
         private void publishersSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var publisher = publisherDataGrid.SelectedItem as publisher;
             createPublisherBtn.IsEnabled = (publisher == null || publisher.pub_id == null);
+            updatePublisherBtn.IsEnabled = (publisher != null && publisher.pub_id != null);
             deletePublisherBtn.IsEnabled = (publisher != null);
         }
     }
