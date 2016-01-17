@@ -27,7 +27,7 @@ namespace wpf_bibtex
             int year
             )
         {
-            Authors.Add(new Author(authorFirstname, authorLastname));
+            Authors = authorFirstname + authorLastname;
             Title = title;
             Type = thesisType;
             School = school;
@@ -38,7 +38,7 @@ namespace wpf_bibtex
         {
             return $@"
 @{Type}{{{BibCode},
-    author = {{ {AuthorsString} }},
+    author = {{ {Authors} }},
     title = {{ {Title} }},
     school = {{ {School} }},
     year = {{ {Year} }},

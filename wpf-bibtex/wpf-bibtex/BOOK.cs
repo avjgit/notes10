@@ -14,9 +14,7 @@ namespace wpf_bibtex
         public BOOK(string authorsList, string title, string publisher, int year, string publishersAddress) 
             : base()
         {
-            foreach (var author in authorsList.Replace(", ", ",").Split(','))
-                Authors.Add(new Author(author));
-
+            Authors = authorsList;
             Title = title;
             Publisher = publisher;
             Year = year;
@@ -31,7 +29,7 @@ namespace wpf_bibtex
     title = {{ {Title} }},
     publisher = {{ {Publisher} }},
     year = {{ {Year} }},
-    author = {{ {AuthorsString} }},
+    author = {{ {Authors} }},
     address = {{ {PublishersAddress} }},
     timestamp = {{ {CreationDate} }}
 }}";

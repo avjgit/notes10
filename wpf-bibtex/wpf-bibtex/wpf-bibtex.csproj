@@ -64,7 +64,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Author.cs" />
     <Compile Include="BiblioItem.cs" />
     <Compile Include="BOOK.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -91,11 +90,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\DataSources\ARTICLE.datasource" />
-    <None Include="Properties\DataSources\Author.datasource" />
     <None Include="Properties\DataSources\BiblioItem.datasource" />
     <None Include="Properties\DataSources\BOOK.datasource" />
     <None Include="Properties\DataSources\Thesis.datasource" />
-    <None Include="Properties\DataSources\Thesis.ThesisType.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -105,6 +102,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -47,19 +47,25 @@ namespace wpf_bibtex
 
         public BiblioItem()
         {
-            Authors = new List<Author>();
             creationDate = DateTime.Now;
         }
 
-        public List<Author> Authors { get; set; }
+        public string Authors { get; set; }
 
-        public string AuthorsString => string.Join(", ", Authors);
+        private string AuthorsLastNames()
+        {
+            string authorsLastNames = String.Empty;
+            foreach (var author in Authors.Replace(", ", ",").Split(','))
+            {
+                authorsLastNames += author.Split(' ').Last();
+            };
+            return authorsLastNames;
+        }
 
-        private string AuthorsLastNames => Authors.Select(a => a.LastLastName).ToString();
-
-        internal string BibCode => AuthorsLastNames + Year.ToString();
+        internal string BibCode => AuthorsLastNames() + Year.ToString();
 
         internal string BibType => GetType().Name;
+
         public virtual string BibTexPrint()
 
         {
@@ -67,7 +73,7 @@ namespace wpf_bibtex
 @{BibType}{{{BibCode},
     title = {{ {Title} }},
     year = {{ {Year} }},
-    author = {{ {AuthorsString} }},
+    author = {{ {Authors} }},
     timestamp = {{ {CreationDate} }}
 }}";
         }

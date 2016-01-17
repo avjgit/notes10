@@ -9,10 +9,15 @@ namespace wpf_bibtex
     public class ARTICLE : BiblioItem
     {
         public string Journal { get; set; }
+
         public string Volume { get; set; }
 
-        public ARTICLE(string journal, string volume)
+        public ARTICLE(string authorsList, string title, int year, string journal, string volume) 
+            : base()
         {
+            Authors = authorsList;
+            Title = title;
+            Year = year;
             Journal = journal;
             Volume = volume;
         }
@@ -21,7 +26,7 @@ namespace wpf_bibtex
         {
             return $@"
 @{BibType}{{{BibCode},
-    author = {{ {AuthorsString} }},
+    author = {{ {Authors} }},
     title = {{ {Title} }},
     journal = {{ {Journal} }},
     year = {{ {Year} }},
