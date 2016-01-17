@@ -1,33 +1,23 @@
-- Solūcijas mapē iekopēju teksta failu ar uzdevuma nosacījumiem; ar katru ierakstu git sistēmā tiek arī izdzēsti nosacījumi, kas ar šo ierakstu ir izpildīti - ērti var redzēt git ierakstu vēsturē
+- Solūcijas mapē iekopēju teksta failu ar uzdevuma nosacījumiem; 
+ar katru ierakstu git sistēmā tiek arī izdzēsti nosacījumi, 
+kas ar šo ierakstu ir izpildīti - ērti var redzēt git ierakstu vēsturē
 - Autoram izveidota atsevišķa klase; tiek iestatīs caur publisko īpašību
 - NB: wikipēdijā rakstīts, ka autori tiek atdalīti ar "and", nevis ar komatu
 
 ======================================= TODO:
-Create WPF:
 - CRUD book
 - CRUD masterthesis
 - CRUD phdthesiS
 - CRUD article
 
+- jālieto vismaz 4 dažādi vadīklu(kontroļu) veidi.
+- kodā nodemonstrēt visu klašu metožu izsaukumus un īpašību uzstādīšanu.
+- year as datepicker?
 - eksport to file („C:\Temp\” or request path)
-- import from file: example and previously exported
-
-8. Lietotnē: 
-Jālieto vismaz 4 dažādi vadīklu(kontroļu) veidi.
-Jālieto ievadāmajiem datiem atbilstošas vadīklas (kontroļi).
-Lietotāja saskarnei jābūt sakārtotai: vadīklām(kontroļiem) jābūt izlīdzinātiem, ar vienādām atstarpēm. 
-Līdzīgā vadiklās (kontroļiem) jābūt ar vienādiem izmēriem.
-Jālieto gan modālā (modal), gan nemodālā formu atvēršana.
-Kodā nodemonstrēt visu klašu metožu izsaukumus un īpašību uzstādīšanu.
-
-P.S2. Var pieņemt, ka BibTeX lauki nesatur speciālos simbolus 
-(vienīgais izņēmumi: komats autoru laukā, kas atdala vairākus autorus vienu no otra un punkti datuma laukā) 
-t.i. pārējo (izņēmums autori un datums) lauku vērtības satur tikai burtus, ciparus un atstarpes.
-
-Mājas darbā jāatbalsta tie BibTex vienumu lauki, kas atbilst zemāk minētajiem klašu laukiem.
-Pārejos drīkst ignorēt (bet programma nedrīkst nosprāgt ar tādiem saskaroties.)
-
-BibTex faila piemērs:
+- import from previously exported file
+- import from example file
+- import from other file with unknown properties and do not crush
+- jālieto gan modālā (modal), gan nemodālā formu atvēršana
 
 @BOOK{RattzFreeman2010,
   title = {Pro LINQ  Language Integrated Query in C 2010},
