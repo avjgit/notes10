@@ -15,16 +15,31 @@ using System.Windows.Shapes;
 
 namespace wpf_crud
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        dbModel context = new dbModel();
+
         public MainWindow()
         {
             InitializeComponent();
         }
+        
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
 
+            var authorViewSource = ((CollectionViewSource)(this.FindResource("authorViewSource")));
+            authorViewSource.Source = context.authors.ToList();
+
+
+            //CollectionViewSource authorsViewSource = ((CollectionViewSource)(this.FindResource("authorsViewSource")));
+            //authorsViewSource.Source = context.authors.ToList();
+
+            //CollectionViewSource publishersViewSource = ((CollectionViewSource)(this.FindResource("publishersViewSource")));
+            //publishersViewSource.Source = context.publishers.ToList();
+
+            //CollectionViewSource titlesViewSource = ((CollectionViewSource)(this.FindResource("titlesViewSource")));
+            //titlesViewSource.Source = context.titles.ToList();
+        }
         private void CreateAuthor(object sender, RoutedEventArgs e)
         {
 
