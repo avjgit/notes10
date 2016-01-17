@@ -29,7 +29,7 @@ namespace wpf_crud
             titleViewSource.Source = context.titles.ToList();
         }
 
-        // common method for all entities
+        // common method for author and publisher
         private void SaveChanges(object sender, RoutedEventArgs e)
         {
             try
@@ -51,6 +51,7 @@ namespace wpf_crud
         private void CreateAuthor(object sender, RoutedEventArgs e)
         {
             var newAuthor = authorDataGrid.SelectedItem as author;
+            if (newAuthor.au_id != null) return;
             newAuthor.au_id = GetAuthorId();
             newAuthor.phone = "1188"; //hardcoding required field, as allowed per requirements
             context.authors.Add(newAuthor);
@@ -97,8 +98,12 @@ exception: {ex.InnerException}
         private void DeleteAuthor(object sender, RoutedEventArgs e)
         {
             var author = authorDataGrid.SelectedItem as author;
-            var removable = context.authors.Single(a => a.au_id == author.au_id);
-            context.authors.Remove(removable);
+
+            if (author.au_id != null)
+            {
+                var removable = context.authors.Single(a => a.au_id == author.au_id);
+                context.authors.Remove(removable);
+            }
 
             try
             {
@@ -120,6 +125,7 @@ exception: {ex.InnerException}
         private void CreatePublisher(object sender, RoutedEventArgs e)
         {
             var newPublisher = publisherDataGrid.SelectedItem as publisher;
+            if (newPublisher.pub_id != null) return;
             newPublisher.pub_id = GetPublsherId();
 
             try
@@ -158,8 +164,12 @@ exception: {ex.InnerException}
         private void DeletePublisher(object sender, RoutedEventArgs e)
         {
             var publisher = publisherDataGrid.SelectedItem as publisher;
-            var removable = context.publishers.Single(x => x.pub_id == publisher.pub_id);
-            context.publishers.Remove(publisher);
+
+            if (publisher.pub_id != null)
+            {
+                var removable = context.publishers.Single(x => x.pub_id == publisher.pub_id);
+                context.publishers.Remove(publisher);
+            }
 
             try
             {
@@ -181,8 +191,13 @@ exception: {ex.InnerException}
         private void CreateBook(object sender, RoutedEventArgs e)
         {
             var newTitle = titleDataGrid.SelectedItem as title;
+            if (newTitle.title_id != null) return;
             newTitle.type = "fiction";
             newTitle.title_id = GetBooksId();
+
+            newTitle.pub_id = publisherComboBox.SelectedValue.ToString();
+
+
             context.titles.Add(newTitle);
 
             try
@@ -210,7 +225,7 @@ exception: {ex.InnerException}
             for (int i = 0; i <= 999999; i++)
             {
                 id = i.ToString("D6");
-                if (!context.publishers.Where(x => x.pub_id == id).Any())
+                if (!context.titles.Where(x => x.pub_id == id).Any())
                     break;
             }
             return id;
@@ -219,8 +234,12 @@ exception: {ex.InnerException}
         private void DeleteBook(object sender, RoutedEventArgs e)
         {
             var book = titleDataGrid.SelectedItem as title;
-            var removable = context.titles.Single(x => x.title_id == book.title_id);
-            context.titles.Remove(book);
+
+            if (book.title_id != null)
+            {
+                var removable = context.titles.Single(x => x.title_id == book.title_id);
+                context.titles.Remove(book);
+            }
 
             try
             {
@@ -242,6 +261,9 @@ exception: {ex.InnerException}
         private void UpdateBook(object sender, RoutedEventArgs e)
         {
             var selectedBook = titleDataGrid.SelectedItem as title;
+
+            if (selectedBook.title_id == null) return;
+
             var book = context.titles.Single(t => t.title_id == selectedBook.title_id);
             context.Entry(book).State = EntityState.Modified;
 
@@ -310,7 +332,6 @@ exception: {ex.InnerException}
             }
 
             // sync publisher dropdown
-
             publisherComboBox.SelectedValue = book.pub_id;
 
             // sync authors dropdown
@@ -330,11 +351,13 @@ exception: {ex.InnerException}
         {
             var author = authorDataGrid.SelectedItem as author;
             createAuthorBtn.IsEnabled = (author == null || author.au_id == null);
+            deleteAuthorBtn.IsEnabled = (author != null);
         }
         private void publishersSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var publisher = publisherDataGrid.SelectedItem as publisher;
             createPublisherBtn.IsEnabled = (publisher == null || publisher.pub_id == null);
+            deletePublisherBtn.IsEnabled = (publisher != null);
         }
     }
 }

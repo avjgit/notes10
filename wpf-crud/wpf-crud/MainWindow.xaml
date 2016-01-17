@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_crud"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800" Loaded="Window_Loaded">
+        Title="AJ05044 Homework2" Height="600" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="authorViewSource" d:DesignSource="{d:DesignInstance {x:Type local:author}, CreateList=True}"/>
         <CollectionViewSource x:Key="publisherViewSource" d:DesignSource="{d:DesignInstance {x:Type local:publisher}, CreateList=True}"/>
@@ -78,7 +78,8 @@
                            Margin="0,50,80,10" VerticalAlignment="Top" Width="200"/>
 
                     <ComboBox x:Name="publisherComboBox" DisplayMemberPath="pub_name" ItemsSource="{Binding Source={StaticResource publisherViewSource}}" 
-                              HorizontalAlignment="Right" Margin="0,76,10,420" SelectedValuePath="pub_id" Width="270">
+                              VerticalAlignment="Top"
+                              HorizontalAlignment="Right" Margin="0,70,10,0" SelectedValuePath="pub_id" Width="270" Height="30">
                         <ComboBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VirtualizingStackPanel/>
@@ -87,10 +88,10 @@
                     </ComboBox>
 
                     <Label x:Name="authorsLabel" Content="Authors of selected book:" HorizontalAlignment="Right" 
-                           Margin="0,106,80,0" VerticalAlignment="Top" Width="200"/>
+                           Margin="0,119,80,0" VerticalAlignment="Top" Width="200"/>
                     
                     <ListBox x:Name="authorListBox" DisplayMemberPath="FullName" HorizontalAlignment="Right" ItemsSource="{Binding Source={StaticResource authorViewSource}}" 
-                             Margin="0,137,10,10" SelectedValuePath="au_id" Width="270"
+                             Margin="0,150,10,10" SelectedValuePath="au_id" Width="270"
                              SelectionMode="Multiple"/>
                 </Grid>
             </TabItem>
