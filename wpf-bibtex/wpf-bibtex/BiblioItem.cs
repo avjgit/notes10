@@ -52,5 +52,21 @@ namespace wpf_bibtex
 
         public List<Author> Authors { get; set; }
 
+        public string AuthorsString => string.Join(", ", Authors);
+
+        public string BibCode => Authors.First().LastLastName + Year.ToString();
+
+        public virtual string BibTexPrint()
+        {
+            return $@"
+@{this.GetType().Name}{{
+    {BibCode},
+    title = {{ {Title} }},
+    year = {{ {Year} }},
+    author = {{ {AuthorsString} }}
+}}";
+
+        }
+
     }
 }

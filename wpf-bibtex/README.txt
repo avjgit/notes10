@@ -1,5 +1,6 @@
 - Solūcijas mapē iekopēju teksta failu ar uzdevuma nosacījumiem; ar katru ierakstu git sistēmā tiek arī izdzēsti nosacījumi, kas ar šo ierakstu ir izpildīti - ērti var redzēt git ierakstu vēsturē
 - Autoram izveidota atsevišķa klase; tiek iestatīs caur publisko īpašību
+- NB: wikipēdijā rakstīts, ka autori tiek atdalīti ar "and", nevis ar komatu
 
 ======================================= TODO:
 - pievienot jaunus bibliogrāfiskos vienumus
@@ -15,10 +16,6 @@ article
 
 Mājas darbā jāatbalsta tie BibTex vienumu lauki, kas atbilst zemāk minētajiem klašu laukiem.
 Pārejos drīkst ignorēt (bet programma nedrīkst nosprāgt ar tādiem saskaroties.)
-
-
-Izveidot virtuālu (virtual) metodi: “Izdrukat()”, kas atgriež visu īpašību vērtības kā BibTeX tekstu.
-
 
 2. Izveidot klasei „ Bibliogrāfiskais vienums” apakšklasi „Grāmata”
 Grāmatai papildus jāvar norādīt “izdevēju”, “izdevēja adresi”;
@@ -56,10 +53,15 @@ Pārdefinēt metodi: “Izdrukat()”, kas atgriež visu īpašību vērtības k
 Nodrošināt izveidoto “Bibliogrāfisko vienumu” pievienošanu kolekcijai(ām)/masīvam(iem).
 
 7.Izveidot lietotni (application) ar lietotāja interfeisu (user interface) un funkcionalitāti:
+
 Jauna bibliogrāfiskā vienuma izveidei;
+
 Izvēlēta bibliogrāfiskā vienuma datu apskatei un arī rediģēšanai; (Izvēle var notikt, piemēram, norādot ieraksta kārtas numuru kolekcijā.)
+
 Kolekcijās (masīvos) (skat. 6. punktu) esošo datu saglabāšanai BibTeX  failā. (Ja fails atrodas mapē „C:\Temp\”, tad faila vārdu var „iešūt” kodā. Protams, var arī lietotājam prasīt norādīt faila vārdu.) ;
-Kolekcijas datu ielasīšanu no BibTeX teksta faila. (Faila vārdu var “iešūt” kodā, skat. iepriekšējo punktu.) Jāvar ielasīt piemērā doto BibTeX failu (vai līdzīgs) un Jūsu programmas veidotos BibTeX failus (skat. iepriekšējo punktu);
+
+Kolekcijas datu ielasīšanu no BibTeX teksta faila. (Faila vārdu var “iešūt” kodā, skat. iepriekšējo punktu.) 
+Jāvar ielasīt piemērā doto BibTeX failu (vai līdzīgs) un Jūsu programmas veidotos BibTeX failus (skat. iepriekšējo punktu);
 
 8. Lietotnē: 
 Jāveido darba virsmas lietotne (desktop application) (var izmantot WPF vai Windows Forms)
@@ -68,8 +70,6 @@ Jālieto ievadāmajiem datiem atbilstošas vadīklas (kontroļi).
 Lietotāja saskarnei jābūt sakārtotai: vadīklām(kontroļiem) jābūt izlīdzinātiem, ar vienādām atstarpēm. Līdzīgā vadiklās (kontroļiem) jābūt ar vienādiem izmēriem.
 Jālieto gan modālā (modal), gan nemodālā formu atvēršana.
 Kodā nodemonstrēt visu klašu metožu izsaukumus un īpašību uzstādīšanu.
-
-P.S.  Pēdiņās norādītajiem lauku, klašu utt. nosaukumiem ir tikai informatīvs raksturs, drīkst dot citus nosaukumus, bet tiem jābūt saprotamiem bez papildus komentāriem. Tāpēc ieteicams atstāt esošos nosaukumus aizstājot atstarpes ar pasvītrojumu, bet mīkstos un garos  burtus ar tādiem pašiem latīņu alfabēta burtiem.
 
 P.S2. Var pieņemt, ka BibTeX lauki nesatur speciālos simbolus (vienīgais izņēmumi: komats autoru laukā, kas atdala vairākus autorus vienu no otra un punkti datuma laukā) t.i. pārējo (izņēmums autori un datums) lauku vērtības satur tikai burtus, ciparus un atstarpes.
 
