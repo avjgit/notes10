@@ -16,24 +16,6 @@
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Margin="10,10,10,10" >
-            <TabItem Header="Import/Export" Width="100">
-                <Grid Background="#FFE5E5E5">
-                    <Button x:Name="buttonOpen" 
-                        Content="Open DLL" 
-                        HorizontalAlignment="Left" 
-                        VerticalAlignment="Top" 
-                        Width="75" Margin="10,10,0,0"
-                        Click="buttonOpen_Click"/>
-                    <TextBox x:Name="pathBox" 
-                         HorizontalAlignment="Left" 
-                         Height="23" 
-                         Margin="100,10,0,0" 
-                         TextWrapping="Wrap" 
-                         Text="Enter path to your BibTex file to import ..." 
-                         VerticalAlignment="Top" Width="Auto" MinWidth="300"
-                         IsReadOnly="False"/>
-                </Grid>
-            </TabItem>
             <TabItem Header="Books" Width="100">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource bOOKViewSource}">
 
@@ -41,9 +23,12 @@
                     <Button x:Name="updateBookBtn" Click="SaveChanges" Content="Update" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="deleteBookBtn" Click="DeleteBook" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
 
-                    <DataGrid x:Name="bOOKDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
+                    <DataGrid x:Name="bOOKDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" 
                               Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected" 
-                              VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                              VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                              CanUserAddRows="True" CanUserDeleteRows="True" IsReadOnly="False"
+                              ItemsSource="{Binding}" 
+                              >
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="titleColumn" Binding="{Binding Title}" Header="Title" Width=".3*"/>
                             <DataGridTextColumn x:Name="authorsColumn" Binding="{Binding Authors}" Header="Authors" Width=".3*"/>
@@ -52,8 +37,6 @@
                             <DataGridTextColumn x:Name="yearColumn" Binding="{Binding Year}" Header="Year" Width=".1*"/>
                         </DataGrid.Columns>
                     </DataGrid>
-
-
                 </Grid>
             </TabItem>
             <TabItem Header="MasterThesises" Width="100">
@@ -112,6 +95,24 @@
                             <DataGridTextColumn x:Name="yearColumn3" Binding="{Binding Year}" Header="Year" Width=".1*"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Import/Export" Width="100">
+                <Grid Background="#FFE5E5E5">
+                    <Button x:Name="buttonOpen" 
+                        Content="Open DLL" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top" 
+                        Width="75" Margin="10,10,0,0"
+                        Click="buttonOpen_Click"/>
+                    <TextBox x:Name="pathBox" 
+                         HorizontalAlignment="Left" 
+                         Height="23" 
+                         Margin="100,10,0,0" 
+                         TextWrapping="Wrap" 
+                         Text="Enter path to your BibTex file to import ..." 
+                         VerticalAlignment="Top" Width="Auto" MinWidth="300"
+                         IsReadOnly="False"/>
                 </Grid>
             </TabItem>
         </TabControl>

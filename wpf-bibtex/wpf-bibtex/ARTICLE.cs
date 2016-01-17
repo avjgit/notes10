@@ -12,6 +12,11 @@ namespace wpf_bibtex
 
         public string Volume { get; set; }
 
+        public ARTICLE() : base()
+        {
+
+        }
+
         public ARTICLE(string authorsList, string title, int year, string journal, string volume) 
             : base()
         {

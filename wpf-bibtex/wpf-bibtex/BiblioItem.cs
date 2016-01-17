@@ -48,6 +48,7 @@ namespace wpf_bibtex
         public BiblioItem()
         {
             creationDate = DateTime.Now;
+            year = DateTime.Now.Year;
         }
 
         public string Authors { get; set; }

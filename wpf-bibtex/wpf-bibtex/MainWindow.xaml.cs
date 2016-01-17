@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -22,12 +23,20 @@ namespace wpf_bibtex
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<BiblioItem> BiblioItems { get; set; }
+        public ObservableCollection<BOOK> Books{ get; set; }
+        public ObservableCollection<ARTICLE> Articles { get; set; }
+        public ObservableCollection<Thesis> Masters{ get; set; }
+        public ObservableCollection<Thesis> Phds{ get; set; }
+
 
         public MainWindow()
         {
             InitializeComponent();
-            BiblioItems = new List<BiblioItem>();
+
+            Books = new ObservableCollection<BOOK>();
+            Articles = new ObservableCollection<ARTICLE>();
+            Masters = new ObservableCollection<Thesis>();
+            Phds = new ObservableCollection<Thesis>();
 
             // debug
             var testbook = new BOOK("John Tolkien", "The Hobbit", "George Allen & Unwin", 1937, "UK");
@@ -41,32 +50,26 @@ namespace wpf_bibtex
             var testArticle = new ARTICLE("Bob Woodward, Carl Bernstein", "Investigation of the Watergate break in", 1970,
                 "Washington Post", "1");
 
-            BiblioItems.Add(testbook);
-            BiblioItems.Add(testMaster);
-            BiblioItems.Add(testPhd);
-            BiblioItems.Add(testArticle);
+            Books.Add(testbook);
+            Articles.Add(testArticle);
+            Masters.Add(testMaster);
+            Phds.Add(testPhd);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var bOOKViewSource = ((CollectionViewSource)(this.FindResource("bOOKViewSource")));
-            bOOKViewSource.Source = BiblioItems.Where(x => x.GetType() == typeof(BOOK)).ToList();
+            bOOKViewSource.Source = Books;
 
             var aRTICLEViewSource = ((CollectionViewSource)(this.FindResource("aRTICLEViewSource")));
-            aRTICLEViewSource.Source = BiblioItems.Where(x => x.GetType() == typeof(ARTICLE)).ToList();
+            aRTICLEViewSource.Source = Articles;
 
             var thesisViewSource = ((CollectionViewSource)(this.FindResource("thesisViewSource")));
-            thesisViewSource.Source = BiblioItems.Where(x => x.GetType() == typeof(Thesis));
+            thesisViewSource.Source = Masters;
 
-            mastersDataGrid.ItemsSource = BiblioItems
-                .Where(x => x.GetType() == typeof(Thesis))
-                .Where(x => ((Thesis)x).Type == Thesis.ThesisType.MASTERSTHESIS)
-                .ToList();
+            mastersDataGrid.ItemsSource = Masters;
 
-            phdsDataGrid.ItemsSource = BiblioItems
-                .Where(x => x.GetType() == typeof(Thesis))
-                .Where(x => ((Thesis)x).Type == Thesis.ThesisType.PHDTHESIS)
-                .ToList();
+            phdsDataGrid.ItemsSource = Phds;
         }
 
         private void buttonOpen_Click(object sender, RoutedEventArgs e)

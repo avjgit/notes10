@@ -16,7 +16,14 @@ namespace wpf_bibtex
         }
 
         public ThesisType Type { get; set; }
+
         public string School { get; set; }
+
+        public Thesis()
+            : base()
+        {
+
+        }
 
         public Thesis(
             string authorFirstname, 

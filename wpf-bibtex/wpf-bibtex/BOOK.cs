@@ -11,6 +11,11 @@ namespace wpf_bibtex
         public string Publisher { get; set; }
         public string PublishersAddress { get; set; }
 
+        public BOOK()
+            : base()
+        {
+        }
+
         public BOOK(string authorsList, string title, string publisher, int year, string publishersAddress) 
             : base()
         {
