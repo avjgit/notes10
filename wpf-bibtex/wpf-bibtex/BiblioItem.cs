@@ -10,6 +10,7 @@ namespace wpf_bibtex
     {
         private string title;
         private int year;
+        private DateTime creationDate;
 
         public string Title
         {
@@ -33,6 +34,14 @@ namespace wpf_bibtex
             {
                 if (value > 1800 && value <= DateTime.Now.Year + 1)
                     year = value;
+            }
+        }
+
+        public DateTime CreationDate
+        {
+            get
+            {
+                return creationDate;
             }
         }
 

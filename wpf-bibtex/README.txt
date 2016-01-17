@@ -1,1 +1,4 @@
 - abstraktā klase BibUnit ar privātiem atribūtiem un publiskām īpašībām „nosaukums”  un „gads”;
+- Year vērtība pārbaudīta uz [1800 - DateTime.Now+1] intervālu
+- privāts atribūts CreationDate ar tipu DateTime un tikai lasāmu īpašību
+- 
