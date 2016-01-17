@@ -61,9 +61,9 @@ namespace wpf_crud
         private string GetAuthorId()
         {
             string id = string.Empty;
-            for (int i = 111111111; i <= 999999999; i++)
+            for (int i = 0; i <= 999999999; i++)
             {
-                var idString = i.ToString();
+                var idString = i.ToString("D9");
 
                 var idPrefix = idString.Substring(0,3);
                 var idMiddle = idString.Substring(3,2);
@@ -126,9 +126,9 @@ namespace wpf_crud
         private string GetBooksId()
         {
             string id = string.Empty;
-            for (int i = 100000; i <= 999999; i++)
+            for (int i = 0; i <= 999999; i++)
             {
-                id = i.ToString();
+                id = i.ToString("D6");
                 if (!context.publishers.Where(x => x.pub_id == id).Any())
                     break;
             }
