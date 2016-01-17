@@ -20,6 +20,8 @@ namespace wpf_bibtex
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<BiblioItem> BibliotItems { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();

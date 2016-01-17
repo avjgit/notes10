@@ -3,9 +3,6 @@
 - NB: wikipēdijā rakstīts, ka autori tiek atdalīti ar "and", nevis ar komatu
 
 ======================================= TODO:
-6. Izveidot globālu(as) kolekciju(as) vai masīvu(s) (collection vai array), kas saturētu “Bibliogrāfiskos vienumus”.
-Nodrošināt izveidoto “Bibliogrāfisko vienumu” pievienošanu kolekcijai(ām)/masīvam(iem).
-
 7.Izveidot lietotni (application) ar lietotāja interfeisu (user interface) un funkcionalitāti:
 
 Jauna bibliogrāfiskā vienuma izveidei;
