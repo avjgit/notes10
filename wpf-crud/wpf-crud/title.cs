@@ -12,6 +12,7 @@ namespace wpf_crud
         public title()
         {
             titleauthors = new HashSet<titleauthor>();
+            pubdate = DateTime.Now;
         }
 
         [Key]

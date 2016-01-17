@@ -99,7 +99,7 @@ exception: {ex.InnerException}
         {
             var author = authorDataGrid.SelectedItem as author;
 
-            if (author.au_id != null)
+            if (author != null && author.au_id != null)
             {
                 var removable = context.authors.Single(a => a.au_id == author.au_id);
                 context.authors.Remove(removable);
@@ -165,7 +165,7 @@ exception: {ex.InnerException}
         {
             var publisher = publisherDataGrid.SelectedItem as publisher;
 
-            if (publisher.pub_id != null)
+            if (publisher != null && publisher.pub_id != null)
             {
                 var removable = context.publishers.Single(x => x.pub_id == publisher.pub_id);
                 context.publishers.Remove(publisher);
@@ -245,7 +245,7 @@ exception: {ex.InnerException}
         {
             var book = titleDataGrid.SelectedItem as title;
 
-            if (book.title_id != null)
+            if (book != null && book.title_id != null)
             {
                 var removable = context.titles.Single(x => x.title_id == book.title_id);
                 context.titles.Remove(book);
@@ -319,6 +319,7 @@ exception: {ex.InnerException}
 
             // disable creation button if entry is not new
             createBookBtn.IsEnabled = (book == null || book.title_id == null);
+            deleteBookBtn.IsEnabled = (book != null);
 
             if (book == null)
             {
