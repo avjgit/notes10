@@ -186,14 +186,21 @@ exception: {ex.InnerException}
             if (publisher.pub_id != null)
             {
                 var removable = context.publishers.Single(x => x.pub_id == publisher.pub_id);
-                context.publishers.Remove(publisher);
             }
 
             try
             {
+                //first, delete publisher info
+                foreach (var info in context.pub_info.Where(p => p.pub_id == publisher.pub_id).ToList())
+                {
+                    context.pub_info.Remove(info);
+                }
+
+                context.publishers.Remove(publisher);
                 context.SaveChanges();
                 publisherDataGrid.ItemsSource = context.publishers.ToList();
                 publisherComboBox.ItemsSource = context.publishers.ToList();
+                publisherComboBox.SelectedItem = null;
                 UpdateButtonState(createPublisherBtn, updatePublisherBtn, deletePublisherBtn);
 
                 MessageBox.Show(
