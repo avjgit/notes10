@@ -24,5 +24,50 @@ namespace wpf_crud
         {
             InitializeComponent();
         }
+
+        private void CreateAuthor(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdateAuthor(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteAuthor(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CreatePublisher(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdatePublisher(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeletePublisher(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CreateBook(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdateBook(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteBook(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
