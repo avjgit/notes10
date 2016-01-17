@@ -23,22 +23,17 @@ namespace wpf_crud
         {
             InitializeComponent();
         }
-        
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            var authorViewSource = ((CollectionViewSource)(this.FindResource("authorViewSource")));
+            var authorViewSource = ((CollectionViewSource)(FindResource("authorViewSource")));
             authorViewSource.Source = context.authors.ToList();
 
+            var publisherViewSource = ((CollectionViewSource)(FindResource("publisherViewSource")));
+            publisherViewSource.Source = context.publishers.ToList();
 
-            //CollectionViewSource authorsViewSource = ((CollectionViewSource)(this.FindResource("authorsViewSource")));
-            //authorsViewSource.Source = context.authors.ToList();
-
-            //CollectionViewSource publishersViewSource = ((CollectionViewSource)(this.FindResource("publishersViewSource")));
-            //publishersViewSource.Source = context.publishers.ToList();
-
-            //CollectionViewSource titlesViewSource = ((CollectionViewSource)(this.FindResource("titlesViewSource")));
-            //titlesViewSource.Source = context.titles.ToList();
+            var titleViewSource = ((CollectionViewSource)(FindResource("titleViewSource")));
+            titleViewSource.Source = context.titles.ToList();
         }
         private void CreateAuthor(object sender, RoutedEventArgs e)
         {
