@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_bibtex"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="800">
     <Grid>
-        
+        <TabControl x:Name="tabControl" 
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Margin="10,10,10,10" >
+            <TabItem Header="Import/Export" Width="100">
+                <Grid Background="#FFE5E5E5">
+                    <Button x:Name="buttonOpen" 
+                        Content="Open DLL" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top" 
+                        Width="75" Margin="10,10,0,0"
+                        Click="buttonOpen_Click"/>
+                    <TextBox x:Name="pathBox" 
+                         HorizontalAlignment="Left" 
+                         Height="23" 
+                         Margin="100,10,0,0" 
+                         TextWrapping="Wrap" 
+                         Text="Enter path to your BibTex file to import ..." 
+                         VerticalAlignment="Top" Width="Auto" MinWidth="300"
+                         IsReadOnly="False"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Books" Width="100">
+                <Grid Background="#FFE5E5E5">
+                    <Button x:Name="createBookBtn" Click="CreateBook" Content="Create selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="updateBookBtn" Click="SaveChanges" Content="Update" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="deleteBookBtn" Click="DeleteBook" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Window>
