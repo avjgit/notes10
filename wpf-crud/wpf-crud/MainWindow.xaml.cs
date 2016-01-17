@@ -2,17 +2,9 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace wpf_crud
 {
@@ -40,22 +32,47 @@ namespace wpf_crud
         // common method for all entities
         private void SaveChanges(object sender, RoutedEventArgs e)
         {
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+
+                MessageBox.Show(
+                    $"All changes successfully saved",
+                    "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $@"Error during saving pending changes: {ex.InnerException}",
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void CreateAuthor(object sender, RoutedEventArgs e)
         {
             var newAuthor = authorDataGrid.SelectedItem as author;
-
-            // to prevent creation of already existing author
-            if (newAuthor.au_id != null) return;
-
             newAuthor.au_id = GetAuthorId();
-
-            //hardcoded required field, as allowed per requirements
-            newAuthor.phone = "1188"; 
+            newAuthor.phone = "1188"; //hardcoding required field, as allowed per requirements
             context.authors.Add(newAuthor);
-            context.SaveChanges();
+
+            try
+            {
+                context.SaveChanges();
+                MessageBox.Show(
+                    $"Author {newAuthor.FullName} successfully created", 
+                    "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $@"Error trying to save following entry to database:
+id: {newAuthor.au_id}
+firstname: {newAuthor.au_fname}
+lastname: {newAuthor.au_lname}
+exception: {ex.InnerException}
+",
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private string GetAuthorId()
@@ -82,17 +99,49 @@ namespace wpf_crud
             var author = authorDataGrid.SelectedItem as author;
             var removable = context.authors.Single(a => a.au_id == author.au_id);
             context.authors.Remove(removable);
-            context.SaveChanges();
-            authorDataGrid.ItemsSource = context.authors.ToList();
+
+            try
+            {
+                context.SaveChanges();
+                authorDataGrid.ItemsSource = context.authors.ToList();
+
+                MessageBox.Show(
+                    $"Author {author.FullName} successfully removed",
+                    "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $@"Error trying to remove {author.FullName}. Exception: {ex.InnerException}",
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void CreatePublisher(object sender, RoutedEventArgs e)
         {
             var newPublisher = publisherDataGrid.SelectedItem as publisher;
             newPublisher.pub_id = GetPublsherId();
-            context.publishers.Add(newPublisher);
-            context.SaveChanges();
+
+            try
+            {
+                context.publishers.Add(newPublisher);
+                context.SaveChanges();
+                MessageBox.Show(
+                    $"Publisher {newPublisher.pub_name} successfully created",
+                    "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $@"Error trying to save following entry to database:
+id: {newPublisher.pub_id}
+name: {newPublisher.pub_name}
+exception: {ex.InnerException}
+",
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
         private string GetPublsherId()
         {
             string id = string.Empty;
@@ -111,8 +160,22 @@ namespace wpf_crud
             var publisher = publisherDataGrid.SelectedItem as publisher;
             var removable = context.publishers.Single(x => x.pub_id == publisher.pub_id);
             context.publishers.Remove(publisher);
-            context.SaveChanges();
-            publisherDataGrid.ItemsSource = context.publishers.ToList();
+
+            try
+            {
+                context.SaveChanges();
+                publisherDataGrid.ItemsSource = context.publishers.ToList();
+
+                MessageBox.Show(
+                    $"Publisher {publisher.pub_name} successfully removed",
+                    "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $@"Error trying to remove {publisher.pub_name}. Exception: {ex.InnerException}",
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void CreateBook(object sender, RoutedEventArgs e)
@@ -121,7 +184,25 @@ namespace wpf_crud
             newTitle.type = "fiction";
             newTitle.title_id = GetBooksId();
             context.titles.Add(newTitle);
-            context.SaveChanges();
+
+            try
+            {
+                context.titles.Add(newTitle);
+                context.SaveChanges();
+                MessageBox.Show(
+                    $"Book {newTitle.title1} successfully created",
+                    "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $@"Error trying to save following entry to database:
+id: {newTitle.title_id}
+name: {newTitle.title1}
+exception: {ex.InnerException}
+",
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         private string GetBooksId()
         {
@@ -140,8 +221,22 @@ namespace wpf_crud
             var book = titleDataGrid.SelectedItem as title;
             var removable = context.titles.Single(x => x.title_id == book.title_id);
             context.titles.Remove(book);
-            context.SaveChanges();
-            titleDataGrid.ItemsSource = context.titles.ToList();
+
+            try
+            {
+                context.SaveChanges();
+                titleDataGrid.ItemsSource = context.titles.ToList();
+
+                MessageBox.Show(
+                    $"Publisher {book.title1} successfully removed",
+                    "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $@"Error trying to remove {book.title1}. Exception: {ex.InnerException}",
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void UpdateBook(object sender, RoutedEventArgs e)
@@ -179,9 +274,23 @@ namespace wpf_crud
                 book.titleauthors.Add(entry);
             }
 
-            // save changes in books' fields
-            context.SaveChanges();
-            titleDataGrid.Items.Refresh();
+
+            try
+            {
+                // save changes in books' fields
+                context.SaveChanges();
+                titleDataGrid.Items.Refresh();
+
+                MessageBox.Show(
+                    $"All changes for {book.title1} successfully saved",
+                    "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $@"Error during saving pending changes for {book.title1}: {ex.InnerException}",
+                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void booksSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -191,9 +300,17 @@ namespace wpf_crud
             // synchronize books details
 
             // disable creation button if entry is not new
-            createBookBtn.IsEnabled = (book.title_id == null);
+            createBookBtn.IsEnabled = (book == null || book.title_id == null);
+
+            if (book == null)
+            {
+                publisherComboBox.SelectedIndex = -1;
+                authorListBox.SelectedItems.Clear();
+                return;
+            }
 
             // sync publisher dropdown
+
             publisherComboBox.SelectedValue = book.pub_id;
 
             // sync authors dropdown
@@ -211,13 +328,13 @@ namespace wpf_crud
 
         private void authorsSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var author = titleDataGrid.SelectedItem as author;
-            createAuthorBtn.IsEnabled = (author.au_id == null);
+            var author = authorDataGrid.SelectedItem as author;
+            createAuthorBtn.IsEnabled = (author == null || author.au_id == null);
         }
         private void publishersSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var publisher = publisherDataGrid.SelectedItem as publisher;
-            createPublisherBtn.IsEnabled = (publisher.pub_id == null);
+            createPublisherBtn.IsEnabled = (publisher == null || publisher.pub_id == null);
         }
     }
 }
