@@ -56,13 +56,13 @@
                 </Grid>
             </TabItem>
             <TabItem Header="MasterThesises" Width="100">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource thesisViewSource}">
 
                     <Button x:Name="createMasterBtn" Click="CreateMaster" Content="Create selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="updateMasterBtn" Click="SaveChanges" Content="Update" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="deleteMasterBtn" Click="DeleteMaster" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
 
-                    <DataGrid x:Name="thesisDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource thesisViewSource}}" 
+                    <DataGrid x:Name="mastersDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}"  
                               Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected"
                               VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <DataGrid.Columns>
@@ -81,7 +81,7 @@
                     <Button x:Name="updatePhdBtn" Click="SaveChanges" Content="Update" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="deletePhdBtn" Click="DeletePhd" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
 
-                    <DataGrid x:Name="thesisDataGrid1" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
+                    <DataGrid x:Name="phdsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
                                 Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected"
                                 VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <DataGrid.Columns>
