@@ -17,7 +17,7 @@
             <TabItem Header="Authors" Width="200">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource authorViewSource}">
                     <Button x:Name="createAuthorBtn" Click="CreateAuthor" Content="Create selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
-                    <Button x:Name="updateAuthorBtn" Click="SaveChanges" Content="Update selected" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="updateAuthorBtn" Click="SaveChanges" Content="Update" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="deleteAuthorBtn" Click="DeleteAuthor" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
 
                     <DataGrid x:Name="authorDataGrid" AutoGenerateColumns="False" 
@@ -38,7 +38,7 @@
             <TabItem Header="Publishers" Width="200">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource publisherViewSource}">
                     <Button x:Name="createPublisherBtn" Click="CreatePublisher" Content="Create selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
-                    <Button x:Name="updatePublisherBtn" Click="SaveChanges" Content="Update selected" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="updatePublisherBtn" Click="SaveChanges" Content="Update" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="deletePublisherBtn" Click="DeletePublisher" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <DataGrid x:Name="publisherDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" 
                               ItemsSource="{Binding}" Margin="10,45,300,10" 
@@ -56,7 +56,7 @@
             <TabItem Header="Books" Width="200">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource titleViewSource}">
                     <Button x:Name="createBookBtn" Click="CreateBook" Content="Create selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
-                    <Button x:Name="updateBookBtn" Click="UpdateBook" Content="Update selected" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="updateBookBtn" Click="UpdateBook" Content="Update" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="deleteBookBtn" Click="DeleteBook" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
                     
                     <DataGrid x:Name="titleDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
