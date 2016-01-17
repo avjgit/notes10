@@ -22,51 +22,48 @@ namespace wpf_bibtex
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<BiblioItem> BiblioItems { get; set; }
+        public List<BOOK> Books { get; set; }
+        public List<ARTICLE> Articles { get; set; }
+        public List<Thesis> Masters { get; set; }
+        public List<Thesis> PhDs { get; set; }
+
 
         public MainWindow()
         {
             InitializeComponent();
-            BiblioItems = new List<BiblioItem>();
+
+            Books = new List<BOOK>();
+            Articles = new List<ARTICLE>();
+            Masters = new List<Thesis>();
+            PhDs = new List<Thesis>();
 
             // debug
-            var testbook = new BOOK("John Tolkien", "The Hobbit", "George Allen & Unwin", 1937, "UK");
+            Books.Add(new BOOK("John Tolkien", "The Hobbit", "George Allen & Unwin", 1937, "UK"));
 
-            var testMaster = new Thesis("Sergey", "Brin", "The Anatomy of a Large-Scale Hypertextual Web Search Engine", 
-                Thesis.ThesisType.MASTERSTHESIS, "Stanford", 1995);
+            Masters.Add(new Thesis("Sergey", "Brin", "The Anatomy of a Large-Scale Hypertextual Web Search Engine", 
+                Thesis.ThesisType.MASTERSTHESIS, "Stanford", 1995));
 
-            var testPhd = new Thesis("Richard", "Feynman", "The Principle of Least Action in Quantum Mechanics",
-                Thesis.ThesisType.PHDTHESIS, "Princeton University", 1942);
+            PhDs.Add(new Thesis("Richard", "Feynman", "The Principle of Least Action in Quantum Mechanics",
+                Thesis.ThesisType.PHDTHESIS, "Princeton University", 1942));
 
-            var testArticle = new ARTICLE("Bob Woodward, Carl Bernstein", "Investigation of the Watergate break in", 1970,
-                "Washington Post", "1");
-
-            BiblioItems.Add(testbook);
-            BiblioItems.Add(testMaster);
-            BiblioItems.Add(testPhd);
-            BiblioItems.Add(testArticle);
+            Articles.Add(new ARTICLE("Bob Woodward, Carl Bernstein", "Investigation of the Watergate break in", 1970,
+                "Washington Post", "1"));
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var bOOKViewSource = ((CollectionViewSource)(this.FindResource("bOOKViewSource")));
-            bOOKViewSource.Source = BiblioItems.Where(x => x.GetType() == typeof(BOOK)).ToList();
+            bOOKViewSource.Source = Books;
 
             var aRTICLEViewSource = ((CollectionViewSource)(this.FindResource("aRTICLEViewSource")));
-            aRTICLEViewSource.Source = BiblioItems.Where(x => x.GetType() == typeof(ARTICLE)).ToList();
+            aRTICLEViewSource.Source = Articles;
 
             var thesisViewSource = ((CollectionViewSource)(this.FindResource("thesisViewSource")));
-            thesisViewSource.Source = BiblioItems.Where(x => x.GetType() == typeof(Thesis));
+            thesisViewSource.Source = Masters;
 
-            mastersDataGrid.ItemsSource = BiblioItems
-                .Where(x => x.GetType() == typeof(Thesis))
-                .Where(x => ((Thesis)x).Type == Thesis.ThesisType.MASTERSTHESIS)
-                .ToList();
+            mastersDataGrid.ItemsSource = Masters;
 
-            phdsDataGrid.ItemsSource = BiblioItems
-                .Where(x => x.GetType() == typeof(Thesis))
-                .Where(x => ((Thesis)x).Type == Thesis.ThesisType.PHDTHESIS)
-                .ToList();
+            phdsDataGrid.ItemsSource = PhDs;
         }
 
         private void buttonOpen_Click(object sender, RoutedEventArgs e)
@@ -89,7 +86,6 @@ namespace wpf_bibtex
 
         private void CreateBook(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void SaveChanges(object sender, RoutedEventArgs e)
