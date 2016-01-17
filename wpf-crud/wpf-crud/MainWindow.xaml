@@ -10,8 +10,8 @@
         <CollectionViewSource x:Key="authorViewSource" d:DesignSource="{d:DesignInstance {x:Type local:author}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="549" 
-                    Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
+        <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" 
+                    Margin="10,10,10,10" VerticalAlignment="Stretch">
             <TabItem Header="Authors" Width="200">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource authorViewSource}">
                     <Button x:Name="createAuthorBtn" Click="CreateAuthor" Content="Create selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
@@ -23,9 +23,9 @@
                               Margin="10,45,300,10" RowDetailsVisibilityMode="VisibleWhenSelected"
                               >
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="au_fnameColumn" Binding="{Binding au_fname}" Header="Firstname" Width="120"/>
-                            <DataGridTextColumn x:Name="au_lnameColumn" Binding="{Binding au_lname}" Header="Lastname" Width="120"/>
-                            <DataGridTextColumn x:Name="addressColumn" Binding="{Binding address}" Header="Address" Width="*"/>
+                            <DataGridTextColumn x:Name="au_fnameColumn" Binding="{Binding au_fname}" Header="Firstname" Width=".25*"/>
+                            <DataGridTextColumn x:Name="au_lnameColumn" Binding="{Binding au_lname}" Header="Lastname" Width=".25*"/>
+                            <DataGridTextColumn x:Name="addressColumn" Binding="{Binding address}" Header="Address" Width=".5*"/>
                         </DataGrid.Columns>
                     </DataGrid>
 
