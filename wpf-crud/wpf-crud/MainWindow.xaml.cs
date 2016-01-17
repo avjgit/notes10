@@ -122,6 +122,7 @@ exception: {ex.InnerException}
             {
                 context.SaveChanges();
                 authorDataGrid.ItemsSource = context.authors.ToList();
+                authorListBox.ItemsSource = context.authors.ToList();
                 UpdateButtonState(createAuthorBtn, updateAuthorBtn, deleteAuthorBtn);
                 MessageBox.Show(
                     $"Author {author.FullName} successfully removed",
@@ -192,6 +193,7 @@ exception: {ex.InnerException}
             {
                 context.SaveChanges();
                 publisherDataGrid.ItemsSource = context.publishers.ToList();
+                publisherComboBox.ItemsSource = context.publishers.ToList();
                 UpdateButtonState(createPublisherBtn, updatePublisherBtn, deletePublisherBtn);
 
                 MessageBox.Show(
