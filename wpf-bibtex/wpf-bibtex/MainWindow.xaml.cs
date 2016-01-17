@@ -38,15 +38,22 @@ namespace wpf_bibtex
             var testPhd = new Thesis("Richard", "Feynman", "The Principle of Least Action in Quantum Mechanics",
                 Thesis.ThesisType.PHDTHESIS, "Princeton University", 1942);
 
+            var testArticle = new ARTICLE("Bob Woodward, Carl Bernstein", "Investigation of the Watergate break in", 1970,
+                "Washington Post", "1");
+
             BiblioItems.Add(testbook);
             BiblioItems.Add(testMaster);
             BiblioItems.Add(testPhd);
+            BiblioItems.Add(testArticle);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var bOOKViewSource = ((CollectionViewSource)(this.FindResource("bOOKViewSource")));
             bOOKViewSource.Source = BiblioItems.Where(x => x.GetType() == typeof(BOOK)).ToList();
+
+            var aRTICLEViewSource = ((CollectionViewSource)(this.FindResource("aRTICLEViewSource")));
+            aRTICLEViewSource.Source = BiblioItems.Where(x => x.GetType() == typeof(ARTICLE)).ToList();
 
             var thesisViewSource = ((CollectionViewSource)(this.FindResource("thesisViewSource")));
             thesisViewSource.Source = BiblioItems.Where(x => x.GetType() == typeof(Thesis));
@@ -111,6 +118,16 @@ namespace wpf_bibtex
         }
 
         private void DeletePhd(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CreateArticle(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteArticle(object sender, RoutedEventArgs e)
         {
 
         }

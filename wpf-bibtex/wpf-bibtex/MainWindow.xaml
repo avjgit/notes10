@@ -9,6 +9,7 @@
     <Window.Resources>
         <CollectionViewSource x:Key="bOOKViewSource" d:DesignSource="{d:DesignInstance {x:Type local:BOOK}, CreateList=True}"/>
         <CollectionViewSource x:Key="thesisViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Thesis}, CreateList=True}"/>
+        <CollectionViewSource x:Key="aRTICLEViewSource" d:DesignSource="{d:DesignInstance {x:Type local:ARTICLE}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
         <TabControl x:Name="tabControl" 
@@ -89,6 +90,26 @@
                             <DataGridTextColumn x:Name="authorsColumn2" Binding="{Binding Authors}" Header="Authors" Width=".2*"/>
                             <DataGridTextColumn x:Name="schoolColumn1" Binding="{Binding School}" Header="School" Width=".2*"/>
                             <DataGridTextColumn x:Name="yearColumn2" Binding="{Binding Year}" Header="Year" Width=".1*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Articles">
+                <Grid Background="#FFE5E5E5" DataContext="{StaticResource aRTICLEViewSource}">
+
+                    <Button x:Name="createArticleBtn" Click="CreateArticle" Content="Create selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="updateArticleBtn" Click="SaveChanges" Content="Update" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="deleteArticleBtn" Click="DeleteArticle" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    
+                    <DataGrid x:Name="aRTICLEDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
+                              Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected"
+                              VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="titleColumn3" Binding="{Binding Title}" Header="Title" Width=".4*"/>
+                            <DataGridTextColumn x:Name="authorsColumn3" Binding="{Binding Authors}" Header="Authors" Width=".2*"/>
+                            <DataGridTextColumn x:Name="journalColumn" Binding="{Binding Journal}" Header="Journal" Width=".2*"/>
+                            <DataGridTextColumn x:Name="volumeColumn" Binding="{Binding Volume}" Header="Volume" Width=".1*"/>
+                            <DataGridTextColumn x:Name="yearColumn3" Binding="{Binding Year}" Header="Year" Width=".1*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
