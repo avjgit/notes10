@@ -22,48 +22,51 @@ namespace wpf_bibtex
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<BOOK> Books { get; set; }
-        public List<ARTICLE> Articles { get; set; }
-        public List<Thesis> Masters { get; set; }
-        public List<Thesis> PhDs { get; set; }
-
+        public List<BiblioItem> BiblioItems { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
-
-            Books = new List<BOOK>();
-            Articles = new List<ARTICLE>();
-            Masters = new List<Thesis>();
-            PhDs = new List<Thesis>();
+            BiblioItems = new List<BiblioItem>();
 
             // debug
-            Books.Add(new BOOK("John Tolkien", "The Hobbit", "George Allen & Unwin", 1937, "UK"));
+            var testbook = new BOOK("John Tolkien", "The Hobbit", "George Allen & Unwin", 1937, "UK");
 
-            Masters.Add(new Thesis("Sergey", "Brin", "The Anatomy of a Large-Scale Hypertextual Web Search Engine", 
-                Thesis.ThesisType.MASTERSTHESIS, "Stanford", 1995));
+            var testMaster = new Thesis("Sergey", "Brin", "The Anatomy of a Large-Scale Hypertextual Web Search Engine", 
+                Thesis.ThesisType.MASTERSTHESIS, "Stanford", 1995);
 
-            PhDs.Add(new Thesis("Richard", "Feynman", "The Principle of Least Action in Quantum Mechanics",
-                Thesis.ThesisType.PHDTHESIS, "Princeton University", 1942));
+            var testPhd = new Thesis("Richard", "Feynman", "The Principle of Least Action in Quantum Mechanics",
+                Thesis.ThesisType.PHDTHESIS, "Princeton University", 1942);
 
-            Articles.Add(new ARTICLE("Bob Woodward, Carl Bernstein", "Investigation of the Watergate break in", 1970,
-                "Washington Post", "1"));
+            var testArticle = new ARTICLE("Bob Woodward, Carl Bernstein", "Investigation of the Watergate break in", 1970,
+                "Washington Post", "1");
+
+            BiblioItems.Add(testbook);
+            BiblioItems.Add(testMaster);
+            BiblioItems.Add(testPhd);
+            BiblioItems.Add(testArticle);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var bOOKViewSource = ((CollectionViewSource)(this.FindResource("bOOKViewSource")));
-            bOOKViewSource.Source = Books;
+            bOOKViewSource.Source = BiblioItems.Where(x => x.GetType() == typeof(BOOK)).ToList();
 
             var aRTICLEViewSource = ((CollectionViewSource)(this.FindResource("aRTICLEViewSource")));
-            aRTICLEViewSource.Source = Articles;
+            aRTICLEViewSource.Source = BiblioItems.Where(x => x.GetType() == typeof(ARTICLE)).ToList();
 
             var thesisViewSource = ((CollectionViewSource)(this.FindResource("thesisViewSource")));
-            thesisViewSource.Source = Masters;
+            thesisViewSource.Source = BiblioItems.Where(x => x.GetType() == typeof(Thesis));
 
-            mastersDataGrid.ItemsSource = Masters;
+            mastersDataGrid.ItemsSource = BiblioItems
+                .Where(x => x.GetType() == typeof(Thesis))
+                .Where(x => ((Thesis)x).Type == Thesis.ThesisType.MASTERSTHESIS)
+                .ToList();
 
-            phdsDataGrid.ItemsSource = PhDs;
+            phdsDataGrid.ItemsSource = BiblioItems
+                .Where(x => x.GetType() == typeof(Thesis))
+                .Where(x => ((Thesis)x).Type == Thesis.ThesisType.PHDTHESIS)
+                .ToList();
         }
 
         private void buttonOpen_Click(object sender, RoutedEventArgs e)
@@ -86,6 +89,7 @@ namespace wpf_bibtex
 
         private void CreateBook(object sender, RoutedEventArgs e)
         {
+
         }
 
         private void SaveChanges(object sender, RoutedEventArgs e)
