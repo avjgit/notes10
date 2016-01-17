@@ -37,8 +37,7 @@ namespace wpf_bibtex
         public override string BibTexPrint()
         {
             return $@"
-@{Type}{{
-    {BibCode},
+@{Type}{{{BibCode},
     author = {{ {AuthorsString} }},
     title = {{ {Title} }},
     school = {{ {School} }},

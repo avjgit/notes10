@@ -4,13 +4,6 @@
 
 ======================================= TODO:
 
-Pārdefinēt metodi: “Izdrukat()”, kas atgriež visu īpašību vērtības kā BibTeX tekstu. 
-Ņemiet vērā, ka atkarībā no noslēguma darba veida mainās arī BibTeX vienuma veids, attiecīgi masterthesis vai phdthesis.
-
-
-5.  Papildus:
- Izveidot Jūsu izvēlētajam (vēl vienam) bibliogrāfiskā vienuma veidam un autoru apstrādei atbilstošas klases ar atbilstošiem atribūtiem, īpašībām un metodēm.
- Ja nepieciešams, pēc saviem ieskatiem varat veidot vēl citas klases un iepriekš minētās (1.,2.,4. punktā minētās) papildināt ar jauniem laukiem, īpašībām un metodēm.
  Izveidot vienu statisku (static) lauku (field) un statisku (static) metodi (method);
 
 6. Izveidot globālu(as) kolekciju(as) vai masīvu(s) (collection vai array), kas saturētu “Bibliogrāfiskos vienumus”.

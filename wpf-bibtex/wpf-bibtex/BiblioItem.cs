@@ -64,8 +64,7 @@ namespace wpf_bibtex
 
         {
             return $@"
-@{BibType}{{
-    {BibCode},
+@{BibType}{{{BibCode},
     title = {{ {Title} }},
     year = {{ {Year} }},
     author = {{ {AuthorsString} }},
