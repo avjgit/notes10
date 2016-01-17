@@ -24,6 +24,7 @@
                               EnableRowVirtualization="True" ItemsSource="{Binding}" 
                               Margin="10,45,300,10" RowDetailsVisibilityMode="VisibleWhenSelected"
                               VerticalScrollBarVisibility="Visible"
+                              SelectionChanged="authorsSelectionChanged"
                               >
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="au_fnameColumn" Binding="{Binding au_fname}" Header="Firstname" Width=".25*"/>
@@ -42,7 +43,7 @@
                     <DataGrid x:Name="publisherDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" 
                               ItemsSource="{Binding}" Margin="10,45,300,10" 
                               RowDetailsVisibilityMode="VisibleWhenSelected"
-                              VerticalScrollBarVisibility="Visible"
+                              VerticalScrollBarVisibility="Visible" SelectionChanged="publishersSelectionChanged"
                               >
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="pub_nameColumn" Binding="{Binding pub_name}" Header="Publisher" Width=".5*"/>
@@ -57,9 +58,10 @@
                     <Button x:Name="createBookBtn" Click="CreateBook" Content="Create selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="updateBookBtn" Click="UpdateBook" Content="Update selected" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="deleteBookBtn" Click="DeleteBook" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    
                     <DataGrid x:Name="titleDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
                               Margin="10, 45, 300, 10" VerticalScrollBarVisibility="Visible" RowDetailsVisibilityMode="VisibleWhenSelected"
-                              SelectionChanged="SynchronizeBookDetails">
+                              SelectionChanged="booksSelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="title1Column" Binding="{Binding title1}" Header="Book title" Width=".75*"/>
 

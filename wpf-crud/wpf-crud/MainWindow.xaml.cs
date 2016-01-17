@@ -184,9 +184,14 @@ namespace wpf_crud
             titleDataGrid.Items.Refresh();
         }
 
-        private void SynchronizeBookDetails(object sender, SelectionChangedEventArgs e)
+        private void booksSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var book = titleDataGrid.SelectedItem as title;
+
+            // synchronize books details
+
+            // disable creation button if entry is not new
+            createBookBtn.IsEnabled = (book.title_id == null);
 
             // sync publisher dropdown
             publisherComboBox.SelectedValue = book.pub_id;
@@ -202,6 +207,17 @@ namespace wpf_crud
                 var authorItem = authorListBox.Items.GetItemAt(authorItemIndex);
                 authorListBox.SelectedItems.Add(authorItem);
             }
+        }
+
+        private void authorsSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var author = titleDataGrid.SelectedItem as author;
+            createAuthorBtn.IsEnabled = (author.au_id == null);
+        }
+        private void publishersSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var publisher = publisherDataGrid.SelectedItem as publisher;
+            createPublisherBtn.IsEnabled = (publisher.pub_id == null);
         }
     }
 }
