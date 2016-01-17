@@ -3,34 +3,9 @@
 - NB: wikipēdijā rakstīts, ka autori tiek atdalīti ar "and", nevis ar komatu
 
 ======================================= TODO:
-- pievienot jaunus bibliogrāfiskos vienumus
-- rediģēt esošus
-- ielasīt bibliogrāfiskos vienumus no BibTex faila
-- eksportēt vienumus BibTeX failā
 
-no https://en.wikipedia.org/wiki/BibTeX jāatbalsta: 
-book, 
-masterthesis, 
-phdthesis,
-article
-
-Mājas darbā jāatbalsta tie BibTex vienumu lauki, kas atbilst zemāk minētajiem klašu laukiem.
-Pārejos drīkst ignorēt (bet programma nedrīkst nosprāgt ar tādiem saskaroties.)
-
-3. Izveidot pārskaitāmo tipu (Enum) “Noslēguma darba veids” ar vērtībām: “Maģistra darbs”, “Doktora disertācija”. Ja vēlaties varat pievienot arī citas pārskaitāmā tipa vērtības, piemēram, “Kvalifikācijas darbs”.
-
-4. Izveidot klasei „Bibliogrāfiskais vienums” apakšklasi „Noslēguma darbs”
-Noslēguma darbam papildus jāvar norādīt “Noslēguma darba veidu” 
-(Jūsu definētais pārskaitāmais tips (Enum)), “izglītības iestādi”;
-Noslēguma darbam var būt tikai viens autors;
-Izveidot konstruktoru, kas saņem sekojošus parametrus:
-string “autora vārds”;
-string “autora uzvārds”
-string “nosaukums”;
-EnumXXX “noslēguma darba veids”; (Tips ir Jūsu definētais pārskaitāmais tips)
-string “izglītības iestādes nosaukums”;
-int “gads”;
-Pārdefinēt metodi: “Izdrukat()”, kas atgriež visu īpašību vērtības kā BibTeX tekstu. Ņemiet vērā, ka atkarībā no noslēguma darba veida mainās arī BibTeX vienuma veids, attiecīgi masterthesis vai phdthesis.
+Pārdefinēt metodi: “Izdrukat()”, kas atgriež visu īpašību vērtības kā BibTeX tekstu. 
+Ņemiet vērā, ka atkarībā no noslēguma darba veida mainās arī BibTeX vienuma veids, attiecīgi masterthesis vai phdthesis.
 
 
 5.  Papildus:
@@ -61,6 +36,21 @@ Jālieto gan modālā (modal), gan nemodālā formu atvēršana.
 Kodā nodemonstrēt visu klašu metožu izsaukumus un īpašību uzstādīšanu.
 
 P.S2. Var pieņemt, ka BibTeX lauki nesatur speciālos simbolus (vienīgais izņēmumi: komats autoru laukā, kas atdala vairākus autorus vienu no otra un punkti datuma laukā) t.i. pārējo (izņēmums autori un datums) lauku vērtības satur tikai burtus, ciparus un atstarpes.
+
+- pievienot jaunus bibliogrāfiskos vienumus
+- rediģēt esošus
+- ielasīt bibliogrāfiskos vienumus no BibTex faila
+- eksportēt vienumus BibTeX failā
+
+no https://en.wikipedia.org/wiki/BibTeX jāatbalsta: 
+book, 
+masterthesis, 
+phdthesis,
+article
+
+Mājas darbā jāatbalsta tie BibTex vienumu lauki, kas atbilst zemāk minētajiem klašu laukiem.
+Pārejos drīkst ignorēt (bet programma nedrīkst nosprāgt ar tādiem saskaroties.)
+
 
 BibTex faila piemērs:
 

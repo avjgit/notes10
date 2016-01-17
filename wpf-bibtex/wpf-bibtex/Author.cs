@@ -18,5 +18,10 @@ namespace wpf_bibtex
             FirstName = nameSplit.First();
             LastName = string.Join(" ", nameSplit.Skip(1));
         }
+        public Author(string firstname, string lastname)
+        {
+            FirstName = firstname;
+            LastName = lastname;
+        }
     }
 }
