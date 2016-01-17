@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="Author.cs" />
     <Compile Include="BiblioItem.cs" />
+    <Compile Include="BOOK.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

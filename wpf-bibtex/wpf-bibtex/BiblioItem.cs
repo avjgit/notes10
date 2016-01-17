@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace wpf_bibtex
 {
-    abstract class BiblioItem
+    public abstract class BiblioItem
     {
         private string title;
         private int year;
@@ -47,6 +47,7 @@ namespace wpf_bibtex
 
         public BiblioItem()
         {
+            Authors = new List<Author>();
             creationDate = DateTime.Now;
         }
 
@@ -54,18 +55,22 @@ namespace wpf_bibtex
 
         public string AuthorsString => string.Join(", ", Authors);
 
-        public string BibCode => Authors.First().LastLastName + Year.ToString();
+        private string AuthorsLastNames => Authors.Select(a => a.LastLastName).ToString();
 
+        internal string BibCode => AuthorsLastNames + Year.ToString();
+
+        internal string BibType => GetType().Name;
         public virtual string BibTexPrint()
+
         {
             return $@"
-@{this.GetType().Name}{{
+@{BibType}{{
     {BibCode},
     title = {{ {Title} }},
     year = {{ {Year} }},
-    author = {{ {AuthorsString} }}
+    author = {{ {AuthorsString} }},
+    timestamp = {{ {CreationDate} }}
 }}";
-
         }
 
     }

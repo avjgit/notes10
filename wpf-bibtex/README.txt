@@ -17,17 +17,6 @@ article
 Mājas darbā jāatbalsta tie BibTex vienumu lauki, kas atbilst zemāk minētajiem klašu laukiem.
 Pārejos drīkst ignorēt (bet programma nedrīkst nosprāgt ar tādiem saskaroties.)
 
-2. Izveidot klasei „ Bibliogrāfiskais vienums” apakšklasi „Grāmata”
-Grāmatai papildus jāvar norādīt “izdevēju”, “izdevēja adresi”;
-Grāmatai var būt viens vai vairāki Autori;
-Izveidot konstruktoru, kas saņem sekojošus parametrus:
-string “autori” (Ar komatiem atdalīts autoru saraksts, var pieņemt, ka autoram ir vārds un uzvārds, kas ir atdalīts ar atstarpēm, piemēram “Paul Deitel, Harvey Deitel”);
-string “nosaukums”;
-string “izdevnieciba”;
-int “gads”;
-string “iIzdevniecības adrese”; (var arī nenorādīt)
-Pārdefinēt metodi: “Izdrukat()”, kas atgriež visu īpašību vērtības kā BibTeX tekstu.
-
 3. Izveidot pārskaitāmo tipu (Enum) “Noslēguma darba veids” ar vērtībām: “Maģistra darbs”, “Doktora disertācija”. Ja vēlaties varat pievienot arī citas pārskaitāmā tipa vērtības, piemēram, “Kvalifikācijas darbs”.
 
 4. Izveidot klasei „Bibliogrāfiskais vienums” apakšklasi „Noslēguma darbs”
