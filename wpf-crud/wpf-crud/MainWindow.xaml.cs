@@ -35,47 +35,115 @@ namespace wpf_crud
             var titleViewSource = ((CollectionViewSource)(FindResource("titleViewSource")));
             titleViewSource.Source = context.titles.ToList();
         }
+
+        // common method for all entities
+        private void SaveChanges(object sender, RoutedEventArgs e)
+        {
+            context.SaveChanges();
+        }
+
         private void CreateAuthor(object sender, RoutedEventArgs e)
         {
+            var newAuthor = authorDataGrid.SelectedItem as author;
 
+            // to prevent creation of already existing author
+            if (newAuthor.au_id != null) return;
+
+            newAuthor.au_id = GetAuthorId();
+
+            //hardcoded required field, as allowed per requirements
+            newAuthor.phone = "1188"; 
+            context.authors.Add(newAuthor);
+            context.SaveChanges();
         }
 
-        private void UpdateAuthor(object sender, RoutedEventArgs e)
+        private string GetAuthorId()
         {
+            string id = string.Empty;
+            for (int i = 1111; i <= 9999; i++)
+            {
+                id = "111-11-" + i.ToString();
 
+                if (!context.authors.Where(a => a.au_id == id).Any())
+                    break;
+            }
+            return id;
         }
+
+        
 
         private void DeleteAuthor(object sender, RoutedEventArgs e)
         {
+            var author = authorDataGrid.SelectedItem as author;
+            var removable = context.authors.Single(a => a.au_id == author.au_id);
+            context.authors.Remove(removable);
+            context.SaveChanges();
+            authorDataGrid.ItemsSource = null;
+            authorDataGrid.ItemsSource = context.authors.ToList();
 
         }
 
         private void CreatePublisher(object sender, RoutedEventArgs e)
         {
-
+            var newPublisher = publisherDataGrid.SelectedItem as publisher;
+            newPublisher.pub_id = GetPublsherId();
+            context.publishers.Add(newPublisher);
+            context.SaveChanges();
         }
-
-        private void UpdatePublisher(object sender, RoutedEventArgs e)
+        private string GetPublsherId()
         {
+            string id = string.Empty;
+            for (int i = 1; i <= 99; i++)
+            {
+                id = (9900 + i).ToString();
 
+                if (!context.publishers.Where(x => x.pub_id == id).Any())
+                    break;
+            }
+            return id;
         }
 
         private void DeletePublisher(object sender, RoutedEventArgs e)
         {
-
+            var publisher = publisherDataGrid.SelectedItem as publisher;
+            var removable = context.publishers.Single(x => x.pub_id == publisher.pub_id);
+            context.publishers.Remove(publisher);
+            context.SaveChanges();
+            publisherDataGrid.ItemsSource = null;
+            publisherDataGrid.ItemsSource = context.publishers.ToList();
         }
 
         private void CreateBook(object sender, RoutedEventArgs e)
         {
-
+            var newTitle = titleDataGrid.SelectedItem as title;
+            newTitle.type = "fiction";
+            newTitle.title_id = GetBooksId();
+            context.titles.Add(newTitle);
+            context.SaveChanges();
         }
-
-        private void UpdateBook(object sender, RoutedEventArgs e)
+        private string GetBooksId()
         {
-
+            string id = string.Empty;
+            for (int i = 100000; i <= 999999; i++)
+            {
+                id = i.ToString();
+                if (!context.publishers.Where(x => x.pub_id == id).Any())
+                    break;
+            }
+            return id;
         }
 
         private void DeleteBook(object sender, RoutedEventArgs e)
+        {
+            var book = titleDataGrid.SelectedItem as title;
+            var removable = context.titles.Single(x => x.title_id == book.title_id);
+            context.titles.Remove(book);
+            context.SaveChanges();
+            titleDataGrid.ItemsSource = null;
+            titleDataGrid.ItemsSource = context.titles.ToList();
+        }
+
+        private void UpdateBook(object sender, RoutedEventArgs e)
         {
 
         }
