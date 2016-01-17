@@ -9,7 +9,7 @@ namespace wpf_bibtex
     abstract class BiblioItem
     {
         private string title;
-        private string year;
+        private int year;
 
         public string Title
         {
@@ -23,7 +23,7 @@ namespace wpf_bibtex
             }
         }
 
-        public string Year
+        public int Year
         {
             get
             {
@@ -31,7 +31,8 @@ namespace wpf_bibtex
             }
             set
             {
-                year = value;
+                if (value > 1800 && value <= DateTime.Now.Year + 1)
+                    year = value;
             }
         }
 
