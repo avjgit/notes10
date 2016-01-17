@@ -28,5 +28,8 @@ namespace wpf_bibtex
     timestamp = {{ {CreationDate} }}
 }}";
         }
+
+        public static string ProgramName = "AJ05044HW1";
+        public static string GetProgramName => ProgramName;
     }
 }

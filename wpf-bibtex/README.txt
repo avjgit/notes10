@@ -3,9 +3,6 @@
 - NB: wikipēdijā rakstīts, ka autori tiek atdalīti ar "and", nevis ar komatu
 
 ======================================= TODO:
-
- Izveidot vienu statisku (static) lauku (field) un statisku (static) metodi (method);
-
 6. Izveidot globālu(as) kolekciju(as) vai masīvu(s) (collection vai array), kas saturētu “Bibliogrāfiskos vienumus”.
 Nodrošināt izveidoto “Bibliogrāfisko vienumu” pievienošanu kolekcijai(ām)/masīvam(iem).
 
