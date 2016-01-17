@@ -50,5 +50,7 @@ namespace wpf_bibtex
             creationDate = DateTime.Now;
         }
 
+        public List<Author> Authors { get; set; }
+
     }
 }

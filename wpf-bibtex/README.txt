@@ -1,4 +1,5 @@
 - Solūcijas mapē iekopēju teksta failu ar uzdevuma nosacījumiem; ar katru ierakstu git sistēmā tiek arī izdzēsti nosacījumi, kas ar šo ierakstu ir izpildīti - ērti var redzēt git ierakstu vēsturē
+- Autoram izveidota atsevišķa klase; tiek iestatīs caur publisko īpašību
 
 ======================================= TODO:
 - pievienot jaunus bibliogrāfiskos vienumus
@@ -16,7 +17,6 @@ Mājas darbā jāatbalsta tie BibTex vienumu lauki, kas atbilst zemāk minētaji
 Pārejos drīkst ignorēt (bet programma nedrīkst nosprāgt ar tādiem saskaroties.)
 
 
-Izveidot iespēju norādīt bibliogrāfiskā vienuma Autoru/Autorus. Šeit Jūs paši varat izvēlēties: kā norādīt Autoru un/vai Autorus, kādus datu tipus izvēlēties, kur norādīt autorus virsklasē vai apakšklasēs utt.
 Izveidot virtuālu (virtual) metodi: “Izdrukat()”, kas atgriež visu īpašību vērtības kā BibTeX tekstu.
 
 
