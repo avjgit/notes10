@@ -8,6 +8,7 @@
         Title="MainWindow" Height="600" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="bOOKViewSource" d:DesignSource="{d:DesignInstance {x:Type local:BOOK}, CreateList=True}"/>
+        <CollectionViewSource x:Key="thesisViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Thesis}, CreateList=True}"/>
     </Window.Resources>
     <Grid>
         <TabControl x:Name="tabControl" 
@@ -40,8 +41,8 @@
                     <Button x:Name="deleteBookBtn" Click="DeleteBook" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
 
                     <DataGrid x:Name="bOOKDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
-                              Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected" VerticalScrollBarVisibility="Visible"
-                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                              Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected" 
+                              VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="titleColumn" Binding="{Binding Title}" Header="Title" Width=".3*"/>
                             <DataGridTextColumn x:Name="authorsColumn" Binding="{Binding Authors}" Header="Authors" Width=".3*"/>
@@ -54,6 +55,27 @@
 
                 </Grid>
             </TabItem>
+            <TabItem Header="MasterThesis" Width="100">
+                <Grid Background="#FFE5E5E5">
+
+                    <Button x:Name="createMasterBtn" Click="CreateMaster" Content="Create selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="updateMasterBtn" Click="SaveChanges" Content="Update" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="deletePhDBtn" Click="DeleteMaster" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    
+                    <DataGrid x:Name="thesisDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource thesisViewSource}}" 
+                              Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected"
+                              VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="titleColumn1" Binding="{Binding Title}" Header="Title" Width=".5*"/>
+                            <DataGridTextColumn x:Name="authorsColumn1" Binding="{Binding Authors}" Header="Authors" Width=".2*"/>
+                            <DataGridTextColumn x:Name="schoolColumn" Binding="{Binding School}" Header="School" Width=".2*"/>
+                            <DataGridTextColumn x:Name="yearColumn1" Binding="{Binding Year}" Header="Year" Width=".1*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+            </TabItem>
+
         </TabControl>
 
     </Grid>

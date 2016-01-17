@@ -31,8 +31,11 @@ namespace wpf_bibtex
 
             // debug
             var testbook = new BOOK("John Tolkien", "The Hobbit", "George Allen & Unwin", 1937, "UK");
+            var testMaster = new Thesis("Sergey", "Brin", "The Anatomy of a Large-Scale Hypertextual Web Search Engine", 
+                Thesis.ThesisType.MASTERSTHESIS, "Stanford", 1995);
 
             BiblioItems.Add(testbook);
+            BiblioItems.Add(testMaster);
         }
 
         private void buttonOpen_Click(object sender, RoutedEventArgs e)
@@ -57,6 +60,12 @@ namespace wpf_bibtex
         {
             var bOOKViewSource = ((CollectionViewSource)(this.FindResource("bOOKViewSource")));
             bOOKViewSource.Source = BiblioItems.Where(x => x.GetType() == typeof(BOOK)).ToList();
+
+            var thesisViewSource = ((CollectionViewSource)(this.FindResource("thesisViewSource")));
+            thesisViewSource.Source = BiblioItems
+                .Where(x => x.GetType() == typeof(Thesis))
+                .Where(x => ((Thesis)x).Type == Thesis.ThesisType.MASTERSTHESIS)
+                .ToList();
         }
 
         private void CreateBook(object sender, RoutedEventArgs e)
@@ -70,6 +79,16 @@ namespace wpf_bibtex
         }
 
         private void DeleteBook(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CreateMaster(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteMaster(object sender, RoutedEventArgs e)
         {
 
         }

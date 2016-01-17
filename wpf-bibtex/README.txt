@@ -4,7 +4,7 @@ kas ar šo ierakstu ir izpildīti - ērti var redzēt git ierakstu vēsturē
 - Autoram izveidota atsevišķa klase; tiek iestatīs caur publisko īpašību
 - NB: wikipēdijā rakstīts, ka autori tiek atdalīti ar "and", nevis ar komatu
 ======================================= TODO:
-- CRUD book
+- C UD book
 - CRUD masterthesis
 - CRUD phdthesiS
 - CRUD article
