@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_crud"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="800">
     <Grid>
-        
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="549" 
+                    Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
+            <TabItem Header="Authors" Width="200">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Publishers" Width="200">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Books" Width="200">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Window>
