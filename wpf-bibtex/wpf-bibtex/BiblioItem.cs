@@ -45,6 +45,10 @@ namespace wpf_bibtex
             }
         }
 
+        public BiblioItem()
+        {
+            creationDate = DateTime.Now;
+        }
 
     }
 }
