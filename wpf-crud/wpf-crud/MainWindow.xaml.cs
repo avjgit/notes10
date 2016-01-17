@@ -195,15 +195,25 @@ exception: {ex.InnerException}
             newTitle.type = "fiction";
             newTitle.title_id = GetBooksId();
 
-            newTitle.pub_id = publisherComboBox.SelectedValue.ToString();
-
-
-            context.titles.Add(newTitle);
+            newTitle.pub_id = publisherComboBox.SelectedValue?.ToString();
 
             try
             {
                 context.titles.Add(newTitle);
                 context.SaveChanges();
+
+                foreach (author author in authorListBox.SelectedItems)
+                {
+                    var entry = new titleauthor
+                    {
+                        title_id = newTitle.title_id,
+                        au_id = author.au_id
+                    };
+                    
+                    newTitle.titleauthors.Add(entry);
+                }
+                context.SaveChanges();
+
                 MessageBox.Show(
                     $"Book {newTitle.title1} successfully created",
                     "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -225,7 +235,7 @@ exception: {ex.InnerException}
             for (int i = 0; i <= 999999; i++)
             {
                 id = i.ToString("D6");
-                if (!context.titles.Where(x => x.pub_id == id).Any())
+                if (!context.titles.Where(x => x.title_id == id).Any())
                     break;
             }
             return id;
@@ -295,7 +305,6 @@ exception: {ex.InnerException}
                 var entry = new titleauthor { title_id = book.title_id, au_id = id };
                 book.titleauthors.Add(entry);
             }
-
 
             try
             {
