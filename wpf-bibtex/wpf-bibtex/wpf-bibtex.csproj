@@ -55,6 +55,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ARTICLE.cs" />
+    <Compile Include="Importable.cs" />
+    <Compile Include="Importer.cs" />
     <Compile Include="Thesis.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

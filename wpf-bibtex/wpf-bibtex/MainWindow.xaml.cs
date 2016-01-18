@@ -129,7 +129,12 @@ namespace wpf_bibtex
 
         private void Import(object sender, RoutedEventArgs e)
         {
+            var imported = Importer.GetItems("C:/Temp/bibtext.txt");
 
+            Importer.ExtractBooks(imported).ForEach(x => Books.Add(x));
+            Importer.ExtractArticles(imported).ForEach(x => Articles.Add(x));
+            Importer.ExtractMasters(imported).ForEach(x => Masters.Add(x));
+            Importer.ExtractPhds(imported).ForEach(x => Phds.Add(x));
         }
     }
 }

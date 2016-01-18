@@ -82,14 +82,14 @@
         </TabControl>
 
         <Button x:Name="buttonImport" 
-                        Content="Import to C:/Temp/bibtex.txt" 
+                        Content="Import from C:/Temp/bibtex.txt" 
                         HorizontalAlignment="Right" 
                         VerticalAlignment="Top" 
                         Width="170" Margin="0,11,190,0"
                         Click="Import"/>
 
         <Button x:Name="buttonExport" 
-                        Content="Export from C:/Temp/bibtex.txt" 
+                        Content="Export to C:/Temp/bibtex.txt" 
                         HorizontalAlignment="Right" 
                         VerticalAlignment="Top" 
                         Width="170" Margin="0,11,10,0"
