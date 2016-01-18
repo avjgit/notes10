@@ -63,7 +63,14 @@ namespace wpf_bibtex
             return authorsLastNames;
         }
 
-        internal string BibCode => AuthorsLastNames() + Year.ToString();
+        private string BibCodeGenerated => AuthorsLastNames() + Year.ToString();
+
+        public string BibCodeOriginal { get; set; }
+
+        internal string BibCode =>
+            String.IsNullOrEmpty(BibCodeOriginal)
+            ? BibCodeGenerated
+            : BibCodeOriginal;
 
         internal string BibType => GetType().Name;
 
