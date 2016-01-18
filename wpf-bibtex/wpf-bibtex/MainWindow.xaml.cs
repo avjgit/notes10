@@ -92,22 +92,38 @@ namespace wpf_bibtex
 
         private void DeleteBook(object sender, RoutedEventArgs e)
         {
-
+            var bookSelected = bOOKDataGrid.SelectedItem as BOOK;
+            if (bookSelected == null) return;
+            var book = Books.Single(x => x.Title == bookSelected.Title);
+            Books.Remove(book);
+            bOOKDataGrid.ItemsSource = Books;
         }
 
         private void DeleteMaster(object sender, RoutedEventArgs e)
         {
-
+            var masterSelected = mastersDataGrid.SelectedItem as Thesis;
+            if (masterSelected == null) return;
+            var master = Masters.Single(x => x.Title == masterSelected.Title);
+            Masters.Remove(master);
+            mastersDataGrid.ItemsSource = Masters;
         }
 
         private void DeletePhd(object sender, RoutedEventArgs e)
         {
-
+            var phdSelected = phdsDataGrid.SelectedItem as Thesis;
+            if (phdSelected == null) return;
+            var phd = Phds.Single(x => x.Title == phdSelected.Title);
+            Phds.Remove(phd);
+            phdsDataGrid.ItemsSource = Phds;
         }
 
         private void DeleteArticle(object sender, RoutedEventArgs e)
         {
-
+            var articleSelected = aRTICLEDataGrid.SelectedItem as ARTICLE;
+            if (articleSelected == null) return;
+            var article = Articles.Single(x => x.Title == articleSelected.Title);
+            Articles.Remove(article);
+            aRTICLEDataGrid.ItemsSource = Articles;
         }
     }
 }
