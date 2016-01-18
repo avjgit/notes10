@@ -4,10 +4,11 @@ kas ar šo ierakstu ir izpildīti - ērti var redzēt git ierakstu vēsturē
 - Autoram izveidota atsevišķa klase; tiek iestatīs caur publisko īpašību
 - NB: wikipēdijā rakstīts, ka autori tiek atdalīti ar "and", nevis ar komatu
 ======================================= TODO:
-- C UD book
-- CRUD masterthesis
-- CRUD phdthesiS
-- CRUD article
+delete
+- book
+- masterthesis
+- phdthesiS
+- article
 
 - kodā nodemonstrēt visu klašu metožu izsaukumus un īpašību uzstādīšanu.
 - eksport to file („C:\Temp\” or request path)

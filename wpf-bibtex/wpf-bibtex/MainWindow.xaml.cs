@@ -90,22 +90,7 @@ namespace wpf_bibtex
             }
         }
 
-        private void CreateBook(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void SaveChanges(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void DeleteBook(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CreateMaster(object sender, RoutedEventArgs e)
         {
 
         }
@@ -115,17 +100,7 @@ namespace wpf_bibtex
 
         }
 
-        private void CreatePhd(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void DeletePhd(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CreateArticle(object sender, RoutedEventArgs e)
         {
 
         }

@@ -18,17 +18,10 @@
                     Margin="10,10,10,10" >
             <TabItem Header="Books" Width="100">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource bOOKViewSource}">
-
-                    <Button x:Name="createBookBtn" Click="CreateBook" Content="Create selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
-                    <Button x:Name="updateBookBtn" Click="SaveChanges" Content="Update" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="deleteBookBtn" Click="DeleteBook" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
-
-                    <DataGrid x:Name="bOOKDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" 
+                    <DataGrid x:Name="bOOKDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
                               Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected" 
-                              VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                              CanUserAddRows="True" CanUserDeleteRows="True" IsReadOnly="False"
-                              ItemsSource="{Binding}" 
-                              >
+                              VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="titleColumn" Binding="{Binding Title}" Header="Title" Width=".3*"/>
                             <DataGridTextColumn x:Name="authorsColumn" Binding="{Binding Authors}" Header="Authors" Width=".3*"/>
@@ -41,11 +34,7 @@
             </TabItem>
             <TabItem Header="MasterThesises" Width="100">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource thesisViewSource}">
-
-                    <Button x:Name="createMasterBtn" Click="CreateMaster" Content="Create selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
-                    <Button x:Name="updateMasterBtn" Click="SaveChanges" Content="Update" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="deleteMasterBtn" Click="DeleteMaster" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
-
                     <DataGrid x:Name="mastersDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}"  
                               Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected"
                               VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -60,11 +49,7 @@
             </TabItem>
             <TabItem Header="PhdThesises">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource thesisViewSource}">
-
-                    <Button x:Name="createPhdBtn" Click="CreatePhd" Content="Create selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
-                    <Button x:Name="updatePhdBtn" Click="SaveChanges" Content="Update" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="deletePhdBtn" Click="DeletePhd" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
-
                     <DataGrid x:Name="phdsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
                                 Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected"
                                 VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -79,11 +64,7 @@
             </TabItem>
             <TabItem Header="Articles">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource aRTICLEViewSource}">
-
-                    <Button x:Name="createArticleBtn" Click="CreateArticle" Content="Create selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
-                    <Button x:Name="updateArticleBtn" Click="SaveChanges" Content="Update" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <Button x:Name="deleteArticleBtn" Click="DeleteArticle" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
-                    
                     <DataGrid x:Name="aRTICLEDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
                               Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected"
                               VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
