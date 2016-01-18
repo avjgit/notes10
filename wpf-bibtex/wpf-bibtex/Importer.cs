@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace wpf_bibtex
 {
@@ -7,7 +8,24 @@ namespace wpf_bibtex
     {
         internal static List<Importable> GetItems(string v)
         {
-            throw new NotImplementedException();
+            var result = new List<Importable>();
+
+            using (var f = new StreamReader(v))
+            {
+                while (!f.EndOfStream)
+                {
+                    // catch start of entry (starts with @)
+                    // read in type and code
+
+                    // while not end of entry (== "}")
+                    // read in properties: 
+                    // parse "     property = {propertyValue}"
+                    // save into dictionary[property] = propertyValue
+
+                }
+            }
+
+            return result;
         }
 
         internal static List<BOOK> ExtractBooks(object imported)
