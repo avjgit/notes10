@@ -34,7 +34,7 @@ namespace wpf_bibtex
             int year
             )
         {
-            Authors = authorFirstname + authorLastname;
+            Authors = authorFirstname + ' ' + authorLastname;
             Title = title;
             Type = thesisType;
             School = school;
