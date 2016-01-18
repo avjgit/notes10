@@ -28,6 +28,7 @@ namespace wpf_bibtex
         public ObservableCollection<Thesis> Masters{ get; set; }
         public ObservableCollection<Thesis> Phds{ get; set; }
 
+        const string IMPORT_EXPORT_FILE_PATH = "C:/Temp/bibtex.txt";
 
         public MainWindow()
         {
@@ -41,7 +42,7 @@ namespace wpf_bibtex
             // debug
             var testbook = new BOOK("John Tolkien", "The Hobbit", "George Allen & Unwin", 1937, "UK");
 
-            var testMaster = new Thesis("Sergey", "Brin", "The Anatomy of a Large-Scale Hypertextual Web Search Engine", 
+            var testMaster = new Thesis("Sergey", "Brin", "The Anatomy of a Large-Scale Hypertextual Web Search Engine",
                 Thesis.ThesisType.MASTERSTHESIS, "Stanford", 1995);
 
             var testPhd = new Thesis("Richard", "Feynman", "The Principle of Least Action in Quantum Mechanics",
@@ -121,7 +122,7 @@ namespace wpf_bibtex
             foreach (var item in Phds)
                 text.Append(item.BibTexPrint());
 
-            using (var writer = new StreamWriter("C:/Temp/bibtex.txt"))
+            using (var writer = new StreamWriter(IMPORT_EXPORT_FILE_PATH))
             {
                 writer.Write(text);
             }
@@ -129,7 +130,7 @@ namespace wpf_bibtex
 
         private void Import(object sender, RoutedEventArgs e)
         {
-            var imported = Importer.GetItems("C:/Temp/bibtext.txt");
+            var imported = Importer.GetItems(IMPORT_EXPORT_FILE_PATH);
 
             Importer.ExtractBooks(imported).ForEach(x => Books.Add(x));
             Importer.ExtractArticles(imported).ForEach(x => Articles.Add(x));

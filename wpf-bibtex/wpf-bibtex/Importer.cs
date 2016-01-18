@@ -11,30 +11,30 @@ namespace wpf_bibtex
         {
             var result = new List<Importable>();
 
-            Importable entry;
             using (var f = new StreamReader(v))
             {
-                string line = String.Empty;
-                entry = new Importable();
-
                 while (!f.EndOfStream)
                 {
+                    var line = String.Empty;
+
+                    var entry = new Importable();
+
                     // catch start of entry (starts with @)
-                    while (!IsStartOfEntry(line));
+                    while (!IsStartOfEntry(line))
                         line = f.ReadLine();
 
                     // read in type and code
-                    entry.Code = GetEntryCode(line);
                     entry.Type = GetEntryType(line);
+                    entry.Code = GetEntryCode(line);
 
                     // while not end of entry (== "}")
-                    while (!IsEndOfEntry(line))
-                    {
-                        line = f.ReadLine();
+                    line = f.ReadLine();
 
+                    do
+                    {
                         if (string.IsNullOrEmpty(line))
                             continue;
-                        
+
                         // read in properties: 
                         // parse "     property = {propertyValue}"
                         var propertyName = GetPropertyName(line);
@@ -42,10 +42,15 @@ namespace wpf_bibtex
 
                         if (propertyName == null || propertyValue == null)
                             continue;
-                        
+
                         // save into dictionary[property] = propertyValue
                         entry.Properties[propertyName] = propertyValue;
-                    }
+
+                        line = f.ReadLine();
+
+                    } while (!IsEndOfEntry(line));
+
+                    result.Add(entry);
                 }
             }
             return result;
@@ -60,10 +65,10 @@ namespace wpf_bibtex
         private static bool IsEndOfEntry(string line) =>
             String.Equals(line.Trim(), "}");
 
-        private static string GetEntryType(string line) =>
+        private static string GetEntryCode(string line) =>
             line.Split('{')[1].Trim().TrimEnd(',');
 
-        private static string GetEntryCode(string line) =>
+        private static string GetEntryType(string line) =>
             line.Split('{')[0].Trim().TrimStart('@');
 
         private static bool IsStartOfEntry(string line) => 

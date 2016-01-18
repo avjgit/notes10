@@ -4,12 +4,7 @@ kas ar šo ierakstu ir izpildīti - ērti var redzēt git ierakstu vēsturē
 - Autoram izveidota atsevišķa klase; tiek iestatīs caur publisko īpašību
 - NB: wikipēdijā rakstīts, ka autori tiek atdalīti ar "and", nevis ar komatu
 ======================================= TODO:
-delete
-- book
-- masterthesis
-- phdthesiS
-- article
-
+- ensure no dublicates
 - kodā nodemonstrēt visu klašu metožu izsaukumus un īpašību uzstādīšanu.
 - eksport to file („C:\Temp\” or request path)
 - import from previously exported file
@@ -19,11 +14,11 @@ delete
 - test just one author for thesis
 
 @BOOK{RattzFreeman2010,
-  title = {Pro LINQ  Language Integrated Query in C 2010},
-  publisher = {Apress},
-  year = {2010},
-  author = {Joeseph Rattz, Adam Freeman},
-  address = {New York},
+    title = {Pro LINQ  Language Integrated Query in C 2010},
+    publisher = {Apress},
+    year = {2010},
+        author = {Joeseph Rattz, Adam Freeman},
+    address = {New York},
   owner = {User},
   timestamp = {2015.09.25}
 }

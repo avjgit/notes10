@@ -35,6 +35,7 @@ namespace wpf_bibtex
     title = {{ {Title} }},
     journal = {{ {Journal} }},
     year = {{ {Year} }},
+    volume = {{ {Volume} }},
     timestamp = {{ {CreationDate} }}
 }}";
         }

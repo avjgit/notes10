@@ -7,5 +7,9 @@ namespace wpf_bibtex
         public string Type { get; set; }
         public string Code { get; set; }
         public Dictionary<string, string> Properties { get; set; }
+        public Importable()
+        {
+            Properties = new Dictionary<string, string>();
+        }
     }
 }
