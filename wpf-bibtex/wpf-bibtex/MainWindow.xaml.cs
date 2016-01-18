@@ -125,5 +125,24 @@ namespace wpf_bibtex
             Articles.Remove(article);
             aRTICLEDataGrid.ItemsSource = Articles;
         }
+
+        private void Export(object sender, RoutedEventArgs e)
+        {
+            var text = new StringBuilder();
+
+            foreach (var item in Books)
+                text.Append(item.BibTexPrint());
+            foreach (var item in Articles)
+                text.Append(item.BibTexPrint());
+            foreach (var item in Masters)
+                text.Append(item.BibTexPrint());
+            foreach (var item in Phds)
+                text.Append(item.BibTexPrint());
+
+            using (var writer = new StreamWriter("C:/Temp/bibtex.txt"))
+            {
+                writer.Write(text);
+            }
+        }
     }
 }

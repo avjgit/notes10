@@ -80,8 +80,9 @@
             </TabItem>
             <TabItem Header="Import/Export" Width="100">
                 <Grid Background="#FFE5E5E5">
+                    
                     <Button x:Name="buttonOpen" 
-                        Content="Open DLL" 
+                        Content="Import" 
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top" 
                         Width="75" Margin="10,10,0,0"
@@ -91,9 +92,26 @@
                          Height="23" 
                          Margin="100,10,0,0" 
                          TextWrapping="Wrap" 
-                         Text="Enter path to your BibTex file to import ..." 
+                         Text="C:/Temp/bibtex.txt" 
                          VerticalAlignment="Top" Width="Auto" MinWidth="300"
                          IsReadOnly="False"/>
+
+
+                    <Button x:Name="buttonExport" 
+                        Content="Export" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top" 
+                        Width="75" Margin="10,55,0,0"
+                        Click="Export"/>
+                    <TextBox x:Name="expotPathBox" 
+                         HorizontalAlignment="Left" 
+                         Height="23" 
+                         Margin="100,55,0,0" 
+                         TextWrapping="Wrap" 
+                         Text="C:/Temp/bibtex.txt" 
+                         VerticalAlignment="Top" Width="Auto" MinWidth="300"
+                         IsReadOnly="False"/>
+                    
                 </Grid>
             </TabItem>
         </TabControl>
