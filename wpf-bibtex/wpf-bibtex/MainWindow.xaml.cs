@@ -72,24 +72,6 @@ namespace wpf_bibtex
             phdsDataGrid.ItemsSource = Phds;
         }
 
-        private void buttonOpen_Click(object sender, RoutedEventArgs e)
-        {
-            // will try to open from path from text box
-            // if no file exists - continues to open file dialog
-            if (File.Exists(pathBox.Text))
-            {
-                //AnalyzeDll(pathBox.Text);
-                return;
-            }
-
-            var openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
-            {
-                pathBox.Text = openFileDialog.FileName;
-                //AnalyzeDll(pathBox.Text);
-            }
-        }
-
         private void DeleteBook(object sender, RoutedEventArgs e)
         {
             var bookSelected = bOOKDataGrid.SelectedItem as BOOK;
@@ -143,6 +125,11 @@ namespace wpf_bibtex
             {
                 writer.Write(text);
             }
+        }
+
+        private void Import(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

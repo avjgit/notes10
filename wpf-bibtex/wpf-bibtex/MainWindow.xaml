@@ -18,7 +18,7 @@
                     Margin="10,10,10,10" >
             <TabItem Header="Books" Width="100">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource bOOKViewSource}">
-                    <Button x:Name="deleteBookBtn" Click="DeleteBook" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="deleteBookBtn" Click="DeleteBook" Content="Delete selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <DataGrid x:Name="bOOKDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
                               Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected" 
                               VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -34,7 +34,8 @@
             </TabItem>
             <TabItem Header="MasterThesises" Width="100">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource thesisViewSource}">
-                    <Button x:Name="deleteMasterBtn" Click="DeleteMaster" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="deleteMasterBtn" Click="DeleteMaster" Content="Delete selected" HorizontalAlignment="Left" Margin="10
+                            ,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <DataGrid x:Name="mastersDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}"  
                               Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected"
                               VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -47,9 +48,9 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="PhdThesises">
+            <TabItem Header="PhdThesises" Width="100">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource thesisViewSource}">
-                    <Button x:Name="deletePhdBtn" Click="DeletePhd" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="deletePhdBtn" Click="DeletePhd" Content="Delete selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <DataGrid x:Name="phdsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
                                 Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected"
                                 VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -62,9 +63,9 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Articles">
+            <TabItem Header="Articles" Width="100">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource aRTICLEViewSource}">
-                    <Button x:Name="deleteArticleBtn" Click="DeleteArticle" Content="Delete selected" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button x:Name="deleteArticleBtn" Click="DeleteArticle" Content="Delete selected" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100"/>
                     <DataGrid x:Name="aRTICLEDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
                               Margin="10,45,10,10" RowDetailsVisibilityMode="VisibleWhenSelected"
                               VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -78,42 +79,21 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Import/Export" Width="100">
-                <Grid Background="#FFE5E5E5">
-                    
-                    <Button x:Name="buttonOpen" 
-                        Content="Import" 
-                        HorizontalAlignment="Left" 
-                        VerticalAlignment="Top" 
-                        Width="75" Margin="10,10,0,0"
-                        Click="buttonOpen_Click"/>
-                    <TextBox x:Name="pathBox" 
-                         HorizontalAlignment="Left" 
-                         Height="23" 
-                         Margin="100,10,0,0" 
-                         TextWrapping="Wrap" 
-                         Text="C:/Temp/bibtex.txt" 
-                         VerticalAlignment="Top" Width="Auto" MinWidth="300"
-                         IsReadOnly="False"/>
-
-
-                    <Button x:Name="buttonExport" 
-                        Content="Export" 
-                        HorizontalAlignment="Left" 
-                        VerticalAlignment="Top" 
-                        Width="75" Margin="10,55,0,0"
-                        Click="Export"/>
-                    <TextBox x:Name="expotPathBox" 
-                         HorizontalAlignment="Left" 
-                         Height="23" 
-                         Margin="100,55,0,0" 
-                         TextWrapping="Wrap" 
-                         Text="C:/Temp/bibtex.txt" 
-                         VerticalAlignment="Top" Width="Auto" MinWidth="300"
-                         IsReadOnly="False"/>
-                    
-                </Grid>
-            </TabItem>
         </TabControl>
+
+        <Button x:Name="buttonImport" 
+                        Content="Import to C:/Temp/bibtex.txt" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Top" 
+                        Width="170" Margin="0,11,190,0"
+                        Click="Import"/>
+
+        <Button x:Name="buttonExport" 
+                        Content="Export from C:/Temp/bibtex.txt" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Top" 
+                        Width="170" Margin="0,11,10,0"
+                        Click="Export"/>
+
     </Grid>
 </Window>
