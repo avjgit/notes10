@@ -30,10 +30,10 @@ namespace wpf_bibtex
         {
             return $@"
 @{BibType}{{{BibCode},
-    title = {{ {Title} }},
-    publisher = {{ {Publisher} }},
-    year = {{ {Year} }},
     author = {{ {Authors} }},
+    title = {{ {Title} }},
+    year = {{ {Year} }},
+    publisher = {{ {Publisher} }},
     address = {{ {PublishersAddress} }},
     timestamp = {{ {CreationDate} }}
 }}";

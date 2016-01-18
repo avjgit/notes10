@@ -33,8 +33,8 @@ namespace wpf_bibtex
 @{BibType}{{{BibCode},
     author = {{ {Authors} }},
     title = {{ {Title} }},
-    journal = {{ {Journal} }},
     year = {{ {Year} }},
+    journal = {{ {Journal} }},
     volume = {{ {Volume} }},
     timestamp = {{ {CreationDate} }}
 }}";

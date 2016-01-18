@@ -47,8 +47,8 @@ namespace wpf_bibtex
 @{Type}{{{BibCode},
     author = {{ {Authors} }},
     title = {{ {Title} }},
-    school = {{ {School} }},
     year = {{ {Year} }},
+    school = {{ {School} }},
     timestamp = {{ {CreationDate} }}
 }}";
         }

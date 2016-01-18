@@ -23,10 +23,10 @@ namespace wpf_bibtex
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ObservableCollection<BOOK> Books{ get; set; }
+        public ObservableCollection<BOOK> Books { get; set; }
         public ObservableCollection<ARTICLE> Articles { get; set; }
-        public ObservableCollection<Thesis> Masters{ get; set; }
-        public ObservableCollection<Thesis> Phds{ get; set; }
+        public ObservableCollection<Thesis> Masters { get; set; }
+        public ObservableCollection<Thesis> Phds { get; set; }
 
         const string IMPORT_EXPORT_FILE_PATH = "C:/Temp/bibtex.txt";
 
@@ -132,10 +132,21 @@ namespace wpf_bibtex
         {
             var imported = Importer.GetItems(IMPORT_EXPORT_FILE_PATH);
 
-            Importer.ExtractBooks(imported).ForEach(x => Books.Add(x));
-            Importer.ExtractArticles(imported).ForEach(x => Articles.Add(x));
-            Importer.ExtractMasters(imported).ForEach(x => Masters.Add(x));
-            Importer.ExtractPhds(imported).ForEach(x => Phds.Add(x));
+            foreach (var item in Importer.ExtractBooks(imported))
+                if (!Books.Where(x => x.Title == item.Title).Any())
+                    Books.Add(item);
+
+            foreach (var item in Importer.ExtractArticles(imported))
+                if (!Articles.Where(x => x.Title == item.Title).Any())
+                    Articles.Add(item);
+
+            foreach (var item in Importer.ExtractMasters(imported))
+                if (!Masters.Where(x => x.Title == item.Title).Any())
+                    Masters.Add(item);
+
+            foreach (var item in Importer.ExtractPhds(imported))
+                if (!Phds.Where(x => x.Title == item.Title).Any())
+                    Phds.Add(item);
         }
     }
 }

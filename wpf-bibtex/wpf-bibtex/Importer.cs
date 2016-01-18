@@ -71,22 +71,33 @@ namespace wpf_bibtex
         private static string GetEntryType(string line) =>
             line.Split('{')[0].Trim().TrimStart('@');
 
-        private static bool IsStartOfEntry(string line) => 
+        private static bool IsStartOfEntry(string line) =>
             line.StartsWith("@");
 
 
         internal static List<BOOK> ExtractBooks(List<Importable> import)
         {
             var books = new List<BOOK>();
+            var propertyValue = String.Empty;
             foreach (var item in import.Where(x => x.Type == "BOOK"))
             {
                 var book = new BOOK();
                 book.BibCodeOriginal = item.Code;
-                book.Title = item.Properties["title"];
-                book.Authors = item.Properties["author"];
-                book.Year = Int32.Parse(item.Properties["year"]);
-                book.Publisher = item.Properties["publisher"];
-                book.PublishersAddress = item.Properties["address"];
+
+                if (item.Properties.TryGetValue("title", out propertyValue))
+                    book.Title = propertyValue;
+
+                if (item.Properties.TryGetValue("author", out propertyValue))
+                    book.Authors = propertyValue;
+
+                if (item.Properties.TryGetValue("year"", out propertyValue))
+                    book.Year = Int32.Parse(propertyValue;
+
+                if (item.Properties.TryGetValue("publisher", out propertyValue))
+                    book.Publisher = propertyValue;
+
+                if (item.Properties.TryGetValue("address", out propertyValue))
+                    book.PublishersAddress = propertyValue;
                 books.Add(book);
             }
             return books;
@@ -95,15 +106,26 @@ namespace wpf_bibtex
         internal static List<ARTICLE> ExtractArticles(List<Importable> import)
         {
             var articles = new List<ARTICLE>();
+            var propertyValue = String.Empty;
             foreach (var item in import.Where(x => x.Type == "ARTICLE"))
             {
                 var article = new ARTICLE();
                 article.BibCodeOriginal = item.Code;
-                article.Title = item.Properties["title"];
-                article.Authors = item.Properties["author"];
-                article.Year = Int32.Parse(item.Properties["year"]);
-                article.Journal = item.Properties["journal"];
-                article.Volume = item.Properties["volume"];
+
+                if (item.Properties.TryGetValue("title", out propertyValue))
+                    article.Title = propertyValue;
+
+                if (item.Properties.TryGetValue("author", out propertyValue))
+                    article.Authors = propertyValue;
+
+                if (item.Properties.TryGetValue("year"", out propertyValue))
+                    article.Year = Int32.Parse(propertyValue;
+
+                if (item.Properties.TryGetValue("journal", out propertyValue))
+                    article.Journal = propertyValue;
+
+                if (item.Properties.TryGetValue("volume", out propertyValue))
+                    article.Volume = propertyValue;
                 articles.Add(article);
             }
             return articles;
@@ -112,15 +134,24 @@ namespace wpf_bibtex
         internal static List<Thesis> ExtractMasters(List<Importable> import)
         {
             var masters = new List<Thesis>();
+            var propertyValue = String.Empty;
             foreach (var item in import.Where(x => x.Type == "MASTERSTHESIS"))
             {
                 var master = new Thesis();
                 master.BibCodeOriginal = item.Code;
-                master.Title = item.Properties["title"];
-                master.Authors = item.Properties["author"];
-                master.Year = Int32.Parse(item.Properties["year"]);
+
+                if (item.Properties.TryGetValue("title", out propertyValue))
+                    master.Title = propertyValue;
+
+                if (item.Properties.TryGetValue("author", out propertyValue))
+                    master.Authors = propertyValue;
+
+                if (item.Properties.TryGetValue("year"", out propertyValue))
+                    master.Year = Int32.Parse(propertyValue;
                 master.Type = Thesis.ThesisType.MASTERSTHESIS;
-                master.School = item.Properties["school"];
+
+                if (item.Properties.TryGetValue("school", out propertyValue))
+                    master.School = propertyValue;
                 masters.Add(master);
             }
             return masters;
@@ -129,15 +160,24 @@ namespace wpf_bibtex
         internal static List<Thesis> ExtractPhds(List<Importable> import)
         {
             var phds = new List<Thesis>();
+            var propertyValue = String.Empty;
             foreach (var item in import.Where(x => x.Type == "PHDTHESIS"))
             {
                 var phd = new Thesis();
                 phd.BibCodeOriginal = item.Code;
-                phd.Title = item.Properties["title"];
-                phd.Authors = item.Properties["author"];
-                phd.Year = Int32.Parse(item.Properties["year"]);
+
+                if (item.Properties.TryGetValue("title", out propertyValue))
+                    phd.Title = propertyValue;
+
+                if (item.Properties.TryGetValue("author", out propertyValue))
+                    phd.Authors = propertyValue;
+
+                if (item.Properties.TryGetValue("year", out propertyValue))
+                    phd.Year = Int32.Parse(propertyValue);
                 phd.Type = Thesis.ThesisType.PHDTHESIS;
-                phd.School = item.Properties["school"];
+
+                if (item.Properties.TryGetValue("school", out propertyValue))
+                    phd.School = propertyValue;
                 phds.Add(phd);
             }
             return phds;
