@@ -74,30 +74,37 @@ namespace wpf_bibtex
         private static bool IsStartOfEntry(string line) =>
             line.StartsWith("@");
 
-
         internal static List<BOOK> ExtractBooks(List<Importable> import)
         {
             var books = new List<BOOK>();
             var propertyValue = String.Empty;
             foreach (var item in import.Where(x => x.Type == "BOOK"))
             {
-                var book = new BOOK();
-                book.BibCodeOriginal = item.Code;
+                var bookTitle = String.Empty;
+                var bookAuthors = String.Empty;
+                var bookYear = 0;
+                var bookPublisher = String.Empty;
+                var bookPublishersAddress = String.Empty;
 
-                if (item.Properties.TryGetValue("title", out propertyValue))
-                    book.Title = propertyValue;
 
                 if (item.Properties.TryGetValue("author", out propertyValue))
-                    book.Authors = propertyValue;
+                    bookAuthors = propertyValue;
 
-                if (item.Properties.TryGetValue("year"", out propertyValue))
-                    book.Year = Int32.Parse(propertyValue;
+                if (item.Properties.TryGetValue("title", out propertyValue))
+                    bookTitle = propertyValue;
+
+                if (item.Properties.TryGetValue("year", out propertyValue))
+                    bookYear = Int32.Parse(propertyValue);
 
                 if (item.Properties.TryGetValue("publisher", out propertyValue))
-                    book.Publisher = propertyValue;
+                    bookPublisher = propertyValue;
 
                 if (item.Properties.TryGetValue("address", out propertyValue))
-                    book.PublishersAddress = propertyValue;
+                    bookPublishersAddress = propertyValue;
+
+                var book = new BOOK(bookAuthors, bookTitle, bookPublisher, bookYear, bookPublishersAddress);
+                book.BibCodeOriginal = item.Code;
+
                 books.Add(book);
             }
             return books;
@@ -109,23 +116,30 @@ namespace wpf_bibtex
             var propertyValue = String.Empty;
             foreach (var item in import.Where(x => x.Type == "ARTICLE"))
             {
-                var article = new ARTICLE();
-                article.BibCodeOriginal = item.Code;
+                var articleTitle = String.Empty;
+                var articleAuthors = String.Empty;
+                var articleYear = 0;
+                var articleJournal = String.Empty;
+                var articleVolume = String.Empty;
 
                 if (item.Properties.TryGetValue("title", out propertyValue))
-                    article.Title = propertyValue;
+                    articleTitle = propertyValue;
 
                 if (item.Properties.TryGetValue("author", out propertyValue))
-                    article.Authors = propertyValue;
+                    articleAuthors = propertyValue;
 
-                if (item.Properties.TryGetValue("year"", out propertyValue))
-                    article.Year = Int32.Parse(propertyValue;
+                if (item.Properties.TryGetValue("year", out propertyValue))
+                    articleYear = Int32.Parse(propertyValue);
 
                 if (item.Properties.TryGetValue("journal", out propertyValue))
-                    article.Journal = propertyValue;
+                    articleJournal = propertyValue;
 
                 if (item.Properties.TryGetValue("volume", out propertyValue))
-                    article.Volume = propertyValue;
+                    articleVolume = propertyValue;
+
+                var article = new ARTICLE(articleAuthors, articleTitle, articleYear, articleJournal, articleVolume);
+                article.BibCodeOriginal = item.Code;
+
                 articles.Add(article);
             }
             return articles;
@@ -137,21 +151,32 @@ namespace wpf_bibtex
             var propertyValue = String.Empty;
             foreach (var item in import.Where(x => x.Type == "MASTERSTHESIS"))
             {
-                var master = new Thesis();
-                master.BibCodeOriginal = item.Code;
+                var masterTitle = String.Empty;
+                var masterAuthors = String.Empty;
+                var masterYear = 0;
+                var masterSchool = String.Empty;
 
                 if (item.Properties.TryGetValue("title", out propertyValue))
-                    master.Title = propertyValue;
+                    masterTitle = propertyValue;
 
                 if (item.Properties.TryGetValue("author", out propertyValue))
-                    master.Authors = propertyValue;
+                    masterAuthors = propertyValue;
 
-                if (item.Properties.TryGetValue("year"", out propertyValue))
-                    master.Year = Int32.Parse(propertyValue;
-                master.Type = Thesis.ThesisType.MASTERSTHESIS;
+                if (item.Properties.TryGetValue("year", out propertyValue))
+                    masterYear = Int32.Parse(propertyValue);
 
                 if (item.Properties.TryGetValue("school", out propertyValue))
-                    master.School = propertyValue;
+                    masterSchool = propertyValue;
+
+                var master = new Thesis(
+                    masterAuthors.Split(' ')[0],
+                    masterAuthors.Split(' ')[1],
+                    masterTitle,
+                    Thesis.ThesisType.MASTERSTHESIS,
+                    masterSchool,
+                    masterYear);
+
+                master.BibCodeOriginal = item.Code;
                 masters.Add(master);
             }
             return masters;
@@ -163,21 +188,32 @@ namespace wpf_bibtex
             var propertyValue = String.Empty;
             foreach (var item in import.Where(x => x.Type == "PHDTHESIS"))
             {
-                var phd = new Thesis();
-                phd.BibCodeOriginal = item.Code;
+                var phdTitle = String.Empty;
+                var phdAuthors = String.Empty;
+                var phdYear = 0;
+                var phdSchool = String.Empty;
 
                 if (item.Properties.TryGetValue("title", out propertyValue))
-                    phd.Title = propertyValue;
+                    phdTitle = propertyValue;
 
                 if (item.Properties.TryGetValue("author", out propertyValue))
-                    phd.Authors = propertyValue;
+                    phdAuthors = propertyValue;
 
                 if (item.Properties.TryGetValue("year", out propertyValue))
-                    phd.Year = Int32.Parse(propertyValue);
-                phd.Type = Thesis.ThesisType.PHDTHESIS;
+                    phdYear = Int32.Parse(propertyValue);
 
                 if (item.Properties.TryGetValue("school", out propertyValue))
-                    phd.School = propertyValue;
+                    phdSchool = propertyValue;
+
+                var phd = new Thesis(
+                    phdAuthors.Split(' ')[0],
+                    phdAuthors.Split(' ')[1],
+                    phdTitle,
+                    Thesis.ThesisType.PHDTHESIS,
+                    phdSchool,
+                    phdYear);
+
+                phd.BibCodeOriginal = item.Code;
                 phds.Add(phd);
             }
             return phds;
