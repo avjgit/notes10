@@ -1,0 +1,62 @@
+
+@BOOK{Tolkien1937,
+    author = { John Tolkien },
+    title = { The Hobbit },
+    year = { 1937 },
+    publisher = { George Allen & Unwin },
+    address = { UK },
+    timestamp = { 19.01.2016 1:13:41 }
+}
+@ARTICLE{WoodwardBernstein1970,
+    author = { Bob Woodward, Carl Bernstein },
+    title = { Investigation of the Watergate break in },
+    year = { 1970 },
+    journal = { Washington Post },
+    volume = { 1 },
+    timestamp = { 19.01.2016 1:13:41 }
+}
+@MASTERSTHESIS{Brin1995,
+    author = { Sergey Brin },
+    title = { The Anatomy of a Large-Scale Hypertextual Web Search Engine },
+    year = { 1995 },
+    school = { Stanford },
+    timestamp = { 19.01.2016 1:13:41 }
+}
+@PHDTHESIS{Feynman1942,
+    author = { Richard Feynman },
+    title = { The Principle of Least Action in Quantum Mechanics },
+    year = { 1942 },
+    school = { Princeton University },
+    timestamp = { 19.01.2016 1:13:41 }
+}
+
+@BOOK{Tolkien1937,
+    title = { The Hobbit 2 },
+    publisher = { George Allen & Unwin },
+    year = { 1937 },
+    author = { John Tolkien },
+    address = { UK },
+    timestamp = { 19.01.2016 1:02:08 }
+}
+@ARTICLE{WoodwardBernstein1970,
+    author = { Bob Woodward, Carl Bernstein },
+    title = { Investigation of the Watergate break in 2 },
+    journal = { Washington Post },
+    year = { 1970 },
+    volume = { 1 },
+    timestamp = { 19.01.2016 1:02:08 }
+}
+@MASTERSTHESIS{Brin1995,
+    author = { Sergey Brin },
+    title = { The Anatomy of a Large-Scale Hypertextual Web Search Engine 2},
+    school = { Stanford },
+    year = { 1995 },
+    timestamp = { 19.01.2016 1:02:08 }
+}
+@PHDTHESIS{Feynman1942,
+    author = { Richard Feynman },
+    title = { The Principle of Least Action in Quantum Mechanics 2},
+    school = { Princeton University },
+    year = { 1942 },
+    timestamp = { 19.01.2016 1:02:08 }
+}
