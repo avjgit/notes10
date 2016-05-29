@@ -50,4 +50,12 @@ module Test where
 
 	helper acc 0 = acc
 	helper acc n = helper (acc*n) (n-1)
-	--------------------------------------------- 1.3 Bindings
+	--------------------------------------------- 1.6 Bindings
+	--------------------------------------------- 2.1 Polymorphism
+	import Data.Function
+
+	multSecond = g `on` h
+
+	g = (*)
+
+	h tuple = snd tuple
