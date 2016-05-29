@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
     // A component controls a portion of the screen 
     // — a view — through its associated template
     //how to render this component's view
-    template: '<h1>My First Angular 2 App</h1>'
+    template: '<h1>My Second Angular 2 App</h1>'
 })
 
 // Every Angular app has 
