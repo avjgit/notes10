@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
 
+export class Hero {
+    id: number;
+    name: string;
+}
+
 @Component({
   selector: 'my-app',
   template: `
 <span>Counter:{{count}}</span><button (click)="countClicks()">Click me</button>
 
 <h1>{{title}}</h1>
-You'll learn about {{hero}}!
+
+<h2>{{hero.name}} details!</h2>
+<div><label>id: </label>{{hero.id}}</div>
+<div><label>name: </label>{{hero.name}}</div>
 `
 })
 export class AppComponent {
@@ -16,6 +24,9 @@ export class AppComponent {
     }
 
     title = "Tour of Heroes"; 
-    hero = "Manbearpig";    
+    hero: Hero = {
+        id: 1,
+        name: 'Superman'
+    }    
 
 }
