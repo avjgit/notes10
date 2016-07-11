@@ -1,0 +1,2 @@
+proxy=http://INSERT_COMPANY_PROXY:8080
+rejectUnauthorized=true
