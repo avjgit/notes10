@@ -63,17 +63,17 @@ export class Hero {
 
 <h2>All heroes</h2>
 <ul class="heroes">
-    <li *ngFor="let hero of heroes">
+    <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
         <span class="badge">{{hero.id}}</span> {{hero.name}}    
     </li>
 </ul>
 
 
-<h2>{{hero.name}} details!</h2>
-<div><label>id: </label>{{hero.id}}</div>
+<h2>{{selectedHero.name}} details!</h2>
+<div><label>id: </label>{{selectedHero.id}}</div>
 <div>
     <label>name: </label>
-    <input [(ngModel)]="hero.name" placeholder="name">    
+    <input [(ngModel)]="selectedHero.name" placeholder="name">    
 </div>
 `
 })
@@ -84,12 +84,15 @@ export class AppComponent {
     }
 
     title = "Tour of Heroes"; 
-    hero: Hero = {
+    selectedHero: Hero = {
         id: 1,
         name: 'Superman'
     }    
     public heroes = HEROES;
-
+    
+    onSelect(hero: Hero){
+        this.selectedHero = hero;
+    }
 }
 
 const HEROES: Hero[] = [
