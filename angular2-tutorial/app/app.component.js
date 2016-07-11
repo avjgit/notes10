@@ -11,11 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
+        this.title = "the app";
+        this.count = 0;
     }
+    AppComponent.prototype.countClicks = function () {
+        this.count++;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: '<h1>My First Angular 2 App</h1>'
+            template: "\n<h1>My second Angular 2 App, {{title}}</h1>\n<span>Counter:{{count}}</span>\n<button (click)=\"countClicks()\">Click me</button>\n"
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
