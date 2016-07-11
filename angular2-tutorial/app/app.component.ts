@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Hero } from './hero';
 import { HeroDetailComponent } from './hero-detail.component';
+import { HeroService } from './hero.service';
+import { OnInit } from '@angular/core';
 
 
 @Component({
@@ -71,10 +73,10 @@ import { HeroDetailComponent } from './hero-detail.component';
 
 <my-hero-detail [hero]="selectedHero"></my-hero-detail>
 `,
-  directives: [HeroDetailComponent]
-
+  directives: [HeroDetailComponent],
+  providers: [HeroService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     count = 0;
     countClicks(){
         this.count++;
@@ -82,22 +84,22 @@ export class AppComponent {
 
     title = "Tour of Heroes"; 
     selectedHero: Hero;
-    public heroes = HEROES;
+    heroes = [];
     
     onSelect(hero: Hero){
         this.selectedHero = hero;
     }
-}
 
-const HEROES: Hero[] = [
-  { id: 11, name: 'Mr. Nice' },
-  { id: 12, name: 'Narco' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' },
-  { id: 16, name: 'RubberMan' },
-  { id: 17, name: 'Dynama' },
-  { id: 18, name: 'Dr IQ' },
-  { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' }
-];
+    constructor(private heroService: HeroService){
+
+    }
+
+    getHeroes(){
+      this.heroes = this.heroService.getHeroes();
+    }
+
+    ngOnInit(){
+      this.getHeroes();
+    }
+    
+}
