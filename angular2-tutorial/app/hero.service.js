@@ -14,7 +14,7 @@ var HeroService = (function () {
     function HeroService() {
     }
     HeroService.prototype.getHeroes = function () {
-        return Promise.resolve(mock_heroes_1.HEROES);
+        return mock_heroes_1.HEROES;
     };
     HeroService = __decorate([
         core_1.Injectable(), 
