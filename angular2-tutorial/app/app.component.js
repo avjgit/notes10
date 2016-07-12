@@ -19,10 +19,16 @@ var AppComponent = (function () {
             id: 1,
             name: 'Mr.ClassMan'
         };
-        this.heroes = this.heroService.getHeroes();
     }
     AppComponent.prototype.onSelect = function (hero) {
         this.selectedHero = hero;
+    };
+    AppComponent.prototype.getHeroes = function () {
+        this.heroes = this.heroService.getHeroes();
+    };
+    ;
+    AppComponent.prototype.ngOnInit = function () {
+        this.getHeroes();
     };
     AppComponent = __decorate([
         core_1.Component({

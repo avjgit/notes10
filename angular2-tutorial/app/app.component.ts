@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Hero } from './hero';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroService } from './hero.service';
+import { OnInit } from '@angular/core';
 
 @Component({
     styles: [`
@@ -72,7 +73,7 @@ import { HeroService } from './hero.service';
   directives: [HeroDetailComponent],
   providers: [HeroService]
 })
-export class AppComponent{
+export class AppComponent implements OnInit{
     title = 'Tour';
 
     hero: Hero = {
@@ -89,8 +90,13 @@ export class AppComponent{
     }
 
     constructor(private heroService: HeroService) {
-      this.heroes = this.heroService.getHeroes();
     }
 
-}
+    getHeroes() {
+      this.heroes = this.heroService.getHeroes();
+    };
 
+    ngOnInit(){
+      this.getHeroes();
+    }
+}
