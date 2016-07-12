@@ -69,7 +69,8 @@ import { HeroService } from './hero.service';
 </ul>
 <my-hero-detail [hero]="selectedHero"></my-hero-detail>
 `,
-  directives: [HeroDetailComponent]
+  directives: [HeroDetailComponent],
+  providers: [HeroService]
 })
 export class AppComponent{
     title = 'Tour';
@@ -78,7 +79,7 @@ export class AppComponent{
         id: 1,
         name: 'Mr.ClassMan'
     };
-    heroService = new HeroService();
+
     heroes: Hero[];
 
     selectedHero: Hero;
@@ -86,5 +87,10 @@ export class AppComponent{
     onSelect(hero: Hero){
         this.selectedHero = hero;
     }
+
+    constructor(private heroService: HeroService) {
+      this.heroes = this.heroService.getHeroes();
+    }
+
 }
 
