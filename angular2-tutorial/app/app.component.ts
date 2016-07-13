@@ -6,6 +6,7 @@ import { HeroService } from './hero.service';
     selector: 'my-app',
     directives: [ROUTER_DIRECTIVES],
     providers: [HeroService],
+    styleUrls: ['app/app.component.css'],
     template: `
 
 <h1>{{title}}</h1>
