@@ -7,6 +7,11 @@
 
         // exclude .js and .js.map files, when in a TypeScript project
         "**/*.js": { "when": "$(basename).ts"},
-        "**/*.js.map": true
+        "**/*.js.map": true,
+
+        "*.gitignore": true,
+        "*.typingsrc": true,
+        "*.npmrc": true,
+        "*.vscode": true
     }
 }
