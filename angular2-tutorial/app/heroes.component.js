@@ -14,7 +14,6 @@ var hero_service_1 = require('./hero.service');
 var HeroesComponent = (function () {
     function HeroesComponent(heroService) {
         this.heroService = heroService;
-        this.title = 'Tour';
         this.hero = {
             id: 1,
             name: 'Mr.ClassMan'
@@ -37,7 +36,7 @@ var HeroesComponent = (function () {
             selector: 'my-heroes',
             template: "\n<h1>{{title}}</h1>\n\n<h2>My Heroes</h2>\n<ul class=\"heroes\">\n    <li\n        *ngFor=\"let hero of heroes\"\n        (click)=\"onSelect(hero)\"\n        [class.selected]=\"hero === selectedHero\"\n    >\n        <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n    </li>\n</ul>\n<my-hero-detail [hero]=\"selectedHero\"></my-hero-detail>\n",
             directives: [hero_detail_component_1.HeroDetailComponent],
-            providers: [hero_service_1.HeroService]
+            providers: []
         }), 
         __metadata('design:paramtypes', [hero_service_1.HeroService])
     ], HeroesComponent);

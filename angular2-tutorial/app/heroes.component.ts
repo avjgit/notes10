@@ -71,10 +71,9 @@ import { OnInit } from '@angular/core';
 <my-hero-detail [hero]="selectedHero"></my-hero-detail>
 `,
   directives: [HeroDetailComponent],
-  providers: [HeroService]
+  providers: []
 })
 export class HeroesComponent implements OnInit{
-    title = 'Tour';
 
     hero: Hero = {
         id: 1,
