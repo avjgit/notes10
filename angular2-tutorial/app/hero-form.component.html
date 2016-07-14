@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Hero Form</h1>
-    <form *ngIf="active">
+    <form *ngIf="active" (ngSubmit)="onSubmit()" #heroForm="ngForm">
       {{diagnostic}}
       <div class="form-group">
         <label for="name">Name</label>
@@ -20,7 +20,7 @@
           <option *ngFor="let p of powers" [value]="p">{{p}}</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-default" [disabled]="!heroForm.form.valid">Submit</button>
       <button type="button" class="btn btn-default" (click)="newHero()">New Hero</button>
     </form>
 </div>
