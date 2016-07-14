@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { HeroService } from './hero.service';
+import { HeroFormComponent } from './hero-form.component';
 
 @Component({
     selector: 'my-app',
-    directives: [ROUTER_DIRECTIVES],
+    directives: [ROUTER_DIRECTIVES, HeroFormComponent],
     providers: [HeroService],
     styleUrls: ['app/app.component.css'],
     template: `
@@ -22,6 +23,7 @@ import { HeroService } from './hero.service';
 </nav>
 
 <router-outlet></router-outlet>
+<hero-form></hero-form>
 `
 })
 export class AppComponent {
